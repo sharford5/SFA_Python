@@ -15,6 +15,7 @@ def load(dataset_name, seperate):
         print("Done reading "+dataset_name+" Testing Data...  Samples: " + str(test.shape[0])+ "   Series Length: "+str(test.shape[1]))
         print()
 
+        # Normalize train and test
         for i in range(train.shape[0]):
             train.iloc[i, :] = NORM(train.iloc[i, :].tolist())
         for i in range(test.shape[0]):

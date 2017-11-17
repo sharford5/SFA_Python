@@ -15,6 +15,7 @@ class BOSS():
         if self.signature == None:
             self.signature = SFA("EQUI_DEPTH")
             self.signature.fitWindowing(samples, labels, self.windowLength, self.maxF, self.symbols, self.normMean, True)
+            # self.signature.printBins()
 
         words = []
         for i in range(samples.shape[0]):

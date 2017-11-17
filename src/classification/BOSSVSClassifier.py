@@ -1,6 +1,7 @@
 from  src.transformation.BOSSVS import *
 import random
 from statistics import mode
+import progressbar
 
 
 class BOSSVSClassifier():
@@ -43,7 +44,7 @@ class BOSSVSClassifier():
         correctTesting, labels = self.prediction(self.model, test, test_labels)
         test_acc = correctTesting/len(test_labels)
 
-        return "BOSSVS; "+str(round(train_acc,3))+"; "+str(round(test_acc,3))
+        return ("BOSSVS; "+str(round(train_acc,3))+"; "+str(round(test_acc,3))), labels
 
 
     def fit(self, train, train_labels):
@@ -61,7 +62,6 @@ class BOSSVSClassifier():
             windows.append(int(c))
             c += math.floor(distance)
 
-
         for normMean in [True, False]:
             model = self.fitEnsemble(windows, normMean, train, train_labels)
             correct, labels = self.prediction(model, train, train_labels)
@@ -77,38 +77,44 @@ class BOSSVSClassifier():
         uniqueLabels = np.unique(labels)
         results = []
 
-        for i in range(len(windows)):
-            model = {"window":windows[i], "normMean":normMean, "correctTraining":0}
-            bossvs = BOSSVS(self.maxF, self.maxS, windows[i], normMean)
-            words = bossvs.createWords(samples, labels)
+        print(self.NAME+"  Fitting for a norm of "+str(normMean))
+        with progressbar.ProgressBar(max_value=len(windows)) as bar:
+            for i in range(len(windows)):
+                bar.update(i)
+                model = {"window":windows[i], "normMean":normMean, "correctTraining":0}
+                bossvs = BOSSVS(self.maxF, self.maxS, windows[i], normMean)
+                words = bossvs.createWords(samples, labels)
 
-            f = self.minF
-            keep_going = True
-            while (keep_going) & (f <= min(windows[i], self.maxF)):
-                bag = bossvs.createBagOfPattern(words, samples, f, labels)
+                f = self.minF
+                keep_going = True
+                while (keep_going) & (f <= min(windows[i], self.maxF)):
+                    bag = bossvs.createBagOfPattern(words, samples, f, labels)
 
-                correct = 0
-                for s in range(self.folds):
-                    idf = bossvs.createTfIdf(bag, self.train_indices[s], uniqueLabels, labels)
-                    correct += self.predict(self.test_indices[s], bag, idf, labels)[0]
+                    correct = 0
+                    for s in range(self.folds):
+                        idf = bossvs.createTfIdf(bag, self.train_indices[s], uniqueLabels, labels)
+                        correct += self.predict(self.test_indices[s], bag, idf, labels)[0]
 
-                if correct > model["correctTraining"]:
-                    model["correctTraining"] = correct;
-                    model["f"] = f
-                if correct == samples.shape[0]:
-                    keep_going = False
+                    if correct > model["correctTraining"]:
+                        model["correctTraining"] = correct;
+                        model["f"] = f
+                    if correct == samples.shape[0]:
+                        keep_going = False
 
-                f += 2
+                    f += 2
 
-            bag = bossvs.createBagOfPattern(words, samples, model["f"], labels)
-            model["idf"] = bossvs.createTfIdf(bag, [i for i in range(samples.shape[0])], uniqueLabels, labels)
-            model["bossvs"] = bossvs
-            results.append(model)
+                bag = bossvs.createBagOfPattern(words, samples, model["f"], labels)
+                model["idf"] = bossvs.createTfIdf(bag, [i for i in range(samples.shape[0])], uniqueLabels, labels)
+                model["bossvs"] = bossvs
+                results.append(model)
+        print()
 
+        # Find best correctTraining
         for i in range(len(results)):
             if results[i]["correctTraining"] > correctTraining:
                 correctTraining = results[i]["correctTraining"]
 
+        # Remove Results that are no longer satisfactory
         new_results = []
         for i in range(len(results)):
             if results[i]["correctTraining"] >= (correctTraining * self.factor):

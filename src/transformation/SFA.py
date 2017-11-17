@@ -112,6 +112,8 @@ class SFA():
 
         if self.HistogramType == "EQUI_DEPTH":
             self.divideEquiDepthHistogram()
+        # elif HistogramType == "EQUI_FREQUENCY":
+        #     divideEquiWidthHistogram()
         elif self.HistogramType == "INFORMATION_GAIN":
             self.divideHistogramInformationGain()
 
@@ -126,7 +128,7 @@ class SFA():
             transformedSamples_small = self.transformation.transform(samples.iloc[i,:].tolist(), wordLength)
             transformedSamples.append(transformedSamples_small)
             for j in range(len(transformedSamples_small)):
-                value = float(format(round(transformedSamples_small[j],2), '.2f')) + 0
+                value = float(format(round(transformedSamples_small[j],2), '.2f')) + 0 #is a bad way of removing values of -0.0
                 obj = (value, labels[i])
                 self.orderLine[j][i] = obj
 
@@ -205,6 +207,10 @@ class SFA():
 
 
     def findBestSplit(self, element, start, end, remainingSymbols):
+        # start = int(start)
+        # end = int(end)
+        # remainingSymbols = int(remainingSymbols)
+
         bestGain = -1
         bestPos = -1
         total = end - start
@@ -289,7 +295,7 @@ class SFA():
         limit = 2147483647
         total = 2147483647 + 2147483648
         while b > limit:
-            b = b - total
+            b = b - total# - 1
 
         return b
 
@@ -374,9 +380,11 @@ class SFA():
         square_of_sums_alldata = [0. for i in range(len(ss_alldata))]
         square_of_sums_args = {}
         for key in keys_class:
+            # square_of_sums_alldata2 = [0. for i in range(len(ss_alldata))]
             sums = sums_args[key]
             for i in range(len(sums)):
                 square_of_sums_alldata[i] += sums[i]
+            # square_of_sums_alldata += square_of_sums_alldata2
 
             squares = [0. for i in range(len(sums))]
             square_of_sums_args[key] = squares

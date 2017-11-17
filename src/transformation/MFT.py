@@ -18,7 +18,7 @@ class MFT:
         data_new = []
         windowSize = len(series)
 
-        for i in range(math.ceil(len(series) / 2)):
+        for i in range(int(math.ceil(len(series) / 2))):
             data_new.append(FFT_series[i].real)
             data_new.append(FFT_series[i].imag)
         data_new[1] = 0.0
@@ -35,6 +35,7 @@ class MFT:
             sign *= -1
 
         return copy
+
 
     def transformWindowing(self, series, wordLength):
         WORDLENGTH = min(self.windowSize, wordLength + self.startOffset)
@@ -60,7 +61,7 @@ class MFT:
         for t in range(final):
             if t > 0:
                 for k in range(0, WORDLENGTH-1, 2):
-                    real1 = mftData_FFT[k] + data[t + self.windowSize] - data[t]
+                    real1 = mftData_FFT[k] + data[t + self.windowSize-1] - data[t-1]
                     imag1 = mftData_FFT[k + 1]
 
                     real = (real1 * phis[k]) - (imag1 * phis[k + 1])
