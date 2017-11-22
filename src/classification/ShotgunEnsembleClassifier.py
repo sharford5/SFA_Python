@@ -1,12 +1,14 @@
 from  src.classification.ShotgunClassifier import *
 import random
 from statistics import mode
+from joblib import Parallel, delayed
 
 class ShotgunEnsembleClassifier():
     def __init__(self, d):
         self.NAME = d
         self.factor = 0.92
         self.MAX_WINDOW_LENGTH = 250
+
 
     def eval(self, train, test, train_labels, test_labels):
         correctTraining = self.fit(train, train_labels)
@@ -16,6 +18,7 @@ class ShotgunEnsembleClassifier():
         test_acc = correctTesting / len(test_labels)
 
         return "Shotgun Ensemble; " + str(round(train_acc, 3)) + "; " + str(round(test_acc, 3)), labels
+
 
     def fit(self, train, train_labels):
         bestCorrectTraining = 0
@@ -28,37 +31,41 @@ class ShotgunEnsembleClassifier():
                 self.model = model
         return bestCorrectTraining
 
+
+    def fitIndividual(self, NormMean, samples, labels, windows, i, bar):
+        model = ShotgunModel(NormMean, windows[i], samples, labels)
+        correct, pred_labels = self.predict(model, samples, labels)
+        model.correct = correct
+        bar.update(i)
+        self.results.append(model)
+
+
     def fitEnsemble(self, normMean, samples, labels, factor):
         minWindowLength = 5
         maxWindowLength = min(self.MAX_WINDOW_LENGTH, samples.shape[1])
         windows = [i for i in range(minWindowLength, maxWindowLength + 1)]
 
         correctTraining = 0
-        results = []
+        self.results = []
 
         print(self.NAME+"  Fitting for a norm of "+str(normMean))
         with progressbar.ProgressBar(max_value=len(windows)) as bar:
-            for i in range(len(windows)):
-                bar.update(i)
-                model = ShotgunModel(normMean, windows[i], samples, labels)
-                correct, pred_labels = self.predict(model, samples, labels)
-                model.correct = correct
-
-                results.append(model)
-
-            # Find best correctTraining
-            for i in range(len(results)):
-                if results[i].correct > correctTraining:
-                    correctTraining = results[i].correct
+            Parallel(n_jobs=3, backend="threading")(delayed(self.fitIndividual, check_pickle=False)(normMean, samples, labels, windows, i, bar) for i in range(len(windows)))
         print()
+
+        # Find best correctTraining
+        for i in range(len(self.results)):
+            if self.results[i].correct > correctTraining:
+                correctTraining = self.results[i].correct
 
         # Remove Results that are no longer satisfactory
         new_results = []
-        for i in range(len(results)):
-            if results[i].correct >= (correctTraining * factor):
-                new_results.append(results[i])
+        for i in range(len(self.results)):
+            if self.results[i].correct >= (correctTraining * factor):
+                new_results.append(self.results[i])
 
         return new_results, correctTraining
+
 
     def predictEnsemble(self, models, testSamples, test_labels):
         uniqueLabels = np.unique(test_labels)
@@ -77,6 +84,7 @@ class ShotgunEnsembleClassifier():
 
         final_correct = sum([final_labels[i] == test_labels[i] for i in range(i)])
         return final_correct, final_labels
+
 
     def predict(self, model, test_samples, test_labels):
         p = [None for _ in range(len(test_labels))]

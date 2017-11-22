@@ -45,6 +45,29 @@ class BOSSEnsembleClassifier():
 
         return bestScore
 
+    def fitIndividual(self, NormMean, samples, labels, i, bar):
+        model = self.BOSSModel(NormMean, self.windows[i])
+
+        boss = BOSS(self.maxF, self.maxS, self.windows[i], NormMean)
+        train_words = boss.createWords(samples, labels)
+
+        f = self.minF
+        keep_going = True
+        while (f <= self.maxF) & (keep_going == True):
+            bag = boss.createBagOfPattern(train_words, samples, f, labels)
+            s = self.prediction(bag, bag, labels, labels, False)
+            if s[0] > model[1]:
+                model[1] = s[0]
+                model[2] = f
+                model[3] = boss
+                model[5] = bag
+                model[6] = labels
+            if s[0] == samples.shape[0]:
+                keep_going = False
+            f += 2
+
+        self.results.append(model)
+        bar.update(i)
 
     def fitEnsemble(self, NormMean, samples, labels):
         correctTraining = 0
@@ -52,30 +75,7 @@ class BOSSEnsembleClassifier():
 
         print(self.NAME + "  Fitting for a norm of " + str(NormMean))
         with progressbar.ProgressBar(max_value=len(self.windows)) as bar:
-            for i in range(len(self.windows)):
-                bar.update(i)
-                model = self.BOSSModel(NormMean, self.windows[i])
-
-                boss = BOSS(self.maxF, self.maxS, self.windows[i], NormMean)
-                train_words = boss.createWords(samples, labels)
-
-                f = self.minF
-                keep_going = True
-                while (f <= self.maxF) & (keep_going == True):
-                    bag = boss.createBagOfPattern(train_words, samples, f, labels)
-                    s = self.prediction(bag, bag, labels, labels, False)
-
-                    if s[0] > model[1]:
-                        model[1] = s[0]
-                        model[2] = f
-                        model[3] = boss
-                        model[5] = bag
-                        model[6] = labels
-                    if s[0] == samples.shape[0]:
-                        keep_going = False
-                    f += 2
-
-                self.results.append(model)
+            Parallel(n_jobs=3, backend="threading")(delayed(self.fitIndividual, check_pickle=False)(NormMean, samples, labels, i, bar) for i in range(len(self.windows)))
         print()
 
         #Find best correctTraining

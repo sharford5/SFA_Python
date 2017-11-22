@@ -1,5 +1,6 @@
 from src.timeseries.TimeSeries import *
 import progressbar
+from joblib import Parallel, delayed
 
 class ShotgunClassifier():
 
@@ -12,9 +13,6 @@ class ShotgunClassifier():
     def eval(self, train, test, train_labels, test_labels):
         correctTraining = self.fit(train, train_labels)
         train_acc = correctTraining/len(train_labels)
-
-        print(self.model.window)
-        print(self.model.norm)
 
         correctTesting, labels = self.predict(self.model, test, test_labels)
         test_acc = correctTesting/len(test_labels)
@@ -34,35 +32,37 @@ class ShotgunClassifier():
         return bestCorrectTraining
 
 
+    def fitIndividual(self, NormMean, samples, labels, windows, i, bar):
+        model = ShotgunModel(NormMean, windows[i], samples, labels)
+        correct, pred_labels = self.predict(model, samples, labels)
+        model.correct = correct
+        bar.update(i)
+        self.results.append(model)
+
+
     def fitEnsemble(self, normMean, samples, labels, factor):
         minWindowLength = 5
         maxWindowLength = min(self.MAX_WINDOW_LENGTH, samples.shape[1])
         windows = [i for i in range(minWindowLength, maxWindowLength+1)]
 
         correctTraining = 0
-        results = []
+        self.results = []
 
         print(self.NAME+"  Fitting for a norm of "+str(normMean))
         with progressbar.ProgressBar(max_value=len(windows)) as bar:
-            for i in range(len(windows)):
-                bar.update(i)
-                model = ShotgunModel(normMean, windows[i], samples, labels)
-                correct, pred_labels = self.predict(model, samples, labels)
-                model.correct = correct
-
-                results.append(model)
-
-            # Find best correctTraining
-            for i in range(len(results)):
-                if results[i].correct > correctTraining:
-                    correctTraining = results[i].correct
+            Parallel(n_jobs=3, backend="threading")(delayed(self.fitIndividual, check_pickle=False)(normMean, samples, labels, windows, i, bar) for i in range(len(windows)))
         print()
+
+        # Find best correctTraining
+        for i in range(len(self.results)):
+            if self.results[i].correct > correctTraining:
+                correctTraining = self.results[i].correct
 
         # Remove Results that are no longer satisfactory
         new_results = []
-        for i in range(len(results)):
-            if results[i].correct >= (correctTraining * factor):
-                new_results.append(results[i])
+        for i in range(len(self.results)):
+            if self.results[i].correct >= (correctTraining * factor):
+                new_results.append(self.results[i])
 
         return new_results, correctTraining
 

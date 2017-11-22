@@ -4,12 +4,10 @@ import pandas as pd
 from src.timeseries.TimeSeries import *
 
 def NORM(series, normMean = True):
-    global MEAN
-    global STD
     MEAN = np.mean(series)
-    STD = calculate_std(series)
+    STD, MEAN = calculate_std(series, MEAN)
 
-    series_norm = NORM_WORK(series, normMean, MEAN, STD)
+    series_norm, MEAN, STD = NORM_WORK(series, normMean, MEAN, STD)
     return series_norm
 
 
@@ -23,7 +21,7 @@ def NORM_WORK(series, normMean, MEAN, STD):
     elif np.any(ISTD != 1.0):
         series_norm = [series[i] * ISTD for i in range(len(series))]
 
-    return series_norm
+    return series_norm, MEAN, STD
 
 
 def getDisjointSequences(series, windowSize, normMean):
@@ -37,7 +35,7 @@ def getDisjointSequences(series, windowSize, normMean):
     return subseqences
 
 
-def calculate_std(series):
+def calculate_std(series, MEAN):
     var = 0.
     for i in range(len(series)):
         var += series[i] * series[i]
@@ -46,7 +44,7 @@ def calculate_std(series):
     buf = (norm*var) - (MEAN*MEAN)
 
     stddev = np.sqrt(buf) if buf != 0 else 0.
-    return stddev
+    return stddev, MEAN
 
 
 def calcIncreamentalMeanStddev(windowLength, series, MEANS, STDS):
@@ -75,6 +73,8 @@ def calcIncreamentalMeanStddev(windowLength, series, MEANS, STDS):
             STDS.append(np.sqrt(buf))
         else:
             STDS.append(0)
+
+    return MEANS, STDS
 
 
 def createWord(numbers, maxF, bits):

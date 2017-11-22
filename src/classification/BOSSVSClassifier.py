@@ -2,6 +2,7 @@ from  src.transformation.BOSSVS import *
 import random
 from statistics import mode
 import progressbar
+from joblib import Parallel, delayed
 
 
 class BOSSVSClassifier():
@@ -72,53 +73,56 @@ class BOSSVSClassifier():
         return maxCorrect
 
 
+    def fitIndividual(self, NormMean, samples, labels, windows, i, bar):
+        uniqueLabels = np.unique(labels)
+        model = {"window": windows[i], "normMean": NormMean, "correctTraining": 0}
+        bossvs = BOSSVS(self.maxF, self.maxS, windows[i], NormMean)
+        words = bossvs.createWords(samples, labels)
+
+        f = self.minF
+        keep_going = True
+        while (keep_going) & (f <= min(windows[i], self.maxF)):
+            bag = bossvs.createBagOfPattern(words, samples, f, labels)
+
+            correct = 0
+            for s in range(self.folds):
+                idf = bossvs.createTfIdf(bag, self.train_indices[s], uniqueLabels, labels)
+                correct += self.predict(self.test_indices[s], bag, idf, labels)[0]
+
+            if correct > model["correctTraining"]:
+                model["correctTraining"] = correct;
+                model["f"] = f
+            if correct == samples.shape[0]:
+                keep_going = False
+
+            f += 2
+
+        bag = bossvs.createBagOfPattern(words, samples, model["f"], labels)
+        model["idf"] = bossvs.createTfIdf(bag, [i for i in range(samples.shape[0])], uniqueLabels, labels)
+        model["bossvs"] = bossvs
+        bar.update(i)
+        self.results.append(model)
+
+
     def fitEnsemble(self, windows, normMean, samples, labels):
         correctTraining = 0
-        uniqueLabels = np.unique(labels)
-        results = []
+        self.results = []
 
-        print(self.NAME+"  Fitting for a norm of "+str(normMean))
+        print(self.NAME + "  Fitting for a norm of " + str(normMean))
         with progressbar.ProgressBar(max_value=len(windows)) as bar:
-            for i in range(len(windows)):
-                bar.update(i)
-                model = {"window":windows[i], "normMean":normMean, "correctTraining":0}
-                bossvs = BOSSVS(self.maxF, self.maxS, windows[i], normMean)
-                words = bossvs.createWords(samples, labels)
-
-                f = self.minF
-                keep_going = True
-                while (keep_going) & (f <= min(windows[i], self.maxF)):
-                    bag = bossvs.createBagOfPattern(words, samples, f, labels)
-
-                    correct = 0
-                    for s in range(self.folds):
-                        idf = bossvs.createTfIdf(bag, self.train_indices[s], uniqueLabels, labels)
-                        correct += self.predict(self.test_indices[s], bag, idf, labels)[0]
-
-                    if correct > model["correctTraining"]:
-                        model["correctTraining"] = correct;
-                        model["f"] = f
-                    if correct == samples.shape[0]:
-                        keep_going = False
-
-                    f += 2
-
-                bag = bossvs.createBagOfPattern(words, samples, model["f"], labels)
-                model["idf"] = bossvs.createTfIdf(bag, [i for i in range(samples.shape[0])], uniqueLabels, labels)
-                model["bossvs"] = bossvs
-                results.append(model)
+            Parallel(n_jobs=4, backend="threading")(delayed(self.fitIndividual, check_pickle=False)(normMean, samples, labels, windows, i, bar) for i in range(len(windows)))
         print()
 
         # Find best correctTraining
-        for i in range(len(results)):
-            if results[i]["correctTraining"] > correctTraining:
-                correctTraining = results[i]["correctTraining"]
+        for i in range(len(self.results)):
+            if self.results[i]["correctTraining"] > correctTraining:
+                correctTraining = self.results[i]["correctTraining"]
 
         # Remove Results that are no longer satisfactory
         new_results = []
-        for i in range(len(results)):
-            if results[i]["correctTraining"] >= (correctTraining * self.factor):
-                new_results.append(results[i])
+        for i in range(len(self.results)):
+            if self.results[i]["correctTraining"] >= (correctTraining * self.factor):
+                new_results.append(self.results[i])
 
         return new_results
 

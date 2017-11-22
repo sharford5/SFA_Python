@@ -47,15 +47,15 @@ class MFT:
             phis[u+1] = -math.sin(2 * math.pi * uHalve / self.windowSize)
 
         final = max(1, len(series) - self.windowSize + 1)
-        global MEANS
-        global STDS
-        MEANS = []
-        STDS = []
+        # global MEANS
+        # global STDS
+        self.MEANS = []
+        self.STDS = []
 
-        calcIncreamentalMeanStddev(self.windowSize, series.tolist(), MEANS, STDS)
+        self.MEANS, self.STDS = calcIncreamentalMeanStddev(self.windowSize, series.tolist(), self.MEANS, self.STDS)
         transformed = []
 
-        data = series
+        data = series.tolist()
         mftData_FFT = []
 
         for t in range(final):
@@ -83,7 +83,7 @@ class MFT:
             copy = [0. for i in range(wordLength)]
             copy_value = mftData_FFT[(self.startOffset):(self.startOffset + wordLength)]
             copy[:len(copy_value)] = copy_value
-            copy = self.normalizeFT(copy, STDS[t])
+            copy = self.normalizeFT(copy, self.STDS[t])
             transformed.append(copy)
 
         return transformed
