@@ -11,15 +11,15 @@ class BOSS():
         self.signature = None
 
 
-    def createWords(self, samples, labels):
+    def createWords(self, samples):
         if self.signature == None:
             self.signature = SFA("EQUI_DEPTH")
-            self.signature.fitWindowing(samples, labels, self.windowLength, self.maxF, self.symbols, self.normMean, True)
+            self.signature.fitWindowing(samples, self.windowLength, self.maxF, self.symbols, self.normMean, True)
             # self.signature.printBins()
 
         words = []
-        for i in range(samples.shape[0]):
-            sfaWords = self.signature.transformWindowing(samples.iloc[i, :])
+        for i in range(samples["Samples"]):
+            sfaWords = self.signature.transformWindowing(samples[i])
             words_small = []
             for word in sfaWords:
                 words_small.append(self.createWord(word, self.maxF, int2byte(self.symbols)))
@@ -50,7 +50,7 @@ class BOSS():
         return b
 
 
-    def createBagOfPattern(self, words, samples, f, labels):
+    def createBagOfPattern(self, words, samples, f):
         bagOfPatterns = []
         usedBits = int2byte(self.symbols)
         mask = (1 << (usedBits * f)) - 1

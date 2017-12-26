@@ -4,6 +4,10 @@ from statistics import mode
 import progressbar
 from joblib import Parallel, delayed
 
+'''
+The Bag-of-SFA-Symbols in Vector Space classifier as published in
+ Schäfer, P.: Scalable time series classification. DMKD (2016)
+'''
 
 class BOSSVSClassifier():
 
@@ -36,23 +40,23 @@ class BOSSVSClassifier():
                     self.test_indices[i].append(perm[j])
 
 
-    def eval(self, train, test, train_labels, test_labels):
-        self.createFoldIndex(train.shape[0], self.folds)
+    def eval(self, train, test):
+        self.createFoldIndex(train["Samples"], self.folds)
 
-        correctTraining = self.fit(train, train_labels)
-        train_acc = correctTraining/len(train_labels)
+        correctTraining = self.fit(train)
+        train_acc = correctTraining/train["Samples"]
 
-        correctTesting, labels = self.prediction(self.model, test, test_labels)
-        test_acc = correctTesting/len(test_labels)
+        correctTesting, labels = self.prediction(self.model, test)
+        test_acc = correctTesting/test["Samples"]
 
         return ("BOSSVS; "+str(round(train_acc,3))+"; "+str(round(test_acc,3))), labels
 
 
-    def fit(self, train, train_labels):
+    def fit(self, train, ):
         maxCorrect = -1
 
         self.minWindowLength = 10
-        maxWindowLength = min(self.MAX_WINDOW_LENGTH, train.shape[1])
+        maxWindowLength = min(self.MAX_WINDOW_LENGTH, train["Size"])
 
         count = math.sqrt(maxWindowLength)
         distance = (maxWindowLength - self.minWindowLength) / count
@@ -64,8 +68,8 @@ class BOSSVSClassifier():
             c += math.floor(distance)
 
         for normMean in [True, False]:
-            model = self.fitEnsemble(windows, normMean, train, train_labels)
-            correct, labels = self.prediction(model, train, train_labels)
+            model = self.fitEnsemble(windows, normMean, train)
+            correct, labels = self.prediction(model, train)
 
             if maxCorrect <= correct:
                 maxCorrect = correct
@@ -73,44 +77,44 @@ class BOSSVSClassifier():
         return maxCorrect
 
 
-    def fitIndividual(self, NormMean, samples, labels, windows, i, bar):
-        uniqueLabels = np.unique(labels)
+    def fitIndividual(self, NormMean, samples, windows, i, bar):
+        uniqueLabels = np.unique(samples["Labels"])
         model = {"window": windows[i], "normMean": NormMean, "correctTraining": 0}
         bossvs = BOSSVS(self.maxF, self.maxS, windows[i], NormMean)
-        words = bossvs.createWords(samples, labels)
+        words = bossvs.createWords(samples)
 
         f = self.minF
         keep_going = True
         while (keep_going) & (f <= min(windows[i], self.maxF)):
-            bag = bossvs.createBagOfPattern(words, samples, f, labels)
+            bag = bossvs.createBagOfPattern(words, samples, f)
 
             correct = 0
             for s in range(self.folds):
-                idf = bossvs.createTfIdf(bag, self.train_indices[s], uniqueLabels, labels)
-                correct += self.predict(self.test_indices[s], bag, idf, labels)[0]
+                idf = bossvs.createTfIdf(bag, self.train_indices[s], uniqueLabels, samples["Labels"])
+                correct += self.predict(self.test_indices[s], bag, idf, samples["Labels"])[0]
 
             if correct > model["correctTraining"]:
-                model["correctTraining"] = correct;
+                model["correctTraining"] = correct
                 model["f"] = f
-            if correct == samples.shape[0]:
+            if correct == samples["Samples"]:
                 keep_going = False
 
             f += 2
 
-        bag = bossvs.createBagOfPattern(words, samples, model["f"], labels)
-        model["idf"] = bossvs.createTfIdf(bag, [i for i in range(samples.shape[0])], uniqueLabels, labels)
+        bag = bossvs.createBagOfPattern(words, samples, model["f"])
+        model["idf"] = bossvs.createTfIdf(bag, [i for i in range(samples["Samples"])], uniqueLabels, samples["Labels"])
         model["bossvs"] = bossvs
         bar.update(i)
         self.results.append(model)
 
 
-    def fitEnsemble(self, windows, normMean, samples, labels):
+    def fitEnsemble(self, windows, normMean, samples):
         correctTraining = 0
         self.results = []
 
         print(self.NAME + "  Fitting for a norm of " + str(normMean))
         with progressbar.ProgressBar(max_value=len(windows)) as bar:
-            Parallel(n_jobs=4, backend="threading")(delayed(self.fitIndividual, check_pickle=False)(normMean, samples, labels, windows, i, bar) for i in range(len(windows)))
+            Parallel(n_jobs=4, backend="threading")(delayed(self.fitIndividual, check_pickle=False)(normMean, samples, windows, i, bar) for i in range(len(windows)))
         print()
 
         # Find best correctTraining
@@ -153,29 +157,29 @@ class BOSSVSClassifier():
         return correct, pred_labels
 
 
-    def prediction(self, model, samples, labels):
-        uniqueLabels = np.unique(labels)
-        pred_labels = pd.DataFrame(np.zeros((samples.shape[0], len(model))))
-        pred_vector = [None for _ in range(len(labels))]
-        indicesTest = [i for i in range(samples.shape[0])]
+    def prediction(self, model, samples):
+        uniqueLabels = np.unique(samples["Labels"])
+        pred_labels = pd.DataFrame(np.zeros((samples["Samples"], len(model))))
+        pred_vector = [None for _ in range(samples["Samples"])]
+        indicesTest = [i for i in range(samples["Samples"])]
 
         for i, score in enumerate(model):
             bossvs = score["bossvs"]
-            wordsTest = bossvs.createWords(samples, labels)
-            bagTest = bossvs.createBagOfPattern(wordsTest, samples, score["f"], labels)
+            wordsTest = bossvs.createWords(samples)
+            bagTest = bossvs.createBagOfPattern(wordsTest, samples, score["f"])
 
-            p = self.predict(indicesTest, bagTest, score["idf"], labels)
+            p = self.predict(indicesTest, bagTest, score["idf"], samples["Labels"])
 
             for j in range(len(p[1])):
                 pred_labels.iloc[j,i] = p[1][j]
 
-        for i in range(len(labels)):
+        for i in range(samples["Samples"]):
             try:
                 pred_vector[i] = mode(pred_labels.iloc[i,:].tolist())
             except: #Guess if there is no favorite
                 pred_vector[i] = random.choice(uniqueLabels)
 
-        correct = sum([pred_vector[i] == labels[i] for i in range(len(labels))])
+        correct = sum([pred_vector[i] == samples[i].label for i in range(samples["Samples"])])
         return correct, pred_labels
 
 

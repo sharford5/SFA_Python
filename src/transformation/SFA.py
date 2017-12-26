@@ -1,6 +1,8 @@
 from  src.transformation.MFT import *
 from src.timeseries.TimeSeries import *
+from src.timeseries.TimeSeries import TimeSeries
 import math
+import pandas as pd
 
 '''
  Symbolic Fourier Approximation as published in
@@ -11,11 +13,12 @@ import math
 
 class SFA():
 
-    def __init__(self, histogram_type, SUP = False, LB = True):
+    def __init__(self, histogram_type, SUP = False, LB = True, MB = False):
         self.initialized = False
         self.HistogramType = histogram_type
         self.SUP = SUP
         self.lowerBounding = LB
+        self.MUSE_Bool = MB
 
 
     def initialize(self, wordLength, symbols, normMean):
@@ -36,36 +39,48 @@ class SFA():
         print(self.bins)
 
 
-    def fitWindowing(self, samples, Labels, windowSize, wordLength, symbols, normMean, lowerBounding):
-        self.transformation = MFT(windowSize, normMean, lowerBounding)
+    def mv_fitWindowing(self, samples, windowSize, wordLength, symbols, normMean, lowerBounding):
+        sa = {}
+        index = 0
+        for i in range(samples["Samples"]):
+            for k in range(len(samples[i].keys())):
+                new_list = getDisjointSequences(samples[i][k], windowSize, normMean)
+                for j in range(len(new_list)):
+                    sa[index] = new_list[j]
+                    index += 1
 
-        labels = []
-        sa = []
-        for i in range(samples.shape[0]):
-            new_list = getDisjointSequences(samples.iloc[i, :].tolist(), windowSize, normMean)
+        sa["Samples"] = index
+        self.fitWindowing(sa, windowSize, wordLength, symbols, normMean, lowerBounding)
+
+
+    def fitWindowing(self, samples, windowSize, wordLength, symbols, normMean, lowerBounding):
+        self.transformation = MFT(windowSize, normMean, lowerBounding, self.MUSE_Bool)
+
+        sa = {}
+        index = 0
+
+        for i in range(samples["Samples"]):
+            new_list = getDisjointSequences(samples[i], windowSize, normMean)
             for j in range(len(new_list)):
-                sa.append(new_list[j])
-                labels.append(Labels[i])
+                sa[index] = new_list[j]
+                index += 1
 
-        SA = pd.DataFrame(np.zeros((len(sa), len(sa[0]))))
-        for r in range(len(sa)):
-            for c in range(len(sa[0])):
-                SA.iloc[r, c] = sa[r][c]
+        sa["Samples"] = index
 
         if self.SUP:
-            self.fitTransformSupervised(SA, labels, wordLength, symbols, normMean)
+            self.fitTransformSupervised(sa, wordLength, symbols, normMean)
         else:
-            self.fitTransform(SA, labels, wordLength, symbols, normMean)
+            self.fitTransform(sa, wordLength, symbols, normMean)
 
 
-    def fitTransform(self, samples, sample_labels, wordLength, symbols, normMean):
-        return self.transform(samples, self.fitTransformDouble(samples, sample_labels, wordLength, symbols, normMean))
+    def fitTransform(self, samples, wordLength, symbols, normMean):
+        return self.transform(samples, self.fitTransformDouble(samples, wordLength, symbols, normMean))
 
 
     def transform(self, samples, approximate):
         transformed = []
-        for i in range(samples.shape[0]):
-            transformed.append(self.transform2(samples.iloc[i, :], approximate[i]))
+        for i in range(samples["Samples"]):
+            transformed.append(self.transform2(samples[i].data, approximate[i]))
 
         return transformed
 
@@ -97,39 +112,39 @@ class SFA():
         words = self.transformWindowing(series)
         intWords = []
         for i in range(len(words)):
-            intWords.append(self.createWord(words[i], wordLength, self.int2byte(self.symbols)))
+            intWords.append(self.createWord(words[i], wordLength, self.int2byte(self.alphabetSize)))
         return intWords
 
 
-    def fitTransformDouble(self, samples, labels, wordLength, symbols, normMean):
+    def fitTransformDouble(self, samples, wordLength, symbols, normMean):
         if self.initialized == False:
             self.initialize(wordLength, symbols, normMean)
 
             if self.transformation == None:
-                self.transformation = MFT(samples.shape[1], normMean, self.lowerBounding)
+                self.transformation = MFT(len(samples[0].data), normMean, self.lowerBounding, self.MUSE_Bool)
 
-        transformedSamples = self.fillOrderline(samples, labels, wordLength)
+        transformedSamples = self.fillOrderline(samples, wordLength)
 
         if self.HistogramType == "EQUI_DEPTH":
             self.divideEquiDepthHistogram()
-        # elif HistogramType == "EQUI_FREQUENCY":
-        #     divideEquiWidthHistogram()
+        elif self.HistogramType == "EQUI_FREQUENCY":
+            self.divideEquiWidthHistogram()
         elif self.HistogramType == "INFORMATION_GAIN":
             self.divideHistogramInformationGain()
 
         return transformedSamples
 
 
-    def fillOrderline(self, samples, labels, wordLength):
-        self.orderLine = [[None for i in range(samples.shape[0])] for j in range(wordLength)]
+    def fillOrderline(self, samples, wordLength):
+        self.orderLine = [[None for _ in range(samples["Samples"])] for _ in range(wordLength)]
 
         transformedSamples = []
-        for i in range(samples.shape[0]):
-            transformedSamples_small = self.transformation.transform(samples.iloc[i,:].tolist(), wordLength)
+        for i in range(samples["Samples"]):
+            transformedSamples_small = self.transformation.transform(samples[i].data, wordLength)
             transformedSamples.append(transformedSamples_small)
             for j in range(len(transformedSamples_small)):
                 value = float(format(round(transformedSamples_small[j],2), '.2f')) + 0 #is a bad way of removing values of -0.0
-                obj = (value, labels[i])
+                obj = (value, samples[i].label)
                 self.orderLine[j][i] = obj
 
         for l, list in enumerate(self.orderLine):
@@ -153,23 +168,16 @@ class SFA():
 
     def quantization(self, one_approx):
         i = 0
-        word = []
-        for j in range(len(one_approx)):
-            if self.bins.iloc[j, self.bins.shape[1] - 1] == -math.inf:
-                break
-            elif one_approx[j] > max(self.bins.iloc[i, :]):
-                word.append(len(self.bins.iloc[i, :]) - 1)
-                i += 1
-            else:
-                for c in range(1, len(self.bins.iloc[i, :])):
-                    if one_approx[j] < self.bins.iloc[i, c]:
-                        word.append(c - 1)
-                        i += 1
-                        break
-                    elif c == len(self.bins.iloc[i, :]):
-                        word.append(c)
-                        i += 1
-
+        word = [0 for _ in range(len(one_approx))]
+        for v in one_approx:
+            c = 0
+            for C in range(self.bins.shape[1]):
+                if v < self.bins.iloc[i,c]:
+                    break
+                else:
+                    c += 1
+            word[i] = c-1
+            i += 1
         return word
 
 
@@ -197,6 +205,21 @@ class SFA():
         self.bins.iloc[:, 0] = -math.inf
 
 
+    def divideEquiWidthHistogram(self):
+        i = 0
+        for element in self.orderLine:
+            if len(element) != 0:
+                first = element[0][0]
+                last = element[-1][0]
+                intervalWidth = (last - first) / self.alphabetSize
+
+                for c in range(self.alphabetSize-1):
+                    self.bins.iloc[i,c] = intervalWidth * (c + 1) + first
+            i += 1
+
+        self.bins.iloc[:, 0] = -math.inf
+
+
     def divideHistogramInformationGain(self):
         for i, element in enumerate(self.orderLine):
             self.splitPoints = []
@@ -207,10 +230,6 @@ class SFA():
 
 
     def findBestSplit(self, element, start, end, remainingSymbols):
-        # start = int(start)
-        # end = int(end)
-        # remainingSymbols = int(remainingSymbols)
-
         bestGain = -1
         bestPos = -1
         total = end - start
@@ -281,7 +300,7 @@ class SFA():
         shortsPerLong = int(round(60 / bits))
         to = min(len(numbers), maxF)
 
-        b = 0
+        b = int(0)
         s = 0
         shiftOffset = 1
         for i in range(s, (min(to, shortsPerLong + s))):
@@ -291,11 +310,6 @@ class SFA():
                     b |= shiftOffset
                 shiftOffset <<= 1
                 shift <<= 1
-
-        limit = 2147483647
-        total = 2147483647 + 2147483648
-        while b > limit:
-            b = b - total# - 1
 
         return b
 
@@ -317,11 +331,11 @@ class SFA():
         return log + (number >> 1)
 
     ## Supervised
-    def fitTransformSupervised(self, samples, sample_labels, wordLength, symbols, normMean):
-        length = samples.shape[1]
-        transformedSignal = self.fitTransformDouble(samples, sample_labels, length, symbols, normMean)
+    def fitTransformSupervised(self, samples, wordLength, symbols, normMean):
+        length = len(samples[0].data)
+        transformedSignal = self.fitTransformDouble(samples, length, symbols, normMean)
 
-        best = self.calcBestCoefficients(samples, sample_labels, transformedSignal)
+        best = self.calcBestCoefficients(samples, transformedSignal)
 
         self.bestValues = [0 for i in range(min(len(best), wordLength))]
         self.maxWordLength = 0
@@ -335,13 +349,13 @@ class SFA():
         return self.transform(samples, transformedSignal)
 
 
-    def calcBestCoefficients(self, samples, labels, transformedSignal):
+    def calcBestCoefficients(self, samples, transformedSignal):
         classes = {}
-        for i in range(samples.shape[0]):
-            if labels[i] in classes.keys():
-                classes[labels[i]].append(transformedSignal[i])
+        for i in range(samples["Samples"]):
+            if samples[i].label in classes.keys():
+                classes[samples[i].label].append(transformedSignal[i])
             else:
-                classes[labels[i]] = [transformedSignal[i]]
+                classes[samples[i].label] = [transformedSignal[i]]
 
         nSamples = len(transformedSignal)
         nClasses = len(classes.keys())
