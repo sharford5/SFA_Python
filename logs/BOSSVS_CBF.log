@@ -1,0 +1,517 @@
+19-03-27 10:51:46 [1] FIXED_PARAMETERS
+ {'wordLength': 4, 'test': 'BOSSVS', 'log_path': './logs/', 'train_bool': 1, 'MAX_WINDOW_LENGTH': 350, 'symbols': 4, 'windowLength': 8, 'normMean': 1, 'data_path': './datasets/', 'histogram_type': 'EQUI_DEPTH', 'dataset': 'CBF'}
+19-03-27 10:51:46 [1] Loading from: C:\Users\Sam.officepc\Google Drive\SFA_Python\datasets\univariate\CBF
+19-03-27 10:51:46 [1] Done reading CBF Training Data...  Samples: 30  Length: 128
+19-03-27 10:51:46 [1] Done reading CBF Testing Data...  Samples: 900  Length: 128
+19-03-27 10:51:46 [1] Classes: [1 2 3]
+19-03-27 10:51:46 [1] Test: BOSSVS
+19-03-27 10:51:46 [0] {'factor': 0.95, 'train_bool': 1, 'model_path': './stored_models/BOSSVS_CBF_model.p', 'minF': 4, 'NAME': 'CBF', 'MAX_WINDOW_LENGTH': 250, 'folds': 10, 'maxF': 16, 'NORMALIZATION': [True, False], 'score_path': './stored_models/BOSSVS_CBF_score.p', 'ENSEMBLE_WEIGHTS': True, 'maxS': 4}
+19-03-27 10:51:46 [1] CBF  Fitting for a norm of True
+19-03-27 10:51:46 [0] {'signature': None, 'maxF': 16, 'symbols': 4, 'normMean': True, 'windowLength': 10}
+19-03-27 10:51:46 [0] {'initialized': False, 'lowerBounding': True, 'HistogramType': 'EQUI_DEPTH'}
+19-03-27 10:51:47 [0]       0     1         2         3
+0  -inf -0.49  0.070000  0.640000
+1  -inf -0.70  0.000000  0.720000
+2  -inf -0.60 -0.040000  0.520000
+3  -inf -0.57 -0.060000  0.500000
+4  -inf -0.49  0.050000  0.620000
+5  -inf -0.54 -0.030000  0.450000
+6  -inf -0.54  0.010000  0.430000
+7  -inf -0.48  0.000000  0.480000
+8  -inf  0.00       inf       inf
+9  -inf  0.00       inf       inf
+10 -inf  0.00       inf       inf
+11 -inf  0.00       inf       inf
+12 -inf  0.00       inf       inf
+13 -inf  0.00       inf       inf
+14 -inf  0.00       inf       inf
+15 -inf  0.00       inf       inf
+19-03-27 10:51:49 [1] Correct for Norm=True & Window=10: 19 @ f=4
+19-03-27 10:51:49 [0] {'signature': None, 'maxF': 16, 'symbols': 4, 'normMean': True, 'windowLength': 20}
+19-03-27 10:51:49 [0] {'HistogramType': 'EQUI_DEPTH', 'lowerBounding': True, 'initialized': False}
+19-03-27 10:51:49 [0]       0     1     2     3
+0  -inf -0.52 -0.01  0.52
+1  -inf -1.15 -0.16  0.86
+2  -inf -0.39  0.07  0.69
+3  -inf -0.68  0.07  0.61
+4  -inf -0.38  0.11  0.54
+5  -inf -0.49 -0.10  0.45
+6  -inf -0.50 -0.04  0.40
+7  -inf -0.54 -0.04  0.40
+8  -inf -0.39  0.08  0.52
+9  -inf -0.44 -0.04  0.39
+10 -inf -0.47  0.07  0.51
+11 -inf -0.45 -0.03  0.29
+12 -inf -0.41 -0.03  0.40
+13 -inf -0.39  0.00  0.36
+14 -inf -0.43 -0.02  0.34
+15 -inf -0.38  0.04  0.37
+19-03-27 10:51:51 [1] Correct for Norm=True & Window=20: 28 @ f=6
+19-03-27 10:51:51 [0] {'signature': None, 'maxF': 16, 'symbols': 4, 'normMean': True, 'windowLength': 30}
+19-03-27 10:51:51 [0] {'HistogramType': 'EQUI_DEPTH', 'lowerBounding': True, 'initialized': False}
+19-03-27 10:51:52 [0]       0     1     2     3
+0  -inf -0.55  0.04  0.77
+1  -inf -1.22 -0.23  1.15
+2  -inf -0.49  0.07  0.68
+3  -inf -0.53  0.03  0.71
+4  -inf -0.45  0.24  0.68
+5  -inf -0.59 -0.02  0.61
+6  -inf -0.39  0.11  0.60
+7  -inf -0.53  0.08  0.58
+8  -inf -0.35  0.00  0.43
+9  -inf -0.40  0.01  0.52
+10 -inf -0.52  0.02  0.33
+11 -inf -0.61 -0.14  0.42
+12 -inf -0.45 -0.12  0.32
+13 -inf -0.44  0.07  0.50
+14 -inf -0.41 -0.03  0.32
+15 -inf -0.42 -0.04  0.30
+19-03-27 10:51:53 [1] Correct for Norm=True & Window=30: 30 @ f=6
+19-03-27 10:51:53 [0] {'signature': None, 'maxF': 16, 'symbols': 4, 'normMean': True, 'windowLength': 40}
+19-03-27 10:51:53 [0] {'HistogramType': 'EQUI_DEPTH', 'lowerBounding': True, 'initialized': False}
+19-03-27 10:51:54 [0]       0     1     2     3
+0  -inf -0.50  0.40  1.39
+1  -inf -2.22 -0.60  1.39
+2  -inf -0.56 -0.13  0.46
+3  -inf -1.23 -0.17  1.11
+4  -inf -0.62  0.01  0.45
+5  -inf -0.71 -0.14  0.62
+6  -inf -0.25  0.12  0.56
+7  -inf -0.56 -0.05  0.68
+8  -inf -0.36  0.05  0.45
+9  -inf -0.55 -0.09  0.30
+10 -inf -0.28  0.08  0.49
+11 -inf -0.32 -0.06  0.36
+12 -inf -0.34 -0.04  0.48
+13 -inf -0.26  0.05  0.52
+14 -inf -0.41  0.04  0.37
+15 -inf -0.42 -0.09  0.26
+19-03-27 10:51:55 [1] Correct for Norm=True & Window=40: 30 @ f=6
+19-03-27 10:51:55 [0] {'signature': None, 'maxF': 16, 'symbols': 4, 'normMean': True, 'windowLength': 50}
+19-03-27 10:51:55 [0] {'HistogramType': 'EQUI_DEPTH', 'lowerBounding': True, 'initialized': False}
+19-03-27 10:51:55 [0]       0     1     2     3
+0  -inf -1.27  0.23  0.88
+1  -inf -3.19 -1.77  1.33
+2  -inf -0.74 -0.30  0.34
+3  -inf -1.04  0.04  1.18
+4  -inf -0.27  0.42  0.81
+5  -inf -1.02 -0.42  0.52
+6  -inf -0.46 -0.09  0.41
+7  -inf -0.71 -0.15  0.44
+8  -inf -0.28  0.17  0.48
+9  -inf -0.61 -0.07  0.47
+10 -inf -0.35 -0.03  0.19
+11 -inf -0.58 -0.16  0.31
+12 -inf -0.35  0.07  0.28
+13 -inf -0.57 -0.07  0.29
+14 -inf -0.28 -0.12  0.14
+15 -inf -0.39 -0.04  0.23
+19-03-27 10:51:57 [1] Correct for Norm=True & Window=50: 30 @ f=4
+19-03-27 10:51:57 [0] {'signature': None, 'maxF': 16, 'symbols': 4, 'normMean': True, 'windowLength': 60}
+19-03-27 10:51:57 [0] {'HistogramType': 'EQUI_DEPTH', 'lowerBounding': True, 'initialized': False}
+19-03-27 10:51:57 [0]       0     1     2     3
+0  -inf -1.63 -0.45  1.06
+1  -inf -3.59 -1.93  1.11
+2  -inf -0.58  0.18  0.63
+3  -inf -0.95 -0.11  1.06
+4  -inf -0.64 -0.16  0.53
+5  -inf -1.25 -0.23  0.96
+6  -inf -0.30  0.00  0.55
+7  -inf -0.42  0.19  0.58
+8  -inf -0.48 -0.15  0.28
+9  -inf -0.61 -0.12  0.55
+10 -inf -0.21  0.10  0.48
+11 -inf -0.46  0.01  0.61
+12 -inf -0.32 -0.08  0.28
+13 -inf -0.34  0.03  0.49
+14 -inf -0.26  0.12  0.42
+15 -inf -0.40  0.11  0.47
+19-03-27 10:51:58 [1] Correct for Norm=True & Window=60: 30 @ f=4
+19-03-27 10:51:58 [0] {'signature': None, 'maxF': 16, 'symbols': 4, 'normMean': True, 'windowLength': 70}
+19-03-27 10:51:58 [0] {'HistogramType': 'EQUI_DEPTH', 'lowerBounding': True, 'initialized': False}
+19-03-27 10:51:58 [0]       0     1     2     3
+0  -inf -2.83 -1.50  0.89
+1  -inf -4.29 -3.62 -3.08
+2  -inf -0.10  0.64  1.25
+3  -inf -1.69 -1.43 -0.67
+4  -inf -0.84 -0.46  0.06
+5  -inf -1.16 -0.82 -0.15
+6  -inf -0.06  0.17  0.57
+7  -inf -1.21 -0.97 -0.23
+8  -inf -0.48 -0.18  0.09
+9  -inf -0.60 -0.10  0.29
+10 -inf -0.51 -0.14  0.22
+11 -inf -0.62 -0.44 -0.07
+12 -inf -0.22  0.01  0.37
+13 -inf -0.54 -0.27  0.19
+14 -inf -0.23 -0.06  0.06
+15 -inf -0.40 -0.15  0.22
+19-03-27 10:51:59 [1] Correct for Norm=True & Window=70: 30 @ f=4
+19-03-27 10:51:59 [0] {'signature': None, 'maxF': 16, 'symbols': 4, 'normMean': True, 'windowLength': 80}
+19-03-27 10:51:59 [0] {'HistogramType': 'EQUI_DEPTH', 'lowerBounding': True, 'initialized': False}
+19-03-27 10:51:59 [0]       0     1     2     3
+0  -inf -3.63 -2.57  0.58
+1  -inf -4.34 -3.94 -2.12
+2  -inf -0.33  0.47  1.12
+3  -inf -1.94 -1.70 -1.03
+4  -inf -0.36 -0.18  0.15
+5  -inf -1.20 -0.41  0.52
+6  -inf -0.44 -0.18  0.22
+7  -inf -1.24 -0.92 -0.03
+8  -inf  0.06  0.31  0.71
+9  -inf -0.65 -0.49  0.23
+10 -inf -0.58 -0.34  0.45
+11 -inf -0.66 -0.23  0.04
+12 -inf -0.43 -0.07  0.11
+13 -inf -0.71 -0.37 -0.10
+14 -inf -0.23  0.11  0.41
+15 -inf -0.53 -0.21  0.13
+19-03-27 10:52:00 [1] Correct for Norm=True & Window=80: 30 @ f=4
+19-03-27 10:52:00 [0] {'signature': None, 'maxF': 16, 'symbols': 4, 'normMean': True, 'windowLength': 90}
+19-03-27 10:52:00 [0] {'HistogramType': 'EQUI_DEPTH', 'lowerBounding': True, 'initialized': False}
+19-03-27 10:52:00 [0]       0     1     2     3
+0  -inf -3.87 -3.16  0.54
+1  -inf -4.25 -3.79 -0.57
+2  -inf -0.57  0.32  0.98
+3  -inf -2.43 -2.11 -1.49
+4  -inf -0.11  0.28  0.76
+5  -inf -1.16 -0.62  0.85
+6  -inf -0.81 -0.40  0.38
+7  -inf -1.06 -0.59 -0.09
+8  -inf -0.36  0.01  0.35
+9  -inf -1.02 -0.82 -0.01
+10 -inf -0.20  0.04  0.35
+11 -inf -0.38 -0.06  0.44
+12 -inf -0.46 -0.16  0.35
+13 -inf -0.58 -0.38  0.01
+14 -inf -0.14 -0.06  0.24
+15 -inf -0.64 -0.29 -0.01
+19-03-27 10:52:01 [1] Correct for Norm=True & Window=90: 29 @ f=4
+19-03-27 10:52:01 [0] {'signature': None, 'maxF': 16, 'symbols': 4, 'normMean': True, 'windowLength': 100}
+19-03-27 10:52:01 [0] {'HistogramType': 'EQUI_DEPTH', 'lowerBounding': True, 'initialized': False}
+19-03-27 10:52:01 [0]       0     1     2     3
+0  -inf -4.92 -3.85 -1.51
+1  -inf -4.07 -2.44  1.01
+2  -inf -1.21 -0.19  0.50
+3  -inf -2.39 -1.81 -0.88
+4  -inf  0.00  0.65  1.13
+5  -inf -1.07 -0.59  0.54
+6  -inf -0.86 -0.28  0.12
+7  -inf -0.54  0.16  0.63
+8  -inf -0.42 -0.16  0.28
+9  -inf -1.07 -0.41  0.43
+10 -inf -0.05  0.25  0.69
+11 -inf -0.80 -0.46  0.52
+12 -inf -0.31 -0.08  0.20
+13 -inf -0.18  0.08  0.52
+14 -inf -0.41 -0.09  0.43
+15 -inf -0.51 -0.23  0.35
+19-03-27 10:52:01 [1] Correct for Norm=True & Window=100: 30 @ f=8
+19-03-27 10:52:01 [0] {'signature': None, 'maxF': 16, 'symbols': 4, 'normMean': True, 'windowLength': 110}
+19-03-27 10:52:01 [0] {'HistogramType': 'EQUI_DEPTH', 'lowerBounding': True, 'initialized': False}
+19-03-27 10:52:01 [0]       0     1     2     3
+0  -inf -5.25 -4.28 -1.65
+1  -inf -3.90 -0.71  2.41
+2  -inf -1.76 -0.26  0.53
+3  -inf -2.30 -1.79  0.13
+4  -inf  0.09  0.54  1.28
+5  -inf -1.25 -0.91  0.17
+6  -inf -0.26  0.00  0.79
+7  -inf -0.42  0.01  1.13
+8  -inf -0.78 -0.24  0.63
+9  -inf -0.90 -0.41 -0.11
+10 -inf -0.45 -0.15  0.31
+11 -inf -0.96 -0.70  0.16
+12 -inf -0.19  0.10  0.54
+13 -inf -0.36 -0.07  0.45
+14 -inf -0.45 -0.24  0.22
+15 -inf -0.25  0.06  0.40
+19-03-27 10:52:02 [1] Correct for Norm=True & Window=110: 30 @ f=6
+19-03-27 10:52:02 [0] {'signature': None, 'maxF': 16, 'symbols': 4, 'normMean': True, 'windowLength': 120}
+19-03-27 10:52:02 [0] {'HistogramType': 'EQUI_DEPTH', 'lowerBounding': True, 'initialized': False}
+19-03-27 10:52:02 [0]       0     1     2     3
+0  -inf -5.46 -4.45 -1.69
+1  -inf -3.28  1.01  3.44
+2  -inf -1.61 -0.82  0.00
+3  -inf -2.18 -1.62  0.61
+4  -inf -0.42  0.33  1.40
+5  -inf -1.30 -0.99 -0.03
+6  -inf -0.47  0.22  0.74
+7  -inf -0.87  0.04  0.92
+8  -inf -1.01 -0.52 -0.01
+9  -inf -0.33 -0.08  0.64
+10 -inf -0.50 -0.19  0.34
+11 -inf -0.58  0.00  0.48
+12 -inf -0.09  0.28  0.68
+13 -inf -0.54 -0.30  0.18
+14 -inf -0.15  0.12  0.55
+15 -inf -0.21  0.22  0.61
+19-03-27 10:52:02 [1] Correct for Norm=True & Window=120: 27 @ f=4
+19-03-27 10:52:02 [1] Stored Models for Norm=True
+19-03-27 10:52:02 [1] WindowLength:30  Features:6  TrainScore:30
+19-03-27 10:52:02 [1] WindowLength:40  Features:6  TrainScore:30
+19-03-27 10:52:02 [1] WindowLength:50  Features:4  TrainScore:30
+19-03-27 10:52:02 [1] WindowLength:60  Features:4  TrainScore:30
+19-03-27 10:52:02 [1] WindowLength:70  Features:4  TrainScore:30
+19-03-27 10:52:02 [1] WindowLength:80  Features:4  TrainScore:30
+19-03-27 10:52:02 [1] WindowLength:90  Features:4  TrainScore:29
+19-03-27 10:52:02 [1] WindowLength:100  Features:8  TrainScore:30
+19-03-27 10:52:02 [1] WindowLength:110  Features:6  TrainScore:30
+19-03-27 10:52:11 [1] CBF  Fitting for a norm of False
+19-03-27 10:52:11 [0] {'signature': None, 'maxF': 16, 'symbols': 4, 'normMean': False, 'windowLength': 10}
+19-03-27 10:52:11 [0] {'HistogramType': 'EQUI_DEPTH', 'lowerBounding': True, 'initialized': False}
+19-03-27 10:52:12 [0]       0     1         2         3
+0  -inf -4.96 -0.610000  5.890000
+1  -inf  0.00       inf       inf
+2  -inf -0.49  0.070000  0.640000
+3  -inf -0.70  0.000000  0.720000
+4  -inf -0.60 -0.040000  0.520000
+5  -inf -0.57 -0.060000  0.500000
+6  -inf -0.49  0.050000  0.620000
+7  -inf -0.54 -0.030000  0.450000
+8  -inf -0.54  0.010000  0.430000
+9  -inf -0.48  0.000000  0.480000
+10 -inf  0.00       inf       inf
+11 -inf  0.00       inf       inf
+12 -inf  0.00       inf       inf
+13 -inf  0.00       inf       inf
+14 -inf  0.00       inf       inf
+15 -inf  0.00       inf       inf
+19-03-27 10:52:14 [1] Correct for Norm=False & Window=10: 27 @ f=4
+19-03-27 10:52:14 [0] {'signature': None, 'maxF': 16, 'symbols': 4, 'normMean': False, 'windowLength': 20}
+19-03-27 10:52:14 [0] {'HistogramType': 'EQUI_DEPTH', 'lowerBounding': True, 'initialized': False}
+19-03-27 10:52:14 [0]       0     1         2         3
+0  -inf -5.72 -0.200000  6.940000
+1  -inf  0.00       inf       inf
+2  -inf -0.52 -0.010000  0.520000
+3  -inf -1.15 -0.160000  0.860000
+4  -inf -0.39  0.070000  0.690000
+5  -inf -0.68  0.070000  0.610000
+6  -inf -0.38  0.110000  0.540000
+7  -inf -0.49 -0.100000  0.450000
+8  -inf -0.50 -0.040000  0.400000
+9  -inf -0.54 -0.040000  0.400000
+10 -inf -0.39  0.080000  0.520000
+11 -inf -0.44 -0.040000  0.390000
+12 -inf -0.47  0.070000  0.510000
+13 -inf -0.45 -0.030000  0.290000
+14 -inf -0.41 -0.030000  0.400000
+15 -inf -0.39  0.000000  0.360000
+19-03-27 10:52:16 [1] Correct for Norm=False & Window=20: 29 @ f=4
+19-03-27 10:52:16 [0] {'signature': None, 'maxF': 16, 'symbols': 4, 'normMean': False, 'windowLength': 30}
+19-03-27 10:52:16 [0] {'HistogramType': 'EQUI_DEPTH', 'lowerBounding': True, 'initialized': False}
+19-03-27 10:52:16 [0]       0     1         2         3
+0  -inf -6.51 -0.440000  7.070000
+1  -inf  0.00       inf       inf
+2  -inf -0.55  0.040000  0.770000
+3  -inf -1.22 -0.230000  1.150000
+4  -inf -0.49  0.070000  0.680000
+5  -inf -0.53  0.030000  0.710000
+6  -inf -0.45  0.240000  0.680000
+7  -inf -0.59 -0.020000  0.610000
+8  -inf -0.39  0.110000  0.600000
+9  -inf -0.53  0.080000  0.580000
+10 -inf -0.35  0.000000  0.430000
+11 -inf -0.40  0.010000  0.520000
+12 -inf -0.52  0.020000  0.330000
+13 -inf -0.61 -0.140000  0.420000
+14 -inf -0.45 -0.120000  0.320000
+15 -inf -0.44  0.070000  0.500000
+19-03-27 10:52:18 [1] Correct for Norm=False & Window=30: 29 @ f=4
+19-03-27 10:52:18 [0] {'signature': None, 'maxF': 16, 'symbols': 4, 'normMean': False, 'windowLength': 40}
+19-03-27 10:52:18 [0] {'HistogramType': 'EQUI_DEPTH', 'lowerBounding': True, 'initialized': False}
+19-03-27 10:52:18 [0]       0     1         2         3
+0  -inf -4.94  0.330000  5.760000
+1  -inf  0.00       inf       inf
+2  -inf -0.50  0.400000  1.390000
+3  -inf -2.22 -0.600000  1.390000
+4  -inf -0.56 -0.130000  0.460000
+5  -inf -1.23 -0.170000  1.110000
+6  -inf -0.62  0.010000  0.450000
+7  -inf -0.71 -0.140000  0.620000
+8  -inf -0.25  0.120000  0.560000
+9  -inf -0.56 -0.050000  0.680000
+10 -inf -0.36  0.050000  0.450000
+11 -inf -0.55 -0.090000  0.300000
+12 -inf -0.28  0.080000  0.490000
+13 -inf -0.32 -0.060000  0.360000
+14 -inf -0.34 -0.040000  0.480000
+15 -inf -0.26  0.050000  0.520000
+19-03-27 10:52:20 [1] Correct for Norm=False & Window=40: 30 @ f=8
+19-03-27 10:52:20 [0] {'signature': None, 'maxF': 16, 'symbols': 4, 'normMean': False, 'windowLength': 50}
+19-03-27 10:52:20 [0] {'HistogramType': 'EQUI_DEPTH', 'lowerBounding': True, 'initialized': False}
+19-03-27 10:52:20 [0]       0     1         2         3
+0  -inf -2.47  1.210000  4.130000
+1  -inf  0.00       inf       inf
+2  -inf -1.27  0.230000  0.880000
+3  -inf -3.19 -1.770000  1.330000
+4  -inf -0.74 -0.300000  0.340000
+5  -inf -1.04  0.040000  1.180000
+6  -inf -0.27  0.420000  0.810000
+7  -inf -1.02 -0.420000  0.520000
+8  -inf -0.46 -0.090000  0.410000
+9  -inf -0.71 -0.150000  0.440000
+10 -inf -0.28  0.170000  0.480000
+11 -inf -0.61 -0.070000  0.470000
+12 -inf -0.35 -0.030000  0.190000
+13 -inf -0.58 -0.160000  0.310000
+14 -inf -0.35  0.070000  0.280000
+15 -inf -0.57 -0.070000  0.290000
+19-03-27 10:52:21 [1] Correct for Norm=False & Window=50: 30 @ f=8
+19-03-27 10:52:21 [0] {'signature': None, 'maxF': 16, 'symbols': 4, 'normMean': False, 'windowLength': 60}
+19-03-27 10:52:21 [0] {'HistogramType': 'EQUI_DEPTH', 'lowerBounding': True, 'initialized': False}
+19-03-27 10:52:22 [0]       0     1         2         3
+0  -inf -3.28  0.400000  3.180000
+1  -inf  0.00       inf       inf
+2  -inf -1.63 -0.450000  1.060000
+3  -inf -3.59 -1.930000  1.110000
+4  -inf -0.58  0.180000  0.630000
+5  -inf -0.95 -0.110000  1.060000
+6  -inf -0.64 -0.160000  0.530000
+7  -inf -1.25 -0.230000  0.960000
+8  -inf -0.30  0.000000  0.550000
+9  -inf -0.42  0.190000  0.580000
+10 -inf -0.48 -0.150000  0.280000
+11 -inf -0.61 -0.120000  0.550000
+12 -inf -0.21  0.100000  0.480000
+13 -inf -0.46  0.010000  0.610000
+14 -inf -0.32 -0.080000  0.280000
+15 -inf -0.34  0.030000  0.490000
+19-03-27 10:52:23 [1] Correct for Norm=False & Window=60: 30 @ f=6
+19-03-27 10:52:23 [0] {'signature': None, 'maxF': 16, 'symbols': 4, 'normMean': False, 'windowLength': 70}
+19-03-27 10:52:23 [0] {'HistogramType': 'EQUI_DEPTH', 'lowerBounding': True, 'initialized': False}
+19-03-27 10:52:23 [0]       0     1         2         3
+0  -inf -1.55  2.190000  3.260000
+1  -inf  0.00       inf       inf
+2  -inf -2.83 -1.500000  0.890000
+3  -inf -4.29 -3.620000 -3.080000
+4  -inf -0.10  0.640000  1.250000
+5  -inf -1.69 -1.430000 -0.670000
+6  -inf -0.84 -0.460000  0.060000
+7  -inf -1.16 -0.820000 -0.150000
+8  -inf -0.06  0.170000  0.570000
+9  -inf -1.21 -0.970000 -0.230000
+10 -inf -0.48 -0.180000  0.090000
+11 -inf -0.60 -0.100000  0.290000
+12 -inf -0.51 -0.140000  0.220000
+13 -inf -0.62 -0.440000 -0.070000
+14 -inf -0.22  0.010000  0.370000
+15 -inf -0.54 -0.270000  0.190000
+19-03-27 10:52:24 [1] Correct for Norm=False & Window=70: 30 @ f=6
+19-03-27 10:52:24 [0] {'signature': None, 'maxF': 16, 'symbols': 4, 'normMean': False, 'windowLength': 80}
+19-03-27 10:52:24 [0] {'HistogramType': 'EQUI_DEPTH', 'lowerBounding': True, 'initialized': False}
+19-03-27 10:52:24 [0]       0     1         2         3
+0  -inf -0.90  2.370000  3.280000
+1  -inf  0.00       inf       inf
+2  -inf -3.63 -2.570000  0.580000
+3  -inf -4.34 -3.940000 -2.120000
+4  -inf -0.33  0.470000  1.120000
+5  -inf -1.94 -1.700000 -1.030000
+6  -inf -0.36 -0.180000  0.150000
+7  -inf -1.20 -0.410000  0.520000
+8  -inf -0.44 -0.180000  0.220000
+9  -inf -1.24 -0.920000 -0.030000
+10 -inf  0.06  0.310000  0.710000
+11 -inf -0.65 -0.490000  0.230000
+12 -inf -0.58 -0.340000  0.450000
+13 -inf -0.66 -0.230000  0.040000
+14 -inf -0.43 -0.070000  0.110000
+15 -inf -0.71 -0.370000 -0.100000
+19-03-27 10:52:25 [1] Correct for Norm=False & Window=80: 28 @ f=6
+19-03-27 10:52:25 [0] {'signature': None, 'maxF': 16, 'symbols': 4, 'normMean': False, 'windowLength': 90}
+19-03-27 10:52:25 [0] {'HistogramType': 'EQUI_DEPTH', 'lowerBounding': True, 'initialized': False}
+19-03-27 10:52:25 [0]       0     1         2         3
+0  -inf -0.02  2.080000  2.550000
+1  -inf  0.00       inf       inf
+2  -inf -3.87 -3.160000  0.540000
+3  -inf -4.25 -3.790000 -0.570000
+4  -inf -0.57  0.320000  0.980000
+5  -inf -2.43 -2.110000 -1.490000
+6  -inf -0.11  0.280000  0.760000
+7  -inf -1.16 -0.620000  0.850000
+8  -inf -0.81 -0.400000  0.380000
+9  -inf -1.06 -0.590000 -0.090000
+10 -inf -0.36  0.010000  0.350000
+11 -inf -1.02 -0.820000 -0.010000
+12 -inf -0.20  0.040000  0.350000
+13 -inf -0.38 -0.060000  0.440000
+14 -inf -0.46 -0.160000  0.350000
+15 -inf -0.58 -0.380000  0.010000
+19-03-27 10:52:26 [1] Correct for Norm=False & Window=90: 28 @ f=6
+19-03-27 10:52:26 [0] {'signature': None, 'maxF': 16, 'symbols': 4, 'normMean': False, 'windowLength': 100}
+19-03-27 10:52:26 [0] {'HistogramType': 'EQUI_DEPTH', 'lowerBounding': True, 'initialized': False}
+19-03-27 10:52:26 [0]       0     1         2         3
+0  -inf  0.80  1.540000  2.080000
+1  -inf  0.00       inf       inf
+2  -inf -4.92 -3.850000 -1.510000
+3  -inf -4.07 -2.440000  1.010000
+4  -inf -1.21 -0.190000  0.500000
+5  -inf -2.39 -1.810000 -0.880000
+6  -inf  0.00  0.650000  1.130000
+7  -inf -1.07 -0.590000  0.540000
+8  -inf -0.86 -0.280000  0.120000
+9  -inf -0.54  0.160000  0.630000
+10 -inf -0.42 -0.160000  0.280000
+11 -inf -1.07 -0.410000  0.430000
+12 -inf -0.05  0.250000  0.690000
+13 -inf -0.80 -0.460000  0.520000
+14 -inf -0.31 -0.080000  0.200000
+15 -inf -0.18  0.080000  0.520000
+19-03-27 10:52:26 [1] Correct for Norm=False & Window=100: 28 @ f=8
+19-03-27 10:52:26 [0] {'signature': None, 'maxF': 16, 'symbols': 4, 'normMean': False, 'windowLength': 110}
+19-03-27 10:52:26 [0] {'HistogramType': 'EQUI_DEPTH', 'lowerBounding': True, 'initialized': False}
+19-03-27 10:52:26 [0]       0     1         2         3
+0  -inf  0.74  1.120000  1.530000
+1  -inf  0.00       inf       inf
+2  -inf -5.25 -4.280000 -1.650000
+3  -inf -3.90 -0.710000  2.410000
+4  -inf -1.76 -0.260000  0.530000
+5  -inf -2.30 -1.790000  0.130000
+6  -inf  0.09  0.540000  1.280000
+7  -inf -1.25 -0.910000  0.170000
+8  -inf -0.26  0.000000  0.790000
+9  -inf -0.42  0.010000  1.130000
+10 -inf -0.78 -0.240000  0.630000
+11 -inf -0.90 -0.410000 -0.110000
+12 -inf -0.45 -0.150000  0.310000
+13 -inf -0.96 -0.700000  0.160000
+14 -inf -0.19  0.100000  0.540000
+15 -inf -0.36 -0.070000  0.450000
+19-03-27 10:52:27 [1] Correct for Norm=False & Window=110: 30 @ f=8
+19-03-27 10:52:27 [0] {'signature': None, 'maxF': 16, 'symbols': 4, 'normMean': False, 'windowLength': 120}
+19-03-27 10:52:27 [0] {'HistogramType': 'EQUI_DEPTH', 'lowerBounding': True, 'initialized': False}
+19-03-27 10:52:27 [0]       0     1         2         3
+0  -inf  0.37  0.530000  0.710000
+1  -inf  0.00       inf       inf
+2  -inf -5.46 -4.450000 -1.690000
+3  -inf -3.28  1.010000  3.440000
+4  -inf -1.61 -0.820000  0.000000
+5  -inf -2.18 -1.620000  0.610000
+6  -inf -0.42  0.330000  1.400000
+7  -inf -1.30 -0.990000 -0.030000
+8  -inf -0.47  0.220000  0.740000
+9  -inf -0.87  0.040000  0.920000
+10 -inf -1.01 -0.520000 -0.010000
+11 -inf -0.33 -0.080000  0.640000
+12 -inf -0.50 -0.190000  0.340000
+13 -inf -0.58  0.000000  0.480000
+14 -inf -0.09  0.280000  0.680000
+15 -inf -0.54 -0.300000  0.180000
+19-03-27 10:52:27 [1] Correct for Norm=False & Window=120: 27 @ f=6
+19-03-27 10:52:27 [1] Stored Models for Norm=False
+19-03-27 10:52:27 [1] WindowLength:20  Features:4  TrainScore:29
+19-03-27 10:52:27 [1] WindowLength:30  Features:4  TrainScore:29
+19-03-27 10:52:27 [1] WindowLength:40  Features:8  TrainScore:30
+19-03-27 10:52:27 [1] WindowLength:50  Features:8  TrainScore:30
+19-03-27 10:52:27 [1] WindowLength:60  Features:6  TrainScore:30
+19-03-27 10:52:27 [1] WindowLength:70  Features:6  TrainScore:30
+19-03-27 10:52:27 [1] WindowLength:110  Features:8  TrainScore:30
+19-03-27 10:52:36 [1] Final Ensembled Models...
+19-03-27 10:52:36 [1] Norm:False  WindowLength:20  Features:4  TrainScore:29
+19-03-27 10:52:36 [1] Norm:False  WindowLength:30  Features:4  TrainScore:29
+19-03-27 10:52:36 [1] Norm:False  WindowLength:40  Features:8  TrainScore:30
+19-03-27 10:52:36 [1] Norm:False  WindowLength:50  Features:8  TrainScore:30
+19-03-27 10:52:36 [1] Norm:False  WindowLength:60  Features:6  TrainScore:30
+19-03-27 10:52:36 [1] Norm:False  WindowLength:70  Features:6  TrainScore:30
+19-03-27 10:52:36 [1] Norm:False  WindowLength:110  Features:8  TrainScore:30
+19-03-27 10:57:23 [1] CBF: BOSSVS; 1.0; 0.998

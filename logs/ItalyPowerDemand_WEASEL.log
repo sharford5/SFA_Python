@@ -1,0 +1,6 @@
+19-05-22 11:17:15 [1] FIXED_PARAMETERS
+ {'data_path': './datasets/', 'log_path': './logs/', 'test': 'ItalyPowerDemand', 'dataset': 'WEASEL', 'train_bool': 1, 'histogram_type': 'EQUI_DEPTH', 'symbols': 4, 'wordLength': 4, 'windowLength': 8, 'normMean': 1, 'MAX_WINDOW_LENGTH': 350}
+19-05-22 11:17:15 [1] Loading from: D:\Google Drive\SFA\SFA_Python\datasets\univariate\WEASEL
+19-05-22 11:17:15 [1] Data not loaded. Checking the Multivariate Data Path...
+19-05-22 11:17:15 [1] Loading from: D:\Google Drive\SFA\SFA_Python\datasets\multivariate\WEASEL
+19-05-22 11:17:15 [1] Data not loaded. Check Data name and path

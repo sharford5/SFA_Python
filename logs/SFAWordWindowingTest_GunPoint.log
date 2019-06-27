@@ -1,0 +1,6 @@
+19-03-22 13:15:33 [1] FIXED_PARAMETERS
+ {'symbols': 4, 'windowLength': 8, 'log_path': './logs/', 'dataset': 'GunPoint', 'train_bool': 1, 'data_path': './datasets/', 'MAX_WINDOW_LENGTH': 350, 'normMean': 1, 'wordLength': 4, 'test': 'SFAWordWindowingTest', 'histogram_type': 'INFORMATION_GAIN'}
+19-03-22 13:15:33 [1] Loading from: C:\Users\Sam.officepc\Google Drive\SFA_Python\datasets\univariate\GunPoint
+19-03-22 13:15:33 [1] Data not loaded. Checking the Multivariate Data Path...
+19-03-22 13:15:33 [1] Loading from: C:\Users\Sam.officepc\Google Drive\SFA_Python\datasets\multivariate\GunPoint
+19-03-22 13:15:33 [1] Data not loaded. Check Data name and path

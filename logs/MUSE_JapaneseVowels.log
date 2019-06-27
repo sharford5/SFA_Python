@@ -1,0 +1,600 @@
+19-04-04 14:29:23 [1] FIXED_PARAMETERS
+ {'data_path': './datasets/', 'log_path': './logs/', 'test': 'MUSE', 'dataset': 'JapaneseVowels', 'train_bool': 1, 'histogram_type': 'EQUI_DEPTH', 'symbols': 4, 'wordLength': 4, 'windowLength': 8, 'normMean': 1, 'MAX_WINDOW_LENGTH': 350}
+19-04-04 14:29:23 [1] Loading from: C:\Users\Sam.officepc\Google Drive\SFA_Python\datasets\univariate\JapaneseVowels
+19-04-04 14:29:23 [1] Data not loaded. Checking the Multivariate Data Path...
+19-04-04 14:29:23 [1] Loading from: C:\Users\Sam.officepc\Google Drive\SFA_Python\datasets\multivariate\JapaneseVowels
+19-04-04 14:29:24 [1] Done reading JapaneseVowels Training Data...  Samples: 270  Dimensions: 24
+19-04-04 14:29:24 [1] Done reading JapaneseVowels Testing Data...  Samples: 370  Dimensions: 24
+19-04-04 14:29:24 [1] Classes: [1 2 3 4 5 6 7 8 9]
+19-04-04 14:29:24 [1] Test: MUSE
+19-04-04 14:29:24 [0] {'NAME': 'JapaneseVowels', 'train_bool': 1, 'score_path': './stored_models/MUSE_JapaneseVowels_score.p', 'model_path': './stored_models/MUSE_JapaneseVowels_model.p', 'linearmodel_path': './stored_models/MUSE_JapaneseVowels_linearmodel.p', 'wordmodel_path': './stored_models/MUSE_JapaneseVowels_wordmodel.p', 'maxF': 6, 'minF': 2, 'maxS': 4, 'histTypes': ['EQUI_DEPTH', 'EQUI_FREQUENCY'], 'lowerBounding': False, 'chi': 2, 'bias': 1, 'p': 0.1, 'iter': 5000, 'c': 1, 'MIN_WINDOW_SIZE': 2, 'MAX_WINDOW_SIZE': 450, 'solverType': <src.LibLinear.SolverType.SolverType object at 0x0000000014A9EC88>, 'word_model': None, 'linear_model': None, 'TIMESERIES_NORM': False}
+19-04-04 14:29:24 [1] Fitting for Norm=True and histType=EQUI_DEPTH
+19-04-04 14:29:24 [0] {'maxF': 6, 'alphabetSize': 4, 'windowLengths': [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26], 'normMean': True, 'lowerBounding': False, 'dict': <src.transformation.MUSE.Dictionary object at 0x0000000014AAB3C8>, 'signature': [None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None], 'histogramType': 'EQUI_DEPTH'}
+19-04-04 14:29:24 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:29:40 [0]      0     1         2         3
+0 -inf -0.03  0.040000  0.110000
+1 -inf  0.00       inf       inf
+2 -inf  0.00       inf       inf
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:29:40 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:29:57 [0]      0     1         2         3
+0 -inf -0.04  0.000000  0.040000
+1 -inf  0.00       inf       inf
+2 -inf  0.00       inf       inf
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:29:57 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:30:12 [0]      0     1         2         3
+0 -inf -0.01  0.040000  0.100000
+1 -inf  0.00       inf       inf
+2 -inf  0.00       inf       inf
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:30:12 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:30:28 [0]      0     1         2         3
+0 -inf -0.03  0.000000  0.040000
+1 -inf  0.00       inf       inf
+2 -inf  0.00       inf       inf
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:30:28 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:30:43 [0]      0     1         2         3
+0 -inf -0.08 -0.030000  0.040000
+1 -inf  0.00       inf       inf
+2 -inf  0.00       inf       inf
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:30:43 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:30:58 [0]      0     1         2         3
+0 -inf -0.03  0.000000  0.030000
+1 -inf  0.00       inf       inf
+2 -inf  0.00       inf       inf
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:30:58 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:31:12 [0]      0     1         2         3
+0 -inf -0.11 -0.060000 -0.020000
+1 -inf  0.00       inf       inf
+2 -inf  0.00       inf       inf
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:31:12 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:31:27 [0]      0     1         2         3
+0 -inf -0.03  0.000000  0.030000
+1 -inf  0.00       inf       inf
+2 -inf  0.00       inf       inf
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:31:27 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:31:42 [0]      0    1         2         3
+0 -inf -0.1 -0.060000 -0.010000
+1 -inf  0.0       inf       inf
+2 -inf  0.0       inf       inf
+3 -inf  0.0       inf       inf
+4 -inf  0.0       inf       inf
+5 -inf  0.0       inf       inf
+19-04-04 14:31:42 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:31:57 [0]      0     1         2         3
+0 -inf -0.02  0.000000  0.030000
+1 -inf  0.00       inf       inf
+2 -inf  0.00       inf       inf
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:31:57 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:32:11 [0]      0     1         2         3
+0 -inf -0.06 -0.020000  0.010000
+1 -inf  0.00       inf       inf
+2 -inf  0.00       inf       inf
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:32:11 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:32:26 [0]      0     1         2         3
+0 -inf -0.02  0.000000  0.020000
+1 -inf  0.00       inf       inf
+2 -inf  0.00       inf       inf
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:32:26 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:32:41 [0]      0     1         2         3
+0 -inf -0.02  0.010000  0.050000
+1 -inf  0.00       inf       inf
+2 -inf  0.00       inf       inf
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:32:41 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:32:55 [0]      0     1         2         3
+0 -inf -0.02  0.000000  0.020000
+1 -inf  0.00       inf       inf
+2 -inf  0.00       inf       inf
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:32:55 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:33:10 [0]      0     1         2         3
+0 -inf -0.01  0.030000  0.070000
+1 -inf  0.00       inf       inf
+2 -inf  0.00       inf       inf
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:33:10 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:33:25 [0]      0     1         2         3
+0 -inf -0.02  0.000000  0.020000
+1 -inf  0.00       inf       inf
+2 -inf  0.00       inf       inf
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:33:25 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:33:39 [0]      0     1         2         3
+0 -inf -0.02  0.020000  0.050000
+1 -inf  0.00       inf       inf
+2 -inf  0.00       inf       inf
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:33:39 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:33:54 [0]      0     1         2         3
+0 -inf -0.02  0.000000  0.020000
+1 -inf  0.00       inf       inf
+2 -inf  0.00       inf       inf
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:33:54 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:34:09 [0]      0     1         2         3
+0 -inf -0.04 -0.010000  0.030000
+1 -inf  0.00       inf       inf
+2 -inf  0.00       inf       inf
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:34:09 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:34:23 [0]      0     1         2         3
+0 -inf -0.02  0.000000  0.020000
+1 -inf  0.00       inf       inf
+2 -inf  0.00       inf       inf
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:34:23 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:34:38 [0]      0     1         2         3
+0 -inf -0.03  0.000000  0.030000
+1 -inf  0.00       inf       inf
+2 -inf  0.00       inf       inf
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:34:38 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:34:53 [0]      0     1         2         3
+0 -inf -0.01  0.000000  0.010000
+1 -inf  0.00       inf       inf
+2 -inf  0.00       inf       inf
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:34:53 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:35:07 [0]      0     1         2         3
+0 -inf -0.02  0.020000  0.050000
+1 -inf  0.00       inf       inf
+2 -inf  0.00       inf       inf
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:35:07 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:35:23 [0]      0     1         2         3
+0 -inf -0.02  0.000000  0.020000
+1 -inf  0.00       inf       inf
+2 -inf  0.00       inf       inf
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:35:40 [1] Generating Train Words for Norm=True and Window=3
+19-04-04 14:35:40 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:35:49 [0]      0     1         2         3
+0 -inf -0.05  0.050000  0.140000
+1 -inf -0.03  0.060000  0.150000
+2 -inf  0.00       inf       inf
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:35:49 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:35:57 [0]      0     1         2         3
+0 -inf -0.05  0.000000  0.050000
+1 -inf -0.05  0.010000  0.060000
+2 -inf  0.00       inf       inf
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:35:57 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:36:05 [0]      0     1         2         3
+0 -inf -0.01  0.050000  0.130000
+1 -inf -0.02  0.050000  0.120000
+2 -inf  0.00       inf       inf
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:36:05 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:36:13 [0]      0     1         2         3
+0 -inf -0.04  0.000000  0.040000
+1 -inf -0.03  0.010000  0.040000
+2 -inf  0.00       inf       inf
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:36:13 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:36:21 [0]      0     1         2         3
+0 -inf -0.10 -0.030000  0.050000
+1 -inf -0.11 -0.040000  0.050000
+2 -inf  0.00       inf       inf
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:36:21 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:36:28 [0]      0     1         2         3
+0 -inf -0.04  0.000000  0.030000
+1 -inf -0.03  0.000000  0.040000
+2 -inf  0.00       inf       inf
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:36:28 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:36:36 [0]      0     1         2         3
+0 -inf -0.14 -0.090000 -0.030000
+1 -inf -0.15 -0.090000 -0.040000
+2 -inf  0.00       inf       inf
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:36:36 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:36:44 [0]      0     1         2         3
+0 -inf -0.03  0.000000  0.030000
+1 -inf -0.03  0.000000  0.040000
+2 -inf  0.00       inf       inf
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:36:44 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:36:53 [0]      0     1         2         3
+0 -inf -0.13 -0.080000 -0.020000
+1 -inf -0.13 -0.070000 -0.020000
+2 -inf  0.00       inf       inf
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:36:53 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:37:02 [0]      0     1         2         3
+0 -inf -0.02  0.010000  0.030000
+1 -inf -0.02  0.010000  0.030000
+2 -inf  0.00       inf       inf
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:37:02 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:37:10 [0]      0     1         2         3
+0 -inf -0.07 -0.030000  0.020000
+1 -inf -0.07 -0.030000  0.020000
+2 -inf  0.00       inf       inf
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:37:10 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:37:19 [0]      0     1         2         3
+0 -inf -0.02  0.000000  0.020000
+1 -inf -0.02  0.010000  0.020000
+2 -inf  0.00       inf       inf
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:37:19 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:37:27 [0]      0     1         2         3
+0 -inf -0.03  0.020000  0.060000
+1 -inf -0.02  0.020000  0.060000
+2 -inf  0.00       inf       inf
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:37:27 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:37:35 [0]      0     1         2         3
+0 -inf -0.02  0.000000  0.020000
+1 -inf -0.02  0.000000  0.020000
+2 -inf  0.00       inf       inf
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:37:35 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:37:43 [0]      0    1         2         3
+0 -inf  0.0  0.050000  0.100000
+1 -inf  0.0  0.040000  0.090000
+2 -inf  0.0       inf       inf
+3 -inf  0.0       inf       inf
+4 -inf  0.0       inf       inf
+5 -inf  0.0       inf       inf
+19-04-04 14:37:43 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:37:51 [0]      0     1         2         3
+0 -inf -0.02  0.000000  0.030000
+1 -inf -0.02  0.000000  0.030000
+2 -inf  0.00       inf       inf
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:37:51 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:37:59 [0]      0     1         2         3
+0 -inf -0.02  0.030000  0.070000
+1 -inf -0.03  0.020000  0.070000
+2 -inf  0.00       inf       inf
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:37:59 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:38:07 [0]      0     1         2         3
+0 -inf -0.02  0.000000  0.020000
+1 -inf -0.02  0.000000  0.020000
+2 -inf  0.00       inf       inf
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:38:07 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:38:16 [0]      0     1         2         3
+0 -inf -0.05 -0.010000  0.040000
+1 -inf -0.05 -0.010000  0.040000
+2 -inf  0.00       inf       inf
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:38:16 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:38:24 [0]      0     1         2         3
+0 -inf -0.02  0.000000  0.020000
+1 -inf -0.02  0.000000  0.020000
+2 -inf  0.00       inf       inf
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:38:24 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:38:32 [0]      0     1         2         3
+0 -inf -0.04  0.000000  0.030000
+1 -inf -0.04 -0.010000  0.030000
+2 -inf  0.00       inf       inf
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:38:32 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:38:39 [0]      0     1         2         3
+0 -inf -0.02  0.000000  0.020000
+1 -inf -0.01  0.000000  0.020000
+2 -inf  0.00       inf       inf
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:38:39 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:38:47 [0]      0     1         2         3
+0 -inf -0.04  0.020000  0.070000
+1 -inf -0.03  0.020000  0.080000
+2 -inf  0.00       inf       inf
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:38:47 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:38:55 [0]      0     1         2         3
+0 -inf -0.02  0.000000  0.020000
+1 -inf -0.02  0.000000  0.020000
+2 -inf  0.00       inf       inf
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:39:10 [1] Generating Train Words for Norm=True and Window=4
+19-04-04 14:39:10 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:39:14 [0]      0     1         2         3
+0 -inf -0.06  0.070000  0.180000
+1 -inf -0.05  0.100000  0.230000
+2 -inf -0.03  0.070000  0.150000
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:39:14 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:39:19 [0]      0     1         2         3
+0 -inf -0.06  0.000000  0.060000
+1 -inf -0.05  0.010000  0.070000
+2 -inf -0.04  0.010000  0.060000
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:39:19 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:39:24 [0]      0     1         2         3
+0 -inf -0.02  0.070000  0.160000
+1 -inf -0.01  0.090000  0.210000
+2 -inf  0.00  0.070000  0.140000
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:39:24 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:39:29 [0]      0     1         2         3
+0 -inf -0.04  0.000000  0.040000
+1 -inf -0.03  0.010000  0.050000
+2 -inf -0.03  0.010000  0.050000
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:39:29 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:39:34 [0]      0     1         2         3
+0 -inf -0.12 -0.020000  0.080000
+1 -inf -0.19 -0.060000  0.070000
+2 -inf -0.12 -0.040000  0.040000
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:39:34 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:39:40 [0]      0     1         2         3
+0 -inf -0.04  0.000000  0.040000
+1 -inf -0.03  0.000000  0.050000
+2 -inf -0.04  0.000000  0.040000
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:39:40 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:39:45 [0]      0     1         2         3
+0 -inf -0.18 -0.100000 -0.030000
+1 -inf -0.23 -0.150000 -0.070000
+2 -inf -0.16 -0.100000 -0.050000
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:39:45 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:39:50 [0]      0     1         2         3
+0 -inf -0.04  0.000000  0.040000
+1 -inf -0.04  0.000000  0.050000
+2 -inf -0.03  0.000000  0.040000
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:39:50 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:39:55 [0]      0     1         2         3
+0 -inf -0.17 -0.100000 -0.030000
+1 -inf -0.21 -0.120000 -0.030000
+2 -inf -0.15 -0.090000 -0.040000
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:39:55 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:40:00 [0]      0     1         2         3
+0 -inf -0.03  0.000000  0.040000
+1 -inf -0.02  0.010000  0.040000
+2 -inf -0.02  0.010000  0.030000
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:40:00 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:40:05 [0]      0     1         2         3
+0 -inf -0.10 -0.050000  0.010000
+1 -inf -0.13 -0.050000  0.020000
+2 -inf -0.08 -0.040000  0.010000
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:40:05 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:40:10 [0]      0     1         2         3
+0 -inf -0.03  0.000000  0.020000
+1 -inf -0.02  0.010000  0.030000
+2 -inf -0.02  0.000000  0.030000
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:40:10 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:40:15 [0]      0     1         2         3
+0 -inf -0.03  0.020000  0.080000
+1 -inf -0.03  0.040000  0.100000
+2 -inf -0.01  0.020000  0.070000
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:40:15 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:40:20 [0]      0     1         2         3
+0 -inf -0.02  0.000000  0.020000
+1 -inf -0.02  0.000000  0.030000
+2 -inf -0.02  0.000000  0.020000
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:40:20 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:40:25 [0]      0     1         2         3
+0 -inf  0.00  0.060000  0.120000
+1 -inf  0.00  0.080000  0.160000
+2 -inf  0.01  0.060000  0.110000
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:40:25 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:40:30 [0]      0     1         2         3
+0 -inf -0.03  0.000000  0.030000
+1 -inf -0.03  0.010000  0.040000
+2 -inf -0.02  0.000000  0.030000
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:40:30 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:40:35 [0]      0     1         2         3
+0 -inf -0.02  0.040000  0.090000
+1 -inf -0.04  0.040000  0.110000
+2 -inf -0.01  0.030000  0.070000
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:40:35 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:40:40 [0]      0     1         2         3
+0 -inf -0.02  0.000000  0.030000
+1 -inf -0.02  0.000000  0.030000
+2 -inf -0.02  0.000000  0.020000
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:40:40 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:40:45 [0]      0     1         2         3
+0 -inf -0.06  0.000000  0.060000
+1 -inf -0.09 -0.020000  0.070000
+2 -inf -0.06 -0.010000  0.050000
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:40:45 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:40:50 [0]      0     1         2         3
+0 -inf -0.03  0.000000  0.020000
+1 -inf -0.02  0.010000  0.030000
+2 -inf -0.02  0.000000  0.020000
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:40:50 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:40:55 [0]      0     1         2         3
+0 -inf -0.06 -0.010000  0.040000
+1 -inf -0.07 -0.010000  0.050000
+2 -inf -0.04 -0.010000  0.030000
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:40:55 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:41:01 [0]      0     1         2         3
+0 -inf -0.02  0.000000  0.020000
+1 -inf -0.02  0.000000  0.020000
+2 -inf -0.01  0.000000  0.020000
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:41:01 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:41:06 [0]      0     1         2         3
+0 -inf -0.05  0.010000  0.090000
+1 -inf -0.05  0.040000  0.120000
+2 -inf -0.03  0.020000  0.080000
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:41:06 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': False}
+19-04-04 14:41:11 [0]      0     1         2         3
+0 -inf -0.03  0.000000  0.020000
+1 -inf -0.02  0.000000  0.030000
+2 -inf -0.02  0.000000  0.020000
+3 -inf  0.00       inf       inf
+4 -inf  0.00       inf       inf
+5 -inf  0.00       inf       inf
+19-04-04 14:41:21 [1] FIXED_PARAMETERS
+ {'data_path': './datasets/', 'log_path': './logs/', 'test': 'MUSE', 'dataset': 'JapaneseVowels', 'train_bool': 1, 'histogram_type': 'EQUI_DEPTH', 'symbols': 4, 'wordLength': 4, 'windowLength': 8, 'normMean': 1, 'MAX_WINDOW_LENGTH': 350}
+19-04-04 14:41:21 [1] Loading from: C:\Users\Sam.officepc\Google Drive\SFA_Python\datasets\univariate\JapaneseVowels
+19-04-04 14:41:21 [1] Data not loaded. Checking the Multivariate Data Path...
+19-04-04 14:41:21 [1] Loading from: C:\Users\Sam.officepc\Google Drive\SFA_Python\datasets\multivariate\JapaneseVowels
+19-04-04 14:41:24 [1] Done reading JapaneseVowels Training Data...  Samples: 270  Dimensions: 24
+19-04-04 14:41:24 [1] Done reading JapaneseVowels Testing Data...  Samples: 370  Dimensions: 24
+19-04-04 14:41:24 [1] Classes: [1 2 3 4 5 6 7 8 9]
+19-04-04 14:41:24 [1] Test: MUSE
+19-04-04 14:41:24 [0] {'NAME': 'JapaneseVowels', 'train_bool': 1, 'score_path': './stored_models/MUSE_JapaneseVowels_score.p', 'model_path': './stored_models/MUSE_JapaneseVowels_model.p', 'linearmodel_path': './stored_models/MUSE_JapaneseVowels_linearmodel.p', 'wordmodel_path': './stored_models/MUSE_JapaneseVowels_wordmodel.p', 'maxF': 6, 'minF': 2, 'maxS': 4, 'histTypes': ['EQUI_DEPTH', 'EQUI_FREQUENCY'], 'lowerBounding': False, 'chi': 2, 'bias': 1, 'p': 0.1, 'iter': 5000, 'c': 1, 'MIN_WINDOW_SIZE': 2, 'MAX_WINDOW_SIZE': 450, 'solverType': <src.LibLinear.SolverType.SolverType object at 0x000000001A3096D8>, 'word_model': None, 'linear_model': None, 'TIMESERIES_NORM': False}

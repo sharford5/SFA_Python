@@ -1,0 +1,289 @@
+19-03-19 14:56:09 [1] FIXED_PARAMETERS
+ {'data_path': './datasets/', 'log_path': './logs/', 'test': 'ShotgunEnsemble', 'dataset': 'ItalyPowerDemand', 'train_bool': 1, 'histogram_type': 'EQUI_DEPTH', 'symbols': 4, 'wordLength': 4, 'windowLength': 8, 'normMean': 1, 'MAX_WINDOW_LENGTH': 350}
+19-03-19 14:56:09 [1] Loading from: C:\Users\Sam.officepc\Google Drive\SFA_Python\datasets\univariate\ItalyPowerDemand
+19-03-19 14:56:09 [1] Done reading ItalyPowerDemand Training Data...  Samples: 67  Length: 24
+19-03-19 14:56:09 [1] Done reading ItalyPowerDemand Testing Data...  Samples: 1029  Length: 24
+19-03-19 14:56:09 [1] Classes: [1 2]
+19-03-19 14:56:09 [1] Test: ShotgunEnsemble
+19-03-19 14:56:09 [0] {'NAME': 'ItalyPowerDemand', 'factor': 0.92, 'MAX_WINDOW_LENGTH': 250}
+19-03-19 14:56:09 [1] Windows: [24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5]
+19-03-19 14:56:09 [1] ItalyPowerDemand  Fitting for a norm of True
+19-03-19 14:56:09 [1] Correct for Norm=True & Window=24: 64
+19-03-19 14:56:09 [1] Correct for Norm=True & Window=23: 64
+19-03-19 14:56:09 [1] Correct for Norm=True & Window=20: 65
+19-03-19 14:56:09 [1] Correct for Norm=True & Window=19: 63
+19-03-19 14:56:10 [1] Correct for Norm=True & Window=18: 62
+19-03-19 14:56:10 [1] Correct for Norm=True & Window=22: 64
+19-03-19 14:56:10 [1] Correct for Norm=True & Window=17: 60
+19-03-19 14:56:10 [1] Correct for Norm=True & Window=16: 61
+19-03-19 14:56:10 [1] Correct for Norm=True & Window=21: 64
+19-03-19 14:56:10 [1] Correct for Norm=True & Window=15: 61
+19-03-19 14:56:10 [1] Correct for Norm=True & Window=13: 59
+19-03-19 14:56:11 [1] Correct for Norm=True & Window=14: 62
+19-03-19 14:56:11 [1] Correct for Norm=True & Window=12: 63
+19-03-19 14:56:12 [1] Correct for Norm=True & Window=9: 56
+19-03-19 14:56:12 [1] Correct for Norm=True & Window=11: 64
+19-03-19 14:56:12 [1] Correct for Norm=True & Window=10: 63
+19-03-19 14:56:12 [1] Correct for Norm=True & Window=7: 56
+19-03-19 14:56:12 [1] Correct for Norm=True & Window=8: 61
+19-03-19 14:56:13 [1] Correct for Norm=True & Window=6: 54
+19-03-19 14:56:13 [1] Correct for Norm=True & Window=5: 41
+19-03-19 14:56:15 [1] Windows: [24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5]
+19-03-19 14:56:15 [1] ItalyPowerDemand  Fitting for a norm of False
+19-03-19 14:56:15 [1] Correct for Norm=False & Window=24: 64
+19-03-19 14:56:15 [1] Correct for Norm=False & Window=23: 64
+19-03-19 14:56:15 [1] Correct for Norm=False & Window=20: 64
+19-03-19 14:56:15 [1] Correct for Norm=False & Window=21: 64
+19-03-19 14:56:15 [1] Correct for Norm=False & Window=22: 64
+19-03-19 14:56:15 [1] Correct for Norm=False & Window=18: 64
+19-03-19 14:56:15 [1] Correct for Norm=False & Window=17: 64
+19-03-19 14:56:16 [1] Correct for Norm=False & Window=19: 64
+19-03-19 14:56:16 [1] Correct for Norm=False & Window=16: 65
+19-03-19 14:56:16 [1] Correct for Norm=False & Window=14: 64
+19-03-19 14:56:16 [1] Correct for Norm=False & Window=13: 62
+19-03-19 14:56:16 [1] Correct for Norm=False & Window=15: 65
+19-03-19 14:56:17 [1] Correct for Norm=False & Window=10: 64
+19-03-19 14:56:18 [1] Correct for Norm=False & Window=12: 63
+19-03-19 14:56:18 [1] Correct for Norm=False & Window=11: 64
+19-03-19 14:56:18 [1] Correct for Norm=False & Window=9: 62
+19-03-19 14:56:18 [1] Correct for Norm=False & Window=7: 56
+19-03-19 14:56:18 [1] Correct for Norm=False & Window=8: 62
+19-03-19 14:56:18 [1] Correct for Norm=False & Window=6: 54
+19-03-19 14:56:18 [1] Correct for Norm=False & Window=5: 55
+19-03-19 14:56:21 [1] Final Ensembled Models...
+19-03-19 14:56:21 [1] Norm:True  WindowLength:24  TrainScore:64
+19-03-19 14:56:21 [1] Norm:True  WindowLength:23  TrainScore:64
+19-03-19 14:56:21 [1] Norm:True  WindowLength:20  TrainScore:65
+19-03-19 14:56:21 [1] Norm:True  WindowLength:19  TrainScore:63
+19-03-19 14:56:21 [1] Norm:True  WindowLength:18  TrainScore:62
+19-03-19 14:56:21 [1] Norm:True  WindowLength:22  TrainScore:64
+19-03-19 14:56:21 [1] Norm:True  WindowLength:17  TrainScore:60
+19-03-19 14:56:21 [1] Norm:True  WindowLength:16  TrainScore:61
+19-03-19 14:56:21 [1] Norm:True  WindowLength:21  TrainScore:64
+19-03-19 14:56:21 [1] Norm:True  WindowLength:15  TrainScore:61
+19-03-19 14:56:21 [1] Norm:True  WindowLength:14  TrainScore:62
+19-03-19 14:56:21 [1] Norm:True  WindowLength:12  TrainScore:63
+19-03-19 14:56:21 [1] Norm:True  WindowLength:11  TrainScore:64
+19-03-19 14:56:21 [1] Norm:True  WindowLength:10  TrainScore:63
+19-03-19 14:56:21 [1] Norm:True  WindowLength:8  TrainScore:61
+19-03-19 14:56:51 [1] ItalyPowerDemand: Shotgun Ensemble; 0.97; 0.947
+19-03-20 09:08:36 [1] FIXED_PARAMETERS
+ {'data_path': './datasets/', 'log_path': './logs/', 'test': 'ShotgunEnsemble', 'dataset': 'ItalyPowerDemand', 'train_bool': 1, 'histogram_type': 'EQUI_DEPTH', 'symbols': 4, 'wordLength': 4, 'windowLength': 8, 'normMean': 1, 'MAX_WINDOW_LENGTH': 350}
+19-03-20 09:08:36 [1] Loading from: C:\Users\Sam\Google Drive\SFA_Python\datasets\univariate\ItalyPowerDemand
+19-03-20 09:08:39 [1] Done reading ItalyPowerDemand Training Data...  Samples: 67  Length: 24
+19-03-20 09:08:39 [1] Done reading ItalyPowerDemand Testing Data...  Samples: 1029  Length: 24
+19-03-20 09:08:39 [1] Classes: [1 2]
+19-03-20 09:08:39 [1] Test: ShotgunEnsemble
+19-03-20 09:10:45 [1] FIXED_PARAMETERS
+ {'data_path': './datasets/', 'log_path': './logs/', 'test': 'ShotgunEnsemble', 'dataset': 'ItalyPowerDemand', 'train_bool': 1, 'histogram_type': 'EQUI_DEPTH', 'symbols': 4, 'wordLength': 4, 'windowLength': 8, 'normMean': 1, 'MAX_WINDOW_LENGTH': 350}
+19-03-20 09:10:45 [1] Loading from: C:\Users\Sam\Google Drive\SFA_Python\datasets\univariate\ItalyPowerDemand
+19-03-20 09:10:46 [1] Done reading ItalyPowerDemand Training Data...  Samples: 67  Length: 24
+19-03-20 09:10:46 [1] Done reading ItalyPowerDemand Testing Data...  Samples: 1029  Length: 24
+19-03-20 09:10:46 [1] Classes: [1 2]
+19-03-20 09:10:46 [1] Test: ShotgunEnsemble
+19-03-20 09:12:35 [1] FIXED_PARAMETERS
+ {'data_path': './datasets/', 'log_path': './logs/', 'test': 'ShotgunEnsemble', 'dataset': 'ItalyPowerDemand', 'train_bool': 1, 'histogram_type': 'EQUI_DEPTH', 'symbols': 4, 'wordLength': 4, 'windowLength': 8, 'normMean': 1, 'MAX_WINDOW_LENGTH': 350}
+19-03-20 09:12:35 [1] Loading from: C:\Users\Sam\Google Drive\SFA_Python\datasets\univariate\ItalyPowerDemand
+19-03-20 09:12:36 [1] Done reading ItalyPowerDemand Training Data...  Samples: 67  Length: 24
+19-03-20 09:12:36 [1] Done reading ItalyPowerDemand Testing Data...  Samples: 1029  Length: 24
+19-03-20 09:12:36 [1] Classes: [1 2]
+19-03-20 09:12:36 [1] Test: ShotgunEnsemble
+19-03-20 09:12:39 [0] {'NAME': 'ItalyPowerDemand', 'factor': 0.92, 'MAX_WINDOW_LENGTH': 250}
+19-03-20 09:12:39 [1] Windows: [24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5]
+19-03-20 09:12:39 [1] ItalyPowerDemand  Fitting for a norm of True
+19-03-20 09:12:41 [1] Correct for Norm=True & Window=24: 64
+19-03-20 09:12:41 [1] Correct for Norm=True & Window=23: 64
+19-03-20 09:12:42 [1] Correct for Norm=True & Window=21: 64
+19-03-20 09:12:42 [1] Correct for Norm=True & Window=22: 64
+19-03-20 09:12:42 [1] Correct for Norm=True & Window=20: 65
+19-03-20 09:12:43 [1] Correct for Norm=True & Window=19: 63
+19-03-20 09:12:43 [1] Correct for Norm=True & Window=18: 62
+19-03-20 09:12:44 [1] Correct for Norm=True & Window=17: 60
+19-03-20 09:12:44 [1] Correct for Norm=True & Window=16: 61
+19-03-20 09:12:44 [1] Correct for Norm=True & Window=14: 62
+19-03-20 09:12:44 [1] Correct for Norm=True & Window=15: 61
+19-03-20 09:12:47 [1] Correct for Norm=True & Window=13: 59
+19-03-20 09:12:51 [1] Correct for Norm=True & Window=11: 64
+19-03-20 09:12:52 [1] Correct for Norm=True & Window=12: 63
+19-03-20 09:12:52 [1] Correct for Norm=True & Window=10: 63
+19-03-20 09:12:54 [1] Correct for Norm=True & Window=9: 56
+19-03-20 09:13:01 [1] Correct for Norm=True & Window=8: 61
+19-03-20 09:13:01 [1] Correct for Norm=True & Window=7: 56
+19-03-20 09:13:03 [1] Correct for Norm=True & Window=6: 54
+19-03-20 09:13:04 [1] Correct for Norm=True & Window=5: 41
+19-03-20 09:13:12 [1] Windows: [24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5]
+19-03-20 09:13:12 [1] ItalyPowerDemand  Fitting for a norm of False
+19-03-20 09:13:13 [1] Correct for Norm=False & Window=24: 64
+19-03-20 09:13:14 [1] Correct for Norm=False & Window=23: 64
+19-03-20 09:13:14 [1] Correct for Norm=False & Window=22: 64
+19-03-20 09:13:14 [1] Correct for Norm=False & Window=21: 64
+19-03-20 09:13:15 [1] Correct for Norm=False & Window=20: 64
+19-03-20 09:13:16 [1] Correct for Norm=False & Window=19: 64
+19-03-20 09:13:16 [1] Correct for Norm=False & Window=18: 64
+19-03-20 09:13:16 [1] Correct for Norm=False & Window=17: 64
+19-03-20 09:13:17 [1] Correct for Norm=False & Window=16: 65
+19-03-20 09:13:18 [1] Correct for Norm=False & Window=15: 65
+19-03-20 09:13:18 [1] Correct for Norm=False & Window=14: 64
+19-03-20 09:13:19 [1] Correct for Norm=False & Window=13: 62
+19-03-20 09:13:22 [1] Correct for Norm=False & Window=12: 63
+19-03-20 09:13:24 [1] Correct for Norm=False & Window=11: 64
+19-03-20 09:13:24 [1] Correct for Norm=False & Window=10: 64
+19-03-20 09:13:25 [1] Correct for Norm=False & Window=9: 62
+19-03-20 09:13:29 [1] Correct for Norm=False & Window=8: 62
+19-03-20 09:13:31 [1] Correct for Norm=False & Window=7: 56
+19-03-20 09:13:32 [1] Correct for Norm=False & Window=6: 54
+19-03-20 09:13:32 [1] Correct for Norm=False & Window=5: 55
+19-03-20 09:13:40 [1] Final Ensembled Models...
+19-03-20 09:13:40 [1] Norm:True  WindowLength:24  TrainScore:64
+19-03-20 09:13:40 [1] Norm:True  WindowLength:23  TrainScore:64
+19-03-20 09:13:40 [1] Norm:True  WindowLength:21  TrainScore:64
+19-03-20 09:13:40 [1] Norm:True  WindowLength:22  TrainScore:64
+19-03-20 09:13:40 [1] Norm:True  WindowLength:20  TrainScore:65
+19-03-20 09:13:40 [1] Norm:True  WindowLength:19  TrainScore:63
+19-03-20 09:13:40 [1] Norm:True  WindowLength:18  TrainScore:62
+19-03-20 09:13:40 [1] Norm:True  WindowLength:14  TrainScore:62
+19-03-20 09:13:40 [1] Norm:True  WindowLength:15  TrainScore:61
+19-03-20 09:13:40 [1] Norm:True  WindowLength:16  TrainScore:61
+19-03-20 09:13:40 [1] Norm:True  WindowLength:17  TrainScore:60
+19-03-20 09:13:40 [1] Norm:True  WindowLength:11  TrainScore:64
+19-03-20 09:13:40 [1] Norm:True  WindowLength:12  TrainScore:63
+19-03-20 09:13:40 [1] Norm:True  WindowLength:10  TrainScore:63
+19-03-20 09:13:40 [1] Norm:True  WindowLength:8  TrainScore:61
+19-03-20 09:15:07 [1] ItalyPowerDemand: Shotgun Ensemble; 0.97; 0.947
+19-03-20 19:38:49 [1] FIXED_PARAMETERS
+ {'data_path': './datasets/', 'log_path': './logs/', 'test': 'ShotgunEnsemble', 'dataset': 'ItalyPowerDemand', 'train_bool': 1, 'histogram_type': 'EQUI_DEPTH', 'symbols': 4, 'wordLength': 4, 'windowLength': 8, 'normMean': 1, 'MAX_WINDOW_LENGTH': 350}
+19-03-20 19:38:49 [1] Loading from: C:\Users\Sam\Google Drive\SFA_Python\datasets\univariate\ItalyPowerDemand
+19-03-20 19:38:50 [1] Done reading ItalyPowerDemand Training Data...  Samples: 67  Length: 24
+19-03-20 19:38:50 [1] Done reading ItalyPowerDemand Testing Data...  Samples: 1029  Length: 24
+19-03-20 19:38:50 [1] Classes: [1 2]
+19-03-20 19:38:50 [1] Test: ShotgunEnsemble
+19-03-20 19:38:52 [0] {'NAME': 'ItalyPowerDemand', 'factor': 0.92, 'MAX_WINDOW_LENGTH': 250}
+19-03-20 19:38:52 [1] Windows: [24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5]
+19-03-20 19:38:52 [1] ItalyPowerDemand  Fitting for a norm of True
+19-03-20 19:38:54 [1] Correct for Norm=True & Window=24: 64
+19-03-20 19:38:54 [1] Correct for Norm=True & Window=23: 64
+19-03-20 19:38:54 [1] Correct for Norm=True & Window=21: 64
+19-03-20 19:38:54 [1] Correct for Norm=True & Window=22: 64
+19-03-20 19:38:54 [1] Correct for Norm=True & Window=18: 62
+19-03-20 19:38:54 [1] Correct for Norm=True & Window=20: 65
+19-03-20 19:38:54 [1] Correct for Norm=True & Window=19: 63
+19-03-20 19:38:54 [1] Correct for Norm=True & Window=17: 60
+19-03-20 19:38:55 [1] Correct for Norm=True & Window=15: 61
+19-03-20 19:38:55 [1] Correct for Norm=True & Window=14: 62
+19-03-20 19:38:55 [1] Correct for Norm=True & Window=16: 61
+19-03-20 19:38:55 [1] Correct for Norm=True & Window=13: 59
+19-03-20 19:38:58 [1] Correct for Norm=True & Window=10: 63
+19-03-20 19:38:58 [1] Correct for Norm=True & Window=12: 63
+19-03-20 19:38:58 [1] Correct for Norm=True & Window=11: 64
+19-03-20 19:38:58 [1] Correct for Norm=True & Window=9: 56
+19-03-20 19:39:00 [1] Correct for Norm=True & Window=8: 61
+19-03-20 19:39:01 [1] Correct for Norm=True & Window=7: 56
+19-03-20 19:39:01 [1] Correct for Norm=True & Window=5: 41
+19-03-20 19:39:01 [1] Correct for Norm=True & Window=6: 54
+19-03-20 19:39:05 [1] Windows: [24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5]
+19-03-20 19:39:05 [1] ItalyPowerDemand  Fitting for a norm of False
+19-03-20 19:39:05 [1] Correct for Norm=False & Window=24: 64
+19-03-20 19:39:05 [1] Correct for Norm=False & Window=23: 64
+19-03-20 19:39:06 [1] Correct for Norm=False & Window=21: 64
+19-03-20 19:39:06 [1] Correct for Norm=False & Window=22: 64
+19-03-20 19:39:06 [1] Correct for Norm=False & Window=20: 64
+19-03-20 19:39:06 [1] Correct for Norm=False & Window=19: 64
+19-03-20 19:39:06 [1] Correct for Norm=False & Window=17: 64
+19-03-20 19:39:06 [1] Correct for Norm=False & Window=18: 64
+19-03-20 19:39:07 [1] Correct for Norm=False & Window=16: 65
+19-03-20 19:39:07 [1] Correct for Norm=False & Window=15: 65
+19-03-20 19:39:07 [1] Correct for Norm=False & Window=14: 64
+19-03-20 19:39:07 [1] Correct for Norm=False & Window=13: 62
+19-03-20 19:39:09 [1] Correct for Norm=False & Window=12: 63
+19-03-20 19:39:09 [1] Correct for Norm=False & Window=11: 64
+19-03-20 19:39:09 [1] Correct for Norm=False & Window=10: 64
+19-03-20 19:39:09 [1] Correct for Norm=False & Window=9: 62
+19-03-20 19:39:12 [1] Correct for Norm=False & Window=8: 62
+19-03-20 19:39:12 [1] Correct for Norm=False & Window=7: 56
+19-03-20 19:39:12 [1] Correct for Norm=False & Window=5: 55
+19-03-20 19:39:12 [1] Correct for Norm=False & Window=6: 54
+19-03-20 19:39:17 [1] Final Ensembled Models...
+19-03-20 19:39:17 [1] Norm:True  WindowLength:24  TrainScore:64
+19-03-20 19:39:17 [1] Norm:True  WindowLength:23  TrainScore:64
+19-03-20 19:39:17 [1] Norm:True  WindowLength:21  TrainScore:64
+19-03-20 19:39:17 [1] Norm:True  WindowLength:22  TrainScore:64
+19-03-20 19:39:17 [1] Norm:True  WindowLength:19  TrainScore:63
+19-03-20 19:39:17 [1] Norm:True  WindowLength:18  TrainScore:62
+19-03-20 19:39:17 [1] Norm:True  WindowLength:20  TrainScore:65
+19-03-20 19:39:17 [1] Norm:True  WindowLength:17  TrainScore:60
+19-03-20 19:39:17 [1] Norm:True  WindowLength:14  TrainScore:62
+19-03-20 19:39:17 [1] Norm:True  WindowLength:15  TrainScore:61
+19-03-20 19:39:17 [1] Norm:True  WindowLength:16  TrainScore:61
+19-03-20 19:39:17 [1] Norm:True  WindowLength:10  TrainScore:63
+19-03-20 19:39:17 [1] Norm:True  WindowLength:12  TrainScore:63
+19-03-20 19:39:17 [1] Norm:True  WindowLength:11  TrainScore:64
+19-03-20 19:39:17 [1] Norm:True  WindowLength:8  TrainScore:61
+19-03-20 19:40:15 [1] ItalyPowerDemand: Shotgun Ensemble; 0.97; 0.947
+19-04-19 10:10:44 [1] FIXED_PARAMETERS
+ {'data_path': './datasets/', 'log_path': './logs/', 'test': 'ShotgunEnsemble', 'dataset': 'ItalyPowerDemand', 'train_bool': 1, 'histogram_type': 'EQUI_DEPTH', 'symbols': 4, 'wordLength': 4, 'windowLength': 8, 'normMean': 1, 'MAX_WINDOW_LENGTH': 350}
+19-04-19 10:10:44 [1] Loading from: C:\Users\Sam.officepc\Google Drive\SFA_Python\datasets\univariate\ItalyPowerDemand
+19-04-19 10:10:44 [1] Done reading ItalyPowerDemand Training Data...  Samples: 67  Length: 24
+19-04-19 10:10:44 [1] Done reading ItalyPowerDemand Testing Data...  Samples: 1029  Length: 24
+19-04-19 10:10:44 [1] Classes: [1 2]
+19-04-19 10:10:44 [1] Test: ShotgunEnsemble
+19-04-19 10:10:44 [0] {'NAME': 'ItalyPowerDemand', 'factor': 0.92, 'MAX_WINDOW_LENGTH': 250}
+19-04-19 10:10:44 [1] Windows: [24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5]
+19-04-19 10:10:44 [1] ItalyPowerDemand  Fitting for a norm of True
+19-04-19 10:10:45 [1] Correct for Norm=True & Window=24: 64
+19-04-19 10:10:45 [1] Correct for Norm=True & Window=21: 64
+19-04-19 10:10:45 [1] Correct for Norm=True & Window=23: 64
+19-04-19 10:10:45 [1] Correct for Norm=True & Window=22: 64
+19-04-19 10:10:45 [1] Correct for Norm=True & Window=17: 60
+19-04-19 10:10:45 [1] Correct for Norm=True & Window=20: 65
+19-04-19 10:10:45 [1] Correct for Norm=True & Window=19: 63
+19-04-19 10:10:45 [1] Correct for Norm=True & Window=18: 62
+19-04-19 10:10:46 [1] Correct for Norm=True & Window=16: 61
+19-04-19 10:10:46 [1] Correct for Norm=True & Window=15: 61
+19-04-19 10:10:46 [1] Correct for Norm=True & Window=14: 62
+19-04-19 10:10:46 [1] Correct for Norm=True & Window=13: 59
+19-04-19 10:10:47 [1] Correct for Norm=True & Window=11: 64
+19-04-19 10:10:47 [1] Correct for Norm=True & Window=12: 63
+19-04-19 10:10:48 [1] Correct for Norm=True & Window=7: 56
+19-04-19 10:10:48 [1] Correct for Norm=True & Window=8: 61
+19-04-19 10:10:48 [1] Correct for Norm=True & Window=10: 63
+19-04-19 10:10:49 [1] Correct for Norm=True & Window=9: 56
+19-04-19 10:10:49 [1] Correct for Norm=True & Window=6: 54
+19-04-19 10:10:49 [1] Correct for Norm=True & Window=5: 41
+19-04-19 10:10:51 [1] Windows: [24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5]
+19-04-19 10:10:51 [1] ItalyPowerDemand  Fitting for a norm of False
+19-04-19 10:10:52 [1] Correct for Norm=False & Window=23: 64
+19-04-19 10:10:52 [1] Correct for Norm=False & Window=21: 64
+19-04-19 10:10:52 [1] Correct for Norm=False & Window=19: 64
+19-04-19 10:10:52 [1] Correct for Norm=False & Window=24: 64
+19-04-19 10:10:52 [1] Correct for Norm=False & Window=22: 64
+19-04-19 10:10:52 [1] Correct for Norm=False & Window=20: 64
+19-04-19 10:10:52 [1] Correct for Norm=False & Window=18: 64
+19-04-19 10:10:53 [1] Correct for Norm=False & Window=13: 62
+19-04-19 10:10:53 [1] Correct for Norm=False & Window=15: 65
+19-04-19 10:10:53 [1] Correct for Norm=False & Window=16: 65
+19-04-19 10:10:53 [1] Correct for Norm=False & Window=14: 64
+19-04-19 10:10:55 [1] Correct for Norm=False & Window=11: 64
+19-04-19 10:10:55 [1] Correct for Norm=False & Window=10: 64
+19-04-19 10:10:55 [1] Correct for Norm=False & Window=12: 63
+19-04-19 10:10:55 [1] Correct for Norm=False & Window=7: 56
+19-04-19 10:10:55 [1] Correct for Norm=False & Window=8: 62
+19-04-19 10:10:56 [1] Correct for Norm=False & Window=9: 62
+19-04-19 10:10:56 [1] Correct for Norm=False & Window=6: 54
+19-04-19 10:10:56 [1] Correct for Norm=False & Window=5: 55
+19-04-19 10:11:00 [1] Final Ensembled Models...
+19-04-19 10:11:00 [1] Norm:True  WindowLength:24  TrainScore:64
+19-04-19 10:11:00 [1] Norm:True  WindowLength:22  TrainScore:64
+19-04-19 10:11:00 [1] Norm:True  WindowLength:23  TrainScore:64
+19-04-19 10:11:00 [1] Norm:True  WindowLength:17  TrainScore:60
+19-04-19 10:11:00 [1] Norm:True  WindowLength:21  TrainScore:64
+19-04-19 10:11:00 [1] Norm:True  WindowLength:20  TrainScore:65
+19-04-19 10:11:00 [1] Norm:True  WindowLength:19  TrainScore:63
+19-04-19 10:11:00 [1] Norm:True  WindowLength:18  TrainScore:62
+19-04-19 10:11:00 [1] Norm:True  WindowLength:15  TrainScore:61
+19-04-19 10:11:00 [1] Norm:True  WindowLength:16  TrainScore:61
+19-04-19 10:11:00 [1] Norm:True  WindowLength:14  TrainScore:62
+19-04-19 10:11:00 [1] Norm:True  WindowLength:11  TrainScore:64
+19-04-19 10:11:00 [1] Norm:True  WindowLength:12  TrainScore:63
+19-04-19 10:11:00 [1] Norm:True  WindowLength:8  TrainScore:61
+19-04-19 10:11:00 [1] Norm:True  WindowLength:10  TrainScore:63
+19-04-19 10:11:38 [1] ItalyPowerDemand: Shotgun Ensemble; 0.97; 0.947

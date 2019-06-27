@@ -1,0 +1,1035 @@
+19-03-22 12:58:36 [1] FIXED_PARAMETERS
+ {'data_path': './datasets/', 'log_path': './logs/', 'test': 'ShotgunEnsemble', 'dataset': 'Gun_Point', 'train_bool': 1, 'histogram_type': 'EQUI_DEPTH', 'symbols': 4, 'wordLength': 4, 'windowLength': 8, 'normMean': 1, 'MAX_WINDOW_LENGTH': 350}
+19-03-22 12:58:36 [1] Loading from: C:\Users\Sam.officepc\Google Drive\SFA_Python\datasets\univariate\Gun_Point
+19-03-22 12:58:36 [1] Done reading Gun_Point Training Data...  Samples: 50  Length: 150
+19-03-22 12:58:36 [1] Done reading Gun_Point Testing Data...  Samples: 150  Length: 150
+19-03-22 12:58:36 [1] Classes: [1 2]
+19-03-22 12:58:36 [1] Test: ShotgunEnsemble
+19-03-22 12:58:36 [0] {'NAME': 'Gun_Point', 'factor': 0.92, 'MAX_WINDOW_LENGTH': 250}
+19-03-22 12:58:36 [1] Windows: [150, 149, 148, 147, 146, 145, 144, 143, 142, 141, 140, 139, 138, 137, 136, 135, 134, 133, 132, 131, 130, 129, 128, 127, 126, 125, 124, 123, 122, 121, 120, 119, 118, 117, 116, 115, 114, 113, 112, 111, 110, 109, 108, 107, 106, 105, 104, 103, 102, 101, 100, 99, 98, 97, 96, 95, 94, 93, 92, 91, 90, 89, 88, 87, 86, 85, 84, 83, 82, 81, 80, 79, 78, 77, 76, 75, 74, 73, 72, 71, 70, 69, 68, 67, 66, 65, 64, 63, 62, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5]
+19-03-22 12:58:36 [1] Gun_Point  Fitting for a norm of True
+19-03-22 12:58:37 [1] Correct for Norm=True & Window=150: 48
+19-03-22 12:58:37 [1] Correct for Norm=True & Window=148: 48
+19-03-22 12:58:38 [1] Correct for Norm=True & Window=149: 48
+19-03-22 12:58:39 [1] Correct for Norm=True & Window=147: 48
+19-03-22 12:58:40 [1] Correct for Norm=True & Window=144: 49
+19-03-22 12:58:40 [1] Correct for Norm=True & Window=143: 49
+19-03-22 12:58:40 [1] Correct for Norm=True & Window=142: 49
+19-03-22 12:58:41 [1] Correct for Norm=True & Window=146: 48
+19-03-22 12:58:41 [1] Correct for Norm=True & Window=140: 49
+19-03-22 12:58:42 [1] Correct for Norm=True & Window=141: 49
+19-03-22 12:58:44 [1] Correct for Norm=True & Window=145: 49
+19-03-22 12:58:44 [1] Correct for Norm=True & Window=139: 49
+19-03-22 12:58:44 [1] Correct for Norm=True & Window=136: 48
+19-03-22 12:58:45 [1] Correct for Norm=True & Window=138: 49
+19-03-22 12:58:47 [1] Correct for Norm=True & Window=134: 46
+19-03-22 12:58:47 [1] Correct for Norm=True & Window=133: 46
+19-03-22 12:58:47 [1] Correct for Norm=True & Window=137: 49
+19-03-22 12:58:49 [1] Correct for Norm=True & Window=130: 46
+19-03-22 12:58:52 [1] Correct for Norm=True & Window=128: 44
+19-03-22 12:58:53 [1] Correct for Norm=True & Window=127: 43
+19-03-22 12:58:54 [1] Correct for Norm=True & Window=131: 46
+19-03-22 12:58:54 [1] Correct for Norm=True & Window=135: 48
+19-03-22 12:58:54 [1] Correct for Norm=True & Window=129: 45
+19-03-22 12:58:55 [1] Correct for Norm=True & Window=125: 43
+19-03-22 12:58:56 [1] Correct for Norm=True & Window=132: 46
+19-03-22 12:58:56 [1] Correct for Norm=True & Window=126: 43
+19-03-22 12:58:59 [1] Correct for Norm=True & Window=124: 43
+19-03-22 12:58:59 [1] Correct for Norm=True & Window=123: 43
+19-03-22 12:59:01 [1] Correct for Norm=True & Window=119: 42
+19-03-22 12:59:04 [1] Correct for Norm=True & Window=122: 42
+19-03-22 12:59:05 [1] Correct for Norm=True & Window=121: 42
+19-03-22 12:59:06 [1] Correct for Norm=True & Window=115: 42
+19-03-22 12:59:06 [1] Correct for Norm=True & Window=116: 42
+19-03-22 12:59:07 [1] Correct for Norm=True & Window=114: 42
+19-03-22 12:59:08 [1] Correct for Norm=True & Window=120: 42
+19-03-22 12:59:09 [1] Correct for Norm=True & Window=117: 42
+19-03-22 12:59:09 [1] Correct for Norm=True & Window=118: 42
+19-03-22 12:59:12 [1] Correct for Norm=True & Window=110: 43
+19-03-22 12:59:13 [1] Correct for Norm=True & Window=111: 43
+19-03-22 12:59:13 [1] Correct for Norm=True & Window=109: 43
+19-03-22 12:59:16 [1] Correct for Norm=True & Window=113: 42
+19-03-22 12:59:16 [1] Correct for Norm=True & Window=112: 42
+19-03-22 12:59:20 [1] Correct for Norm=True & Window=103: 44
+19-03-22 12:59:20 [1] Correct for Norm=True & Window=105: 43
+19-03-22 12:59:20 [1] Correct for Norm=True & Window=104: 43
+19-03-22 12:59:21 [1] Correct for Norm=True & Window=107: 43
+19-03-22 12:59:22 [1] Correct for Norm=True & Window=108: 43
+19-03-22 12:59:25 [1] Correct for Norm=True & Window=106: 43
+19-03-22 12:59:25 [1] Correct for Norm=True & Window=100: 45
+19-03-22 12:59:27 [1] Correct for Norm=True & Window=101: 45
+19-03-22 12:59:27 [1] Correct for Norm=True & Window=99: 45
+19-03-22 12:59:27 [1] Correct for Norm=True & Window=102: 45
+19-03-22 12:59:28 [1] Correct for Norm=True & Window=98: 46
+19-03-22 12:59:31 [1] Correct for Norm=True & Window=94: 45
+19-03-22 12:59:31 [1] Correct for Norm=True & Window=97: 47
+19-03-22 12:59:33 [1] Correct for Norm=True & Window=92: 44
+19-03-22 12:59:34 [1] Correct for Norm=True & Window=90: 46
+19-03-22 12:59:35 [1] Correct for Norm=True & Window=96: 46
+19-03-22 12:59:36 [1] Correct for Norm=True & Window=93: 46
+19-03-22 12:59:36 [1] Correct for Norm=True & Window=89: 46
+19-03-22 12:59:37 [1] Correct for Norm=True & Window=91: 45
+19-03-22 12:59:38 [1] Correct for Norm=True & Window=87: 45
+19-03-22 12:59:39 [1] Correct for Norm=True & Window=95: 45
+19-03-22 12:59:39 [1] Correct for Norm=True & Window=86: 46
+19-03-22 12:59:40 [1] Correct for Norm=True & Window=83: 47
+19-03-22 12:59:40 [1] Correct for Norm=True & Window=88: 45
+19-03-22 12:59:42 [1] Correct for Norm=True & Window=81: 49
+19-03-22 12:59:43 [1] Correct for Norm=True & Window=84: 47
+19-03-22 12:59:44 [1] Correct for Norm=True & Window=79: 49
+19-03-22 12:59:44 [1] Correct for Norm=True & Window=82: 49
+19-03-22 12:59:44 [1] Correct for Norm=True & Window=85: 47
+19-03-22 12:59:44 [1] Correct for Norm=True & Window=78: 49
+19-03-22 12:59:46 [1] Correct for Norm=True & Window=77: 49
+19-03-22 12:59:47 [1] Correct for Norm=True & Window=76: 49
+19-03-22 12:59:54 [1] Correct for Norm=True & Window=80: 49
+19-03-22 12:59:55 [1] Correct for Norm=True & Window=71: 49
+19-03-22 12:59:55 [1] Correct for Norm=True & Window=74: 47
+19-03-22 12:59:56 [1] Correct for Norm=True & Window=75: 47
+19-03-22 12:59:57 [1] Correct for Norm=True & Window=73: 48
+19-03-22 12:59:58 [1] Correct for Norm=True & Window=69: 50
+19-03-22 13:00:00 [1] Correct for Norm=True & Window=70: 49
+19-03-22 13:00:06 [1] Correct for Norm=True & Window=67: 50
+19-03-22 13:00:06 [1] Correct for Norm=True & Window=66: 50
+19-03-22 13:00:10 [1] Correct for Norm=True & Window=63: 49
+19-03-22 13:00:11 [1] Correct for Norm=True & Window=65: 50
+19-03-22 13:00:14 [1] Correct for Norm=True & Window=64: 50
+19-03-22 13:00:17 [1] Correct for Norm=True & Window=62: 49
+19-03-22 13:00:19 [1] Correct for Norm=True & Window=60: 48
+19-03-22 13:00:20 [1] Correct for Norm=True & Window=61: 49
+19-03-22 13:00:22 [1] Correct for Norm=True & Window=72: 49
+19-03-22 13:00:24 [1] Correct for Norm=True & Window=59: 48
+19-03-22 13:00:29 [1] Correct for Norm=True & Window=58: 48
+19-03-22 13:00:33 [1] Correct for Norm=True & Window=57: 48
+19-03-22 13:00:37 [1] Correct for Norm=True & Window=68: 50
+19-03-22 13:00:37 [1] Correct for Norm=True & Window=56: 47
+19-03-22 13:00:37 [1] Correct for Norm=True & Window=55: 44
+19-03-22 13:00:38 [1] Correct for Norm=True & Window=54: 46
+19-03-22 13:00:40 [1] Correct for Norm=True & Window=52: 46
+19-03-22 13:00:51 [1] Correct for Norm=True & Window=51: 47
+19-03-22 13:00:59 [1] Correct for Norm=True & Window=46: 46
+19-03-22 13:00:59 [1] Correct for Norm=True & Window=47: 45
+19-03-22 13:01:00 [1] Correct for Norm=True & Window=45: 45
+19-03-22 13:01:10 [1] Correct for Norm=True & Window=48: 44
+19-03-22 13:01:12 [1] Correct for Norm=True & Window=50: 46
+19-03-22 13:01:16 [1] Correct for Norm=True & Window=44: 45
+19-03-22 13:01:17 [1] Correct for Norm=True & Window=42: 42
+19-03-22 13:01:17 [1] Correct for Norm=True & Window=41: 42
+19-03-22 13:01:18 [1] Correct for Norm=True & Window=43: 41
+19-03-22 13:01:22 [1] Correct for Norm=True & Window=53: 45
+19-03-22 13:01:33 [1] Correct for Norm=True & Window=40: 33
+19-03-22 13:01:36 [1] Correct for Norm=True & Window=39: 36
+19-03-22 13:01:41 [1] Correct for Norm=True & Window=38: 34
+19-03-22 13:01:46 [1] Correct for Norm=True & Window=37: 37
+19-03-22 13:01:46 [1] Correct for Norm=True & Window=36: 41
+19-03-22 13:01:48 [1] Correct for Norm=True & Window=35: 43
+19-03-22 13:02:09 [1] Correct for Norm=True & Window=33: 39
+19-03-22 13:02:12 [1] Correct for Norm=True & Window=32: 40
+19-03-22 13:02:14 [1] Correct for Norm=True & Window=31: 41
+19-03-22 13:02:16 [1] Correct for Norm=True & Window=49: 44
+19-03-22 13:02:17 [1] Correct for Norm=True & Window=29: 36
+19-03-22 13:02:17 [1] Correct for Norm=True & Window=30: 39
+19-03-22 13:02:20 [1] Correct for Norm=True & Window=28: 45
+19-03-22 13:02:49 [1] Correct for Norm=True & Window=23: 41
+19-03-22 13:02:50 [1] Correct for Norm=True & Window=26: 42
+19-03-22 13:02:52 [1] Correct for Norm=True & Window=22: 37
+19-03-22 13:02:52 [1] Correct for Norm=True & Window=27: 39
+19-03-22 13:03:00 [1] Correct for Norm=True & Window=34: 43
+19-03-22 13:03:04 [1] Correct for Norm=True & Window=25: 41
+19-03-22 13:03:05 [1] Correct for Norm=True & Window=21: 33
+19-03-22 13:03:29 [1] Correct for Norm=True & Window=20: 32
+19-03-22 13:03:35 [1] Correct for Norm=True & Window=18: 35
+19-03-22 13:03:46 [1] Correct for Norm=True & Window=19: 37
+19-03-22 13:03:49 [1] Correct for Norm=True & Window=17: 32
+19-03-22 13:03:53 [1] Correct for Norm=True & Window=14: 36
+19-03-22 13:04:14 [1] Correct for Norm=True & Window=15: 28
+19-03-22 13:04:20 [1] Correct for Norm=True & Window=13: 35
+19-03-22 13:04:32 [1] Correct for Norm=True & Window=12: 36
+19-03-22 13:04:45 [1] Correct for Norm=True & Window=24: 43
+19-03-22 13:04:57 [1] Correct for Norm=True & Window=9: 32
+19-03-22 13:05:00 [1] Correct for Norm=True & Window=11: 33
+19-03-22 13:05:09 [1] Correct for Norm=True & Window=10: 33
+19-03-22 13:05:16 [1] Correct for Norm=True & Window=7: 25
+19-03-22 13:05:20 [1] Correct for Norm=True & Window=16: 31
+19-03-22 13:05:21 [1] Correct for Norm=True & Window=8: 29
+19-03-22 13:05:25 [1] Correct for Norm=True & Window=6: 26
+19-03-22 13:05:33 [1] Correct for Norm=True & Window=5: 28
+19-03-22 13:06:57 [1] Windows: [150, 149, 148, 147, 146, 145, 144, 143, 142, 141, 140, 139, 138, 137, 136, 135, 134, 133, 132, 131, 130, 129, 128, 127, 126, 125, 124, 123, 122, 121, 120, 119, 118, 117, 116, 115, 114, 113, 112, 111, 110, 109, 108, 107, 106, 105, 104, 103, 102, 101, 100, 99, 98, 97, 96, 95, 94, 93, 92, 91, 90, 89, 88, 87, 86, 85, 84, 83, 82, 81, 80, 79, 78, 77, 76, 75, 74, 73, 72, 71, 70, 69, 68, 67, 66, 65, 64, 63, 62, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5]
+19-03-22 13:06:57 [1] Gun_Point  Fitting for a norm of False
+19-03-22 13:06:58 [1] Correct for Norm=False & Window=150: 48
+19-03-22 13:06:59 [1] Correct for Norm=False & Window=148: 48
+19-03-22 13:07:00 [1] Correct for Norm=False & Window=147: 48
+19-03-22 13:07:00 [1] Correct for Norm=False & Window=146: 48
+19-03-22 13:07:01 [1] Correct for Norm=False & Window=149: 48
+19-03-22 13:07:01 [1] Correct for Norm=False & Window=144: 49
+19-03-22 13:07:03 [1] Correct for Norm=False & Window=142: 49
+19-03-22 13:07:04 [1] Correct for Norm=False & Window=141: 49
+19-03-22 13:07:04 [1] Correct for Norm=False & Window=140: 49
+19-03-22 13:07:05 [1] Correct for Norm=False & Window=145: 49
+19-03-22 13:07:06 [1] Correct for Norm=False & Window=139: 49
+19-03-22 13:07:06 [1] Correct for Norm=False & Window=143: 49
+19-03-22 13:07:09 [1] Correct for Norm=False & Window=136: 49
+19-03-22 13:07:10 [1] Correct for Norm=False & Window=137: 49
+19-03-22 13:07:10 [1] Correct for Norm=False & Window=134: 46
+19-03-22 13:07:11 [1] Correct for Norm=False & Window=135: 49
+19-03-22 13:07:16 [1] Correct for Norm=False & Window=132: 46
+19-03-22 13:07:16 [1] Correct for Norm=False & Window=130: 46
+19-03-22 13:07:16 [1] Correct for Norm=False & Window=138: 49
+19-03-22 13:07:18 [1] Correct for Norm=False & Window=128: 45
+19-03-22 13:07:20 [1] Correct for Norm=False & Window=127: 45
+19-03-22 13:07:20 [1] Correct for Norm=False & Window=129: 46
+19-03-22 13:07:25 [1] Correct for Norm=False & Window=125: 45
+19-03-22 13:07:25 [1] Correct for Norm=False & Window=126: 45
+19-03-22 13:07:25 [1] Correct for Norm=False & Window=123: 45
+19-03-22 13:07:27 [1] Correct for Norm=False & Window=133: 46
+19-03-22 13:07:28 [1] Correct for Norm=False & Window=131: 46
+19-03-22 13:07:29 [1] Correct for Norm=False & Window=122: 44
+19-03-22 13:07:31 [1] Correct for Norm=False & Window=121: 44
+19-03-22 13:07:34 [1] Correct for Norm=False & Window=118: 45
+19-03-22 13:07:34 [1] Correct for Norm=False & Window=120: 44
+19-03-22 13:07:37 [1] Correct for Norm=False & Window=119: 44
+19-03-22 13:07:40 [1] Correct for Norm=False & Window=115: 45
+19-03-22 13:07:42 [1] Correct for Norm=False & Window=124: 45
+19-03-22 13:07:43 [1] Correct for Norm=False & Window=112: 45
+19-03-22 13:07:43 [1] Correct for Norm=False & Window=113: 45
+19-03-22 13:07:45 [1] Correct for Norm=False & Window=114: 45
+19-03-22 13:07:49 [1] Correct for Norm=False & Window=116: 45
+19-03-22 13:07:51 [1] Correct for Norm=False & Window=111: 44
+19-03-22 13:07:52 [1] Correct for Norm=False & Window=110: 45
+19-03-22 13:07:52 [1] Correct for Norm=False & Window=117: 45
+19-03-22 13:07:55 [1] Correct for Norm=False & Window=108: 45
+19-03-22 13:07:56 [1] Correct for Norm=False & Window=107: 45
+19-03-22 13:08:00 [1] Correct for Norm=False & Window=106: 45
+19-03-22 13:08:01 [1] Correct for Norm=False & Window=105: 45
+19-03-22 13:08:03 [1] Correct for Norm=False & Window=104: 45
+19-03-22 13:08:05 [1] Correct for Norm=False & Window=103: 46
+19-03-22 13:08:06 [1] Correct for Norm=False & Window=109: 45
+19-03-22 13:08:06 [1] Correct for Norm=False & Window=100: 47
+19-03-22 13:08:08 [1] Correct for Norm=False & Window=101: 47
+19-03-22 13:08:14 [1] Correct for Norm=False & Window=98: 46
+19-03-22 13:08:14 [1] Correct for Norm=False & Window=99: 47
+19-03-22 13:08:15 [1] Correct for Norm=False & Window=94: 46
+19-03-22 13:08:16 [1] Correct for Norm=False & Window=97: 47
+19-03-22 13:08:17 [1] Correct for Norm=False & Window=96: 46
+19-03-22 13:08:18 [1] Correct for Norm=False & Window=93: 46
+19-03-22 13:08:18 [1] Correct for Norm=False & Window=102: 47
+19-03-22 13:08:23 [1] Correct for Norm=False & Window=95: 46
+19-03-22 13:08:24 [1] Correct for Norm=False & Window=90: 47
+19-03-22 13:08:27 [1] Correct for Norm=False & Window=91: 45
+19-03-22 13:08:27 [1] Correct for Norm=False & Window=87: 47
+19-03-22 13:08:28 [1] Correct for Norm=False & Window=92: 46
+19-03-22 13:08:28 [1] Correct for Norm=False & Window=89: 47
+19-03-22 13:08:30 [1] Correct for Norm=False & Window=88: 47
+19-03-22 13:08:33 [1] Correct for Norm=False & Window=84: 48
+19-03-22 13:08:36 [1] Correct for Norm=False & Window=82: 47
+19-03-22 13:08:37 [1] Correct for Norm=False & Window=80: 47
+19-03-22 13:08:37 [1] Correct for Norm=False & Window=83: 48
+19-03-22 13:08:38 [1] Correct for Norm=False & Window=81: 47
+19-03-22 13:08:40 [1] Correct for Norm=False & Window=86: 47
+19-03-22 13:08:41 [1] Correct for Norm=False & Window=78: 48
+19-03-22 13:08:41 [1] Correct for Norm=False & Window=79: 47
+19-03-22 13:08:44 [1] Correct for Norm=False & Window=85: 48
+19-03-22 13:08:44 [1] Correct for Norm=False & Window=77: 48
+19-03-22 13:08:48 [1] Correct for Norm=False & Window=76: 48
+19-03-22 13:09:01 [1] Correct for Norm=False & Window=72: 50
+19-03-22 13:09:05 [1] Correct for Norm=False & Window=74: 49
+19-03-22 13:09:07 [1] Correct for Norm=False & Window=69: 49
+19-03-22 13:09:07 [1] Correct for Norm=False & Window=75: 49
+19-03-22 13:09:08 [1] Correct for Norm=False & Window=71: 49
+19-03-22 13:09:13 [1] Correct for Norm=False & Window=68: 49
+19-03-22 13:09:23 [1] Correct for Norm=False & Window=67: 49
+19-03-22 13:09:29 [1] Correct for Norm=False & Window=66: 49
+19-03-22 13:09:29 [1] Correct for Norm=False & Window=70: 49
+19-03-22 13:09:31 [1] Correct for Norm=False & Window=65: 49
+19-03-22 13:09:33 [1] Correct for Norm=False & Window=63: 49
+19-03-22 13:09:33 [1] Correct for Norm=False & Window=64: 49
+19-03-22 13:09:37 [1] Correct for Norm=False & Window=73: 49
+19-03-22 13:09:37 [1] Correct for Norm=False & Window=62: 46
+19-03-22 13:09:43 [1] Correct for Norm=False & Window=61: 47
+19-03-22 13:09:51 [1] Correct for Norm=False & Window=58: 45
+19-03-22 13:09:53 [1] Correct for Norm=False & Window=60: 48
+19-03-22 13:09:58 [1] Correct for Norm=False & Window=56: 45
+19-03-22 13:09:59 [1] Correct for Norm=False & Window=57: 45
+19-03-22 13:10:00 [1] Correct for Norm=False & Window=54: 43
+19-03-22 13:10:03 [1] Correct for Norm=False & Window=53: 44
+19-03-22 13:10:12 [1] Correct for Norm=False & Window=52: 41
+19-03-22 13:10:18 [1] Correct for Norm=False & Window=51: 41
+19-03-22 13:10:21 [1] Correct for Norm=False & Window=59: 45
+19-03-22 13:10:25 [1] Correct for Norm=False & Window=55: 47
+19-03-22 13:10:26 [1] Correct for Norm=False & Window=47: 45
+19-03-22 13:10:32 [1] Correct for Norm=False & Window=48: 43
+19-03-22 13:10:34 [1] Correct for Norm=False & Window=49: 45
+19-03-22 13:10:36 [1] Correct for Norm=False & Window=50: 45
+19-03-22 13:10:37 [1] Correct for Norm=False & Window=46: 46
+19-03-22 13:10:42 [1] Correct for Norm=False & Window=45: 43
+19-03-22 13:10:45 [1] Correct for Norm=False & Window=42: 42
+19-03-22 13:10:54 [1] Correct for Norm=False & Window=40: 40
+19-03-22 13:10:56 [1] Correct for Norm=False & Window=38: 39
+19-03-22 13:11:01 [1] Correct for Norm=False & Window=41: 38
+19-03-22 13:11:02 [1] Correct for Norm=False & Window=39: 41
+19-03-22 13:11:08 [1] Correct for Norm=False & Window=36: 43
+19-03-22 13:11:08 [1] Correct for Norm=False & Window=44: 46
+19-03-22 13:11:10 [1] Correct for Norm=False & Window=37: 45
+19-03-22 13:11:18 [1] Correct for Norm=False & Window=35: 40
+19-03-22 13:11:18 [1] Correct for Norm=False & Window=34: 39
+19-03-22 13:11:19 [1] Correct for Norm=False & Window=43: 45
+19-03-22 13:11:29 [1] Correct for Norm=False & Window=31: 34
+19-03-22 13:11:33 [1] Correct for Norm=False & Window=33: 31
+19-03-22 13:11:34 [1] Correct for Norm=False & Window=32: 35
+19-03-22 13:11:38 [1] Correct for Norm=False & Window=29: 31
+19-03-22 13:11:40 [1] Correct for Norm=False & Window=27: 39
+19-03-22 13:11:46 [1] Correct for Norm=False & Window=28: 29
+19-03-22 13:11:52 [1] Correct for Norm=False & Window=25: 41
+19-03-22 13:11:59 [1] Correct for Norm=False & Window=30: 38
+19-03-22 13:12:00 [1] Correct for Norm=False & Window=22: 33
+19-03-22 13:12:01 [1] Correct for Norm=False & Window=21: 32
+19-03-22 13:12:02 [1] Correct for Norm=False & Window=24: 44
+19-03-22 13:12:02 [1] Correct for Norm=False & Window=23: 42
+19-03-22 13:12:04 [1] Correct for Norm=False & Window=26: 36
+19-03-22 13:12:09 [1] Correct for Norm=False & Window=19: 40
+19-03-22 13:12:11 [1] Correct for Norm=False & Window=20: 36
+19-03-22 13:12:15 [1] FIXED_PARAMETERS
+ {'normMean': 1, 'histogram_type': 'EQUI_DEPTH', 'dataset': 'Gun_Point', 'data_path': './datasets/', 'windowLength': 8, 'train_bool': 1, 'MAX_WINDOW_LENGTH': 350, 'log_path': './logs/', 'symbols': 4, 'wordLength': 4, 'test': 'ShotgunEnsemble'}
+19-03-22 13:12:15 [1] Loading from: C:\Users\Sam.officepc\Google Drive\SFA_Python\datasets\univariate\Gun_Point
+19-03-22 13:12:15 [1] Done reading Gun_Point Training Data...  Samples: 50  Length: 150
+19-03-22 13:12:15 [1] Done reading Gun_Point Testing Data...  Samples: 150  Length: 150
+19-03-22 13:12:15 [1] Classes: [1 2]
+19-03-22 13:12:15 [1] Test: ShotgunEnsemble
+19-03-22 13:12:15 [0] {'NAME': 'Gun_Point', 'MAX_WINDOW_LENGTH': 250, 'factor': 0.92}
+19-03-22 13:12:15 [1] Windows: [150, 149, 148, 147, 146, 145, 144, 143, 142, 141, 140, 139, 138, 137, 136, 135, 134, 133, 132, 131, 130, 129, 128, 127, 126, 125, 124, 123, 122, 121, 120, 119, 118, 117, 116, 115, 114, 113, 112, 111, 110, 109, 108, 107, 106, 105, 104, 103, 102, 101, 100, 99, 98, 97, 96, 95, 94, 93, 92, 91, 90, 89, 88, 87, 86, 85, 84, 83, 82, 81, 80, 79, 78, 77, 76, 75, 74, 73, 72, 71, 70, 69, 68, 67, 66, 65, 64, 63, 62, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5]
+19-03-22 13:12:15 [1] Gun_Point  Fitting for a norm of True
+19-03-22 13:12:16 [1] Correct for Norm=True & Window=150: 48
+19-03-22 13:12:16 [1] Correct for Norm=True & Window=147: 48
+19-03-22 13:12:17 [1] Correct for Norm=True & Window=148: 48
+19-03-22 13:12:17 [1] Correct for Norm=True & Window=149: 48
+19-03-22 13:12:17 [1] Correct for Norm=True & Window=144: 49
+19-03-22 13:12:17 [1] Correct for Norm=True & Window=146: 48
+19-03-22 13:12:17 [1] Correct for Norm=True & Window=145: 49
+19-03-22 13:12:19 [1] Correct for Norm=True & Window=143: 49
+19-03-22 13:12:19 [1] Correct for Norm=True & Window=142: 49
+19-03-22 13:12:19 [1] Correct for Norm=False & Window=17: 26
+19-03-22 13:12:20 [1] Correct for Norm=True & Window=141: 49
+19-03-22 13:12:20 [1] Correct for Norm=True & Window=140: 49
+19-03-22 13:12:20 [1] Correct for Norm=False & Window=16: 32
+19-03-22 13:12:21 [1] Correct for Norm=True & Window=139: 49
+19-03-22 13:12:22 [1] Correct for Norm=True & Window=136: 48
+19-03-22 13:12:22 [1] Correct for Norm=True & Window=137: 49
+19-03-22 13:12:23 [1] Correct for Norm=True & Window=138: 49
+19-03-22 13:12:24 [1] Correct for Norm=True & Window=133: 46
+19-03-22 13:12:24 [1] Correct for Norm=True & Window=135: 48
+19-03-22 13:12:25 [1] Correct for Norm=False & Window=15: 35
+19-03-22 13:12:25 [1] Correct for Norm=True & Window=134: 46
+19-03-22 13:12:26 [1] Correct for Norm=True & Window=131: 46
+19-03-22 13:12:26 [1] Correct for Norm=True & Window=132: 46
+19-03-22 13:12:27 [1] Correct for Norm=False & Window=14: 29
+19-03-22 13:12:27 [1] Correct for Norm=True & Window=129: 45
+19-03-22 13:12:29 [1] Correct for Norm=True & Window=130: 46
+19-03-22 13:12:29 [1] Correct for Norm=True & Window=127: 43
+19-03-22 13:12:29 [1] Correct for Norm=False & Window=12: 34
+19-03-22 13:12:31 [1] Correct for Norm=True & Window=124: 43
+19-03-22 13:12:32 [1] Correct for Norm=True & Window=128: 44
+19-03-22 13:12:32 [1] Correct for Norm=True & Window=123: 43
+19-03-22 13:12:32 [1] Correct for Norm=True & Window=126: 43
+19-03-22 13:12:33 [1] Correct for Norm=True & Window=125: 43
+19-03-22 13:12:33 [1] Correct for Norm=False & Window=18: 34
+19-03-22 13:12:34 [1] Correct for Norm=True & Window=122: 42
+19-03-22 13:12:35 [1] Correct for Norm=True & Window=121: 42
+19-03-22 13:12:37 [1] Correct for Norm=True & Window=120: 42
+19-03-22 13:12:37 [1] Correct for Norm=True & Window=119: 42
+19-03-22 13:12:38 [1] Correct for Norm=True & Window=117: 42
+19-03-22 13:12:40 [1] Correct for Norm=False & Window=11: 31
+19-03-22 13:12:41 [1] Correct for Norm=True & Window=115: 42
+19-03-22 13:12:41 [1] Correct for Norm=True & Window=114: 42
+19-03-22 13:12:41 [1] Correct for Norm=True & Window=113: 42
+19-03-22 13:12:41 [1] Correct for Norm=True & Window=116: 42
+19-03-22 13:12:42 [1] Correct for Norm=True & Window=118: 42
+19-03-22 13:12:44 [1] Correct for Norm=True & Window=110: 43
+19-03-22 13:12:44 [1] Correct for Norm=True & Window=111: 43
+19-03-22 13:12:45 [1] Correct for Norm=True & Window=112: 42
+19-03-22 13:12:47 [1] Correct for Norm=True & Window=107: 43
+19-03-22 13:12:48 [1] Correct for Norm=True & Window=109: 43
+19-03-22 13:12:49 [1] Correct for Norm=True & Window=103: 44
+19-03-22 13:12:50 [1] Correct for Norm=True & Window=108: 43
+19-03-22 13:12:50 [1] Correct for Norm=True & Window=104: 43
+19-03-22 13:12:53 [1] Correct for Norm=True & Window=106: 43
+19-03-22 13:12:53 [1] Correct for Norm=True & Window=101: 45
+19-03-22 13:12:54 [1] Correct for Norm=True & Window=102: 45
+19-03-22 13:12:54 [1] Correct for Norm=True & Window=100: 45
+19-03-22 13:12:56 [1] Correct for Norm=True & Window=99: 45
+19-03-22 13:12:56 [1] Correct for Norm=True & Window=105: 43
+19-03-22 13:12:56 [1] Correct for Norm=True & Window=97: 47
+19-03-22 13:12:58 [1] Correct for Norm=True & Window=98: 46
+19-03-22 13:12:59 [1] Correct for Norm=True & Window=95: 45
+19-03-22 13:13:00 [1] Correct for Norm=True & Window=93: 46
+19-03-22 13:13:01 [1] Correct for Norm=True & Window=92: 44
+19-03-22 13:13:01 [1] Correct for Norm=True & Window=94: 45
+19-03-22 13:13:02 [1] Correct for Norm=True & Window=90: 46
+19-03-22 13:13:03 [1] Correct for Norm=True & Window=88: 45
+19-03-22 13:13:04 [1] Correct for Norm=True & Window=89: 46
+19-03-22 13:13:05 [1] Correct for Norm=True & Window=86: 46
+19-03-22 13:13:05 [1] Correct for Norm=True & Window=96: 46
+19-03-22 13:13:05 [1] Correct for Norm=True & Window=87: 45
+19-03-22 13:13:06 [1] Correct for Norm=True & Window=84: 47
+19-03-22 13:13:07 [1] Correct for Norm=True & Window=85: 47
+19-03-22 13:13:08 [1] Correct for Norm=True & Window=91: 45
+19-03-22 13:13:08 [1] Correct for Norm=True & Window=83: 47
+19-03-22 13:13:09 [1] Correct for Norm=True & Window=81: 49
+19-03-22 13:13:09 [1] Correct for Norm=True & Window=82: 49
+19-03-22 13:13:10 [1] Correct for Norm=True & Window=79: 49
+19-03-22 13:13:11 [1] Correct for Norm=True & Window=78: 49
+19-03-22 13:13:11 [1] Correct for Norm=True & Window=77: 49
+19-03-22 13:13:11 [1] Correct for Norm=True & Window=80: 49
+19-03-22 13:13:15 [1] Correct for Norm=True & Window=76: 49
+19-03-22 13:13:19 [1] Correct for Norm=True & Window=75: 47
+19-03-22 13:13:19 [1] Correct for Norm=True & Window=74: 47
+19-03-22 13:13:21 [1] Correct for Norm=True & Window=72: 49
+19-03-22 13:13:22 [1] Correct for Norm=True & Window=73: 48
+19-03-22 13:13:23 [1] Correct for Norm=True & Window=71: 49
+19-03-22 13:13:25 [1] Correct for Norm=True & Window=70: 49
+19-03-22 13:13:29 [1] Correct for Norm=True & Window=66: 50
+19-03-22 13:13:30 [1] Correct for Norm=True & Window=67: 50
+19-03-22 13:13:31 [1] Correct for Norm=True & Window=69: 50
+19-03-22 13:13:33 [1] Correct for Norm=True & Window=65: 50
+19-03-22 13:13:36 [1] Correct for Norm=True & Window=68: 50
+19-03-22 13:13:36 [1] Correct for Norm=True & Window=64: 50
+19-03-22 13:13:36 [1] Correct for Norm=True & Window=63: 49
+19-03-22 13:13:39 [1] Correct for Norm=True & Window=62: 49
+19-03-22 13:13:41 [1] Correct for Norm=True & Window=61: 49
+19-03-22 13:13:43 [1] Correct for Norm=True & Window=60: 48
+19-03-22 13:13:47 [1] Correct for Norm=True & Window=58: 48
+19-03-22 13:13:53 [1] Correct for Norm=True & Window=56: 47
+19-03-22 13:13:54 [1] Correct for Norm=True & Window=55: 44
+19-03-22 13:13:56 [1] Correct for Norm=True & Window=59: 48
+19-03-22 13:13:57 [1] Correct for Norm=True & Window=53: 45
+19-03-22 13:13:57 [1] Correct for Norm=True & Window=54: 46
+19-03-22 13:13:58 [1] Correct for Norm=True & Window=52: 46
+19-03-22 13:14:05 [1] Correct for Norm=True & Window=51: 47
+19-03-22 13:14:05 [1] Correct for Norm=True & Window=57: 48
+19-03-22 13:14:17 [1] Correct for Norm=True & Window=45: 45
+19-03-22 13:14:18 [1] Correct for Norm=True & Window=47: 45
+19-03-22 13:14:22 [1] Correct for Norm=True & Window=49: 44
+19-03-22 13:14:23 [1] Correct for Norm=True & Window=46: 46
+19-03-22 13:14:26 [1] Correct for Norm=True & Window=48: 44
+19-03-22 13:14:27 [1] Correct for Norm=True & Window=44: 45
+19-03-22 13:14:27 [1] Correct for Norm=True & Window=50: 46
+19-03-22 13:14:34 [1] Correct for Norm=True & Window=41: 42
+19-03-22 13:14:34 [1] Correct for Norm=True & Window=42: 42
+19-03-22 13:14:35 [1] Correct for Norm=True & Window=43: 41
+19-03-22 13:14:41 [1] Correct for Norm=True & Window=40: 33
+19-03-22 13:14:49 [1] Correct for Norm=True & Window=39: 36
+19-03-22 13:14:54 [1] Correct for Norm=True & Window=38: 34
+19-03-22 13:14:56 [1] Correct for Norm=True & Window=37: 37
+19-03-22 13:14:56 [1] Correct for Norm=True & Window=34: 43
+19-03-22 13:14:56 [1] Correct for Norm=True & Window=35: 43
+19-03-22 13:15:05 [1] Correct for Norm=True & Window=32: 40
+19-03-22 13:15:10 [1] Correct for Norm=True & Window=36: 41
+19-03-22 13:15:22 [1] Correct for Norm=True & Window=31: 41
+19-03-22 13:15:22 [1] Correct for Norm=True & Window=28: 45
+19-03-22 13:15:24 [1] Correct for Norm=True & Window=27: 39
+19-03-22 13:15:26 [1] Correct for Norm=True & Window=33: 39
+19-03-22 13:15:28 [1] Correct for Norm=True & Window=29: 36
+19-03-22 13:15:35 [1] Correct for Norm=True & Window=26: 42
+19-03-22 13:15:51 [1] Correct for Norm=True & Window=25: 41
+19-03-22 13:15:54 [1] Correct for Norm=True & Window=23: 41
+19-03-22 13:15:56 [1] Correct for Norm=True & Window=22: 37
+19-03-22 13:16:00 [1] Correct for Norm=True & Window=24: 43
+19-03-22 13:16:02 [1] Correct for Norm=True & Window=30: 39
+19-03-22 13:16:11 [1] Correct for Norm=True & Window=20: 32
+19-03-22 13:16:13 [1] Correct for Norm=True & Window=19: 37
+19-03-22 13:16:32 [1] Correct for Norm=True & Window=17: 32
+19-03-22 13:16:38 [1] Correct for Norm=True & Window=16: 31
+19-03-22 13:16:51 [1] Correct for Norm=True & Window=18: 35
+19-03-22 13:16:57 [1] Correct for Norm=True & Window=21: 33
+19-03-22 13:17:09 [1] Correct for Norm=True & Window=13: 35
+19-03-22 13:17:12 [1] Correct for Norm=True & Window=15: 28
+19-03-22 13:17:13 [1] Correct for Norm=True & Window=12: 36
+19-03-22 13:17:24 [1] Correct for Norm=True & Window=14: 36
+19-03-22 13:17:24 [1] Correct for Norm=True & Window=11: 33
+19-03-22 13:17:32 [1] Correct for Norm=True & Window=10: 33
+19-03-22 13:17:51 [1] Correct for Norm=True & Window=9: 32
+19-03-22 13:18:00 [1] Correct for Norm=True & Window=7: 25
+19-03-22 13:18:06 [1] Correct for Norm=True & Window=5: 28
+19-03-22 13:18:07 [1] Correct for Norm=True & Window=8: 29
+19-03-22 13:18:07 [1] Correct for Norm=True & Window=6: 26
+19-03-22 13:19:16 [1] Windows: [150, 149, 148, 147, 146, 145, 144, 143, 142, 141, 140, 139, 138, 137, 136, 135, 134, 133, 132, 131, 130, 129, 128, 127, 126, 125, 124, 123, 122, 121, 120, 119, 118, 117, 116, 115, 114, 113, 112, 111, 110, 109, 108, 107, 106, 105, 104, 103, 102, 101, 100, 99, 98, 97, 96, 95, 94, 93, 92, 91, 90, 89, 88, 87, 86, 85, 84, 83, 82, 81, 80, 79, 78, 77, 76, 75, 74, 73, 72, 71, 70, 69, 68, 67, 66, 65, 64, 63, 62, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5]
+19-03-22 13:19:16 [1] Gun_Point  Fitting for a norm of False
+19-03-22 13:19:17 [1] Correct for Norm=False & Window=149: 48
+19-03-22 13:19:18 [1] Correct for Norm=False & Window=150: 48
+19-03-22 13:19:18 [1] Correct for Norm=False & Window=148: 48
+19-03-22 13:19:19 [1] Correct for Norm=False & Window=147: 48
+19-03-22 13:19:20 [1] Correct for Norm=False & Window=146: 48
+19-03-22 13:19:20 [1] Correct for Norm=False & Window=145: 49
+19-03-22 13:19:21 [1] Correct for Norm=False & Window=142: 49
+19-03-22 13:19:21 [1] Correct for Norm=False & Window=144: 49
+19-03-22 13:19:22 [1] Correct for Norm=False & Window=140: 49
+19-03-22 13:19:23 [1] Correct for Norm=False & Window=139: 49
+19-03-22 13:19:24 [1] Correct for Norm=False & Window=143: 49
+19-03-22 13:19:26 [1] Correct for Norm=False & Window=141: 49
+19-03-22 13:19:26 [1] Correct for Norm=False & Window=136: 49
+19-03-22 13:19:27 [1] Correct for Norm=False & Window=137: 49
+19-03-22 13:19:27 [1] Correct for Norm=False & Window=138: 49
+19-03-22 13:19:28 [1] Correct for Norm=False & Window=134: 46
+19-03-22 13:19:28 [1] Correct for Norm=False & Window=135: 49
+19-03-22 13:19:29 [1] Correct for Norm=False & Window=133: 46
+19-03-22 13:19:33 [1] Correct for Norm=False & Window=130: 46
+19-03-22 13:19:35 [1] Correct for Norm=False & Window=127: 45
+19-03-22 13:19:36 [1] Correct for Norm=False & Window=132: 46
+19-03-22 13:19:37 [1] Correct for Norm=False & Window=128: 45
+19-03-22 13:19:37 [1] Correct for Norm=False & Window=129: 46
+19-03-22 13:19:37 [1] Correct for Norm=False & Window=125: 45
+19-03-22 13:19:38 [1] Correct for Norm=False & Window=126: 45
+19-03-22 13:19:39 [1] Correct for Norm=False & Window=131: 46
+19-03-22 13:19:40 [1] Correct for Norm=False & Window=124: 45
+19-03-22 13:19:42 [1] Correct for Norm=False & Window=123: 45
+19-03-22 13:19:46 [1] Correct for Norm=False & Window=119: 44
+19-03-22 13:19:47 [1] Correct for Norm=False & Window=121: 44
+19-03-22 13:19:47 [1] Correct for Norm=False & Window=120: 44
+19-03-22 13:19:48 [1] Correct for Norm=False & Window=116: 45
+19-03-22 13:19:49 [1] Correct for Norm=False & Window=118: 45
+19-03-22 13:19:51 [1] Correct for Norm=False & Window=115: 45
+19-03-22 13:19:52 [1] Correct for Norm=False & Window=122: 44
+19-03-22 13:19:54 [1] Correct for Norm=False & Window=114: 45
+19-03-22 13:19:55 [1] Correct for Norm=False & Window=111: 44
+19-03-22 13:19:58 [1] Correct for Norm=False & Window=117: 45
+19-03-22 13:19:58 [1] Correct for Norm=False & Window=113: 45
+19-03-22 13:19:58 [1] Correct for Norm=False & Window=109: 45
+19-03-22 13:20:00 [1] Correct for Norm=False & Window=110: 45
+19-03-22 13:20:02 [1] Correct for Norm=False & Window=107: 45
+19-03-22 13:20:03 [1] Correct for Norm=False & Window=106: 45
+19-03-22 13:20:05 [1] Correct for Norm=False & Window=112: 45
+19-03-22 13:20:05 [1] Correct for Norm=False & Window=103: 46
+19-03-22 13:20:08 [1] Correct for Norm=False & Window=104: 45
+19-03-22 13:20:10 [1] Correct for Norm=False & Window=100: 47
+19-03-22 13:20:10 [1] Correct for Norm=False & Window=102: 47
+19-03-22 13:20:11 [1] Correct for Norm=False & Window=101: 47
+19-03-22 13:20:13 [1] Correct for Norm=False & Window=98: 46
+19-03-22 13:20:14 [1] Correct for Norm=False & Window=108: 45
+19-03-22 13:20:17 [1] Correct for Norm=False & Window=96: 46
+19-03-22 13:20:18 [1] Correct for Norm=False & Window=94: 46
+19-03-22 13:20:19 [1] Correct for Norm=False & Window=93: 46
+19-03-22 13:20:20 [1] Correct for Norm=False & Window=97: 47
+19-03-22 13:20:20 [1] Correct for Norm=False & Window=95: 46
+19-03-22 13:20:20 [1] Correct for Norm=False & Window=105: 45
+19-03-22 13:20:23 [1] Correct for Norm=False & Window=91: 45
+19-03-22 13:20:25 [1] Correct for Norm=False & Window=90: 47
+19-03-22 13:20:25 [1] Correct for Norm=False & Window=99: 47
+19-03-22 13:20:25 [1] Correct for Norm=False & Window=89: 47
+19-03-22 13:20:28 [1] Correct for Norm=False & Window=88: 47
+19-03-22 13:20:29 [1] Correct for Norm=False & Window=87: 47
+19-03-22 13:20:29 [1] Correct for Norm=False & Window=85: 48
+19-03-22 13:20:31 [1] Correct for Norm=False & Window=82: 47
+19-03-22 13:20:31 [1] Correct for Norm=False & Window=84: 48
+19-03-22 13:20:32 [1] Correct for Norm=False & Window=92: 46
+19-03-22 13:20:36 [1] Correct for Norm=False & Window=79: 47
+19-03-22 13:20:37 [1] Correct for Norm=False & Window=81: 47
+19-03-22 13:20:37 [1] Correct for Norm=False & Window=86: 47
+19-03-22 13:20:37 [1] Correct for Norm=False & Window=80: 47
+19-03-22 13:20:38 [1] Correct for Norm=False & Window=77: 48
+19-03-22 13:20:38 [1] Correct for Norm=False & Window=78: 48
+19-03-22 13:20:42 [1] Correct for Norm=False & Window=83: 48
+19-03-22 13:20:50 [1] Correct for Norm=False & Window=76: 48
+19-03-22 13:20:52 [1] Correct for Norm=False & Window=70: 49
+19-03-22 13:20:52 [1] Correct for Norm=False & Window=75: 49
+19-03-22 13:20:54 [1] Correct for Norm=False & Window=71: 49
+19-03-22 13:21:02 [1] Correct for Norm=False & Window=74: 49
+19-03-22 13:21:02 [1] Correct for Norm=False & Window=72: 50
+19-03-22 13:21:05 [1] Correct for Norm=False & Window=66: 49
+19-03-22 13:21:05 [1] Correct for Norm=False & Window=67: 49
+19-03-22 13:21:06 [1] Correct for Norm=False & Window=65: 49
+19-03-22 13:21:19 [1] Correct for Norm=False & Window=62: 46
+19-03-22 13:21:20 [1] Correct for Norm=False & Window=61: 47
+19-03-22 13:21:22 [1] Correct for Norm=False & Window=63: 49
+19-03-22 13:21:22 [1] Correct for Norm=False & Window=73: 49
+19-03-22 13:21:22 [1] Correct for Norm=False & Window=69: 49
+19-03-22 13:21:22 [1] Correct for Norm=False & Window=64: 49
+19-03-22 13:21:23 [1] Correct for Norm=False & Window=60: 48
+19-03-22 13:21:33 [1] Correct for Norm=False & Window=59: 45
+19-03-22 13:21:34 [1] Correct for Norm=False & Window=58: 45
+19-03-22 13:21:35 [1] Correct for Norm=False & Window=68: 49
+19-03-22 13:21:38 [1] Correct for Norm=False & Window=53: 44
+19-03-22 13:21:42 [1] Correct for Norm=False & Window=54: 43
+19-03-22 13:21:43 [1] Correct for Norm=False & Window=57: 45
+19-03-22 13:21:48 [1] Correct for Norm=False & Window=52: 41
+19-03-22 13:21:49 [1] Correct for Norm=False & Window=51: 41
+19-03-22 13:22:00 [1] Correct for Norm=False & Window=49: 45
+19-03-22 13:22:02 [1] Correct for Norm=False & Window=55: 47
+19-03-22 13:22:04 [1] Correct for Norm=False & Window=45: 43
+19-03-22 13:22:04 [1] Correct for Norm=False & Window=56: 45
+19-03-22 13:22:04 [1] Correct for Norm=False & Window=46: 46
+19-03-22 13:22:07 [1] Correct for Norm=False & Window=48: 43
+19-03-22 13:22:10 [1] Correct for Norm=False & Window=47: 45
+19-03-22 13:22:17 [1] Correct for Norm=False & Window=44: 46
+19-03-22 13:22:17 [1] Correct for Norm=False & Window=41: 38
+19-03-22 13:22:18 [1] Correct for Norm=False & Window=40: 40
+19-03-22 13:22:25 [1] Correct for Norm=False & Window=39: 41
+19-03-22 13:22:29 [1] Correct for Norm=False & Window=38: 39
+19-03-22 13:22:33 [1] Correct for Norm=False & Window=35: 40
+19-03-22 13:22:35 [1] Correct for Norm=False & Window=36: 43
+19-03-22 13:22:38 [1] Correct for Norm=False & Window=37: 45
+19-03-22 13:22:39 [1] Correct for Norm=False & Window=50: 45
+19-03-22 13:22:45 [1] Correct for Norm=False & Window=34: 39
+19-03-22 13:22:47 [1] Correct for Norm=False & Window=42: 42
+19-03-22 13:22:48 [1] Correct for Norm=False & Window=43: 45
+19-03-22 13:22:49 [1] Correct for Norm=False & Window=32: 35
+19-03-22 13:22:50 [1] Correct for Norm=False & Window=31: 34
+19-03-22 13:22:53 [1] Correct for Norm=False & Window=33: 31
+19-03-22 13:23:00 [1] Correct for Norm=False & Window=30: 38
+19-03-22 13:23:08 [1] Correct for Norm=False & Window=25: 41
+19-03-22 13:23:08 [1] Correct for Norm=False & Window=24: 44
+19-03-22 13:23:12 [1] Correct for Norm=False & Window=28: 29
+19-03-22 13:23:12 [1] Correct for Norm=False & Window=26: 36
+19-03-22 13:23:18 [1] Correct for Norm=False & Window=23: 42
+19-03-22 13:23:19 [1] Correct for Norm=False & Window=22: 33
+19-03-22 13:23:25 [1] Correct for Norm=False & Window=27: 39
+19-03-22 13:23:25 [1] Correct for Norm=False & Window=20: 36
+19-03-22 13:23:26 [1] Correct for Norm=False & Window=21: 32
+19-03-22 13:23:32 [1] Correct for Norm=False & Window=29: 31
+19-03-22 13:23:32 [1] Correct for Norm=False & Window=18: 34
+19-03-22 13:23:33 [1] Correct for Norm=False & Window=19: 40
+19-03-22 13:23:38 [1] Correct for Norm=False & Window=17: 26
+19-03-22 13:23:39 [1] Correct for Norm=False & Window=16: 32
+19-03-22 13:23:44 [1] Correct for Norm=False & Window=14: 29
+19-03-22 13:23:44 [1] Correct for Norm=False & Window=13: 32
+19-03-22 13:23:56 [1] Correct for Norm=False & Window=11: 31
+19-03-22 13:24:00 [1] Correct for Norm=False & Window=15: 35
+19-03-22 13:24:01 [1] Correct for Norm=False & Window=10: 30
+19-03-22 13:24:08 [1] Correct for Norm=False & Window=8: 30
+19-03-22 13:24:09 [1] Correct for Norm=False & Window=9: 33
+19-03-22 13:24:09 [1] Correct for Norm=False & Window=7: 28
+19-03-22 13:24:11 [1] Correct for Norm=False & Window=6: 31
+19-03-22 13:24:11 [1] Correct for Norm=False & Window=12: 34
+19-03-22 13:24:15 [1] Correct for Norm=False & Window=5: 33
+19-03-22 13:25:54 [1] Final Ensembled Models...
+19-03-22 13:25:54 [1] Norm:True  WindowLength:150  TrainScore:48
+19-03-22 13:25:54 [1] Norm:True  WindowLength:147  TrainScore:48
+19-03-22 13:25:54 [1] Norm:True  WindowLength:148  TrainScore:48
+19-03-22 13:25:54 [1] Norm:True  WindowLength:144  TrainScore:49
+19-03-22 13:25:54 [1] Norm:True  WindowLength:149  TrainScore:48
+19-03-22 13:25:54 [1] Norm:True  WindowLength:145  TrainScore:49
+19-03-22 13:25:54 [1] Norm:True  WindowLength:146  TrainScore:48
+19-03-22 13:25:54 [1] Norm:True  WindowLength:143  TrainScore:49
+19-03-22 13:25:54 [1] Norm:True  WindowLength:142  TrainScore:49
+19-03-22 13:25:54 [1] Norm:True  WindowLength:141  TrainScore:49
+19-03-22 13:25:54 [1] Norm:True  WindowLength:140  TrainScore:49
+19-03-22 13:25:54 [1] Norm:True  WindowLength:139  TrainScore:49
+19-03-22 13:25:54 [1] Norm:True  WindowLength:136  TrainScore:48
+19-03-22 13:25:54 [1] Norm:True  WindowLength:137  TrainScore:49
+19-03-22 13:25:54 [1] Norm:True  WindowLength:138  TrainScore:49
+19-03-22 13:25:54 [1] Norm:True  WindowLength:133  TrainScore:46
+19-03-22 13:25:54 [1] Norm:True  WindowLength:135  TrainScore:48
+19-03-22 13:25:54 [1] Norm:True  WindowLength:134  TrainScore:46
+19-03-22 13:25:54 [1] Norm:True  WindowLength:131  TrainScore:46
+19-03-22 13:25:54 [1] Norm:True  WindowLength:132  TrainScore:46
+19-03-22 13:25:54 [1] Norm:True  WindowLength:130  TrainScore:46
+19-03-22 13:25:54 [1] Norm:True  WindowLength:97  TrainScore:47
+19-03-22 13:25:54 [1] Norm:True  WindowLength:98  TrainScore:46
+19-03-22 13:25:54 [1] Norm:True  WindowLength:93  TrainScore:46
+19-03-22 13:25:54 [1] Norm:True  WindowLength:90  TrainScore:46
+19-03-22 13:25:54 [1] Norm:True  WindowLength:89  TrainScore:46
+19-03-22 13:25:54 [1] Norm:True  WindowLength:86  TrainScore:46
+19-03-22 13:25:54 [1] Norm:True  WindowLength:96  TrainScore:46
+19-03-22 13:25:54 [1] Norm:True  WindowLength:84  TrainScore:47
+19-03-22 13:25:54 [1] Norm:True  WindowLength:85  TrainScore:47
+19-03-22 13:25:54 [1] Norm:True  WindowLength:83  TrainScore:47
+19-03-22 13:25:54 [1] Norm:True  WindowLength:81  TrainScore:49
+19-03-22 13:25:54 [1] Norm:True  WindowLength:82  TrainScore:49
+19-03-22 13:25:54 [1] Norm:True  WindowLength:79  TrainScore:49
+19-03-22 13:25:54 [1] Norm:True  WindowLength:78  TrainScore:49
+19-03-22 13:25:54 [1] Norm:True  WindowLength:77  TrainScore:49
+19-03-22 13:25:54 [1] Norm:True  WindowLength:80  TrainScore:49
+19-03-22 13:25:54 [1] Norm:True  WindowLength:76  TrainScore:49
+19-03-22 13:25:54 [1] Norm:True  WindowLength:75  TrainScore:47
+19-03-22 13:25:54 [1] Norm:True  WindowLength:74  TrainScore:47
+19-03-22 13:25:54 [1] Norm:True  WindowLength:72  TrainScore:49
+19-03-22 13:25:54 [1] Norm:True  WindowLength:73  TrainScore:48
+19-03-22 13:25:54 [1] Norm:True  WindowLength:71  TrainScore:49
+19-03-22 13:25:54 [1] Norm:True  WindowLength:70  TrainScore:49
+19-03-22 13:25:54 [1] Norm:True  WindowLength:66  TrainScore:50
+19-03-22 13:25:54 [1] Norm:True  WindowLength:67  TrainScore:50
+19-03-22 13:25:54 [1] Norm:True  WindowLength:69  TrainScore:50
+19-03-22 13:25:54 [1] Norm:True  WindowLength:65  TrainScore:50
+19-03-22 13:25:54 [1] Norm:True  WindowLength:68  TrainScore:50
+19-03-22 13:25:54 [1] Norm:True  WindowLength:64  TrainScore:50
+19-03-22 13:25:54 [1] Norm:True  WindowLength:63  TrainScore:49
+19-03-22 13:25:54 [1] Norm:True  WindowLength:62  TrainScore:49
+19-03-22 13:25:54 [1] Norm:True  WindowLength:61  TrainScore:49
+19-03-22 13:25:54 [1] Norm:True  WindowLength:60  TrainScore:48
+19-03-22 13:25:54 [1] Norm:True  WindowLength:58  TrainScore:48
+19-03-22 13:25:54 [1] Norm:True  WindowLength:56  TrainScore:47
+19-03-22 13:25:54 [1] Norm:True  WindowLength:59  TrainScore:48
+19-03-22 13:25:54 [1] Norm:True  WindowLength:54  TrainScore:46
+19-03-22 13:25:54 [1] Norm:True  WindowLength:52  TrainScore:46
+19-03-22 13:25:54 [1] Norm:True  WindowLength:51  TrainScore:47
+19-03-22 13:25:54 [1] Norm:True  WindowLength:57  TrainScore:48
+19-03-22 13:25:54 [1] Norm:True  WindowLength:46  TrainScore:46
+19-03-22 13:25:54 [1] Norm:True  WindowLength:50  TrainScore:46
+19-03-22 13:29:15 [1] Gun_Point: Shotgun Ensemble; 0.98; 0.94
+19-04-19 10:10:17 [1] FIXED_PARAMETERS
+ {'MAX_WINDOW_LENGTH': 350, 'dataset': 'Gun_Point', 'train_bool': 1, 'wordLength': 4, 'normMean': 1, 'histogram_type': 'EQUI_DEPTH', 'windowLength': 8, 'log_path': './logs/', 'data_path': './datasets/', 'test': 'ShotgunEnsemble', 'symbols': 4}
+19-04-19 10:10:17 [1] Loading from: C:\Users\Sam.officepc\Google Drive\SFA_Python\datasets\univariate\Gun_Point
+19-04-19 10:10:17 [1] Done reading Gun_Point Training Data...  Samples: 50  Length: 150
+19-04-19 10:10:17 [1] Done reading Gun_Point Testing Data...  Samples: 150  Length: 150
+19-04-19 10:10:17 [1] Classes: [1 2]
+19-04-19 10:10:17 [1] Test: ShotgunEnsemble
+19-04-19 10:10:17 [0] {'MAX_WINDOW_LENGTH': 250, 'factor': 0.92, 'NAME': 'Gun_Point'}
+19-04-19 10:10:18 [1] Windows: [150, 149, 148, 147, 146, 145, 144, 143, 142, 141, 140, 139, 138, 137, 136, 135, 134, 133, 132, 131, 130, 129, 128, 127, 126, 125, 124, 123, 122, 121, 120, 119, 118, 117, 116, 115, 114, 113, 112, 111, 110, 109, 108, 107, 106, 105, 104, 103, 102, 101, 100, 99, 98, 97, 96, 95, 94, 93, 92, 91, 90, 89, 88, 87, 86, 85, 84, 83, 82, 81, 80, 79, 78, 77, 76, 75, 74, 73, 72, 71, 70, 69, 68, 67, 66, 65, 64, 63, 62, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5]
+19-04-19 10:10:18 [1] Gun_Point  Fitting for a norm of True
+19-04-19 10:10:18 [1] Correct for Norm=True & Window=150: 48
+19-04-19 10:10:19 [1] Correct for Norm=True & Window=149: 48
+19-04-19 10:10:19 [1] Correct for Norm=True & Window=148: 48
+19-04-19 10:10:19 [1] Correct for Norm=True & Window=147: 48
+19-04-19 10:10:20 [1] Correct for Norm=True & Window=146: 48
+19-04-19 10:10:20 [1] Correct for Norm=True & Window=145: 49
+19-04-19 10:10:21 [1] Correct for Norm=True & Window=142: 49
+19-04-19 10:10:22 [1] Correct for Norm=True & Window=140: 49
+19-04-19 10:10:22 [1] Correct for Norm=True & Window=141: 49
+19-04-19 10:10:23 [1] Correct for Norm=True & Window=139: 49
+19-04-19 10:10:23 [1] Correct for Norm=True & Window=144: 49
+19-04-19 10:10:24 [1] Correct for Norm=True & Window=137: 49
+19-04-19 10:10:24 [1] Correct for Norm=True & Window=143: 49
+19-04-19 10:10:24 [1] Correct for Norm=True & Window=138: 49
+19-04-19 10:10:26 [1] Correct for Norm=True & Window=136: 48
+19-04-19 10:10:26 [1] Correct for Norm=True & Window=135: 48
+19-04-19 10:10:27 [1] Correct for Norm=True & Window=133: 46
+19-04-19 10:10:28 [1] Correct for Norm=True & Window=134: 46
+19-04-19 10:10:29 [1] Correct for Norm=True & Window=130: 46
+19-04-19 10:10:30 [1] Correct for Norm=True & Window=129: 45
+19-04-19 10:10:31 [1] Correct for Norm=True & Window=128: 44
+19-04-19 10:10:31 [1] Correct for Norm=True & Window=127: 43
+19-04-19 10:10:33 [1] Correct for Norm=True & Window=126: 43
+19-04-19 10:10:33 [1] Correct for Norm=True & Window=132: 46
+19-04-19 10:10:35 [1] Correct for Norm=True & Window=125: 43
+19-04-19 10:10:36 [1] Correct for Norm=True & Window=131: 46
+19-04-19 10:10:36 [1] Correct for Norm=True & Window=124: 43
+19-04-19 10:10:36 [1] Correct for Norm=True & Window=122: 42
+19-04-19 10:10:37 [1] Correct for Norm=True & Window=121: 42
+19-04-19 10:10:38 [1] Correct for Norm=True & Window=123: 43
+19-04-19 10:10:39 [1] Correct for Norm=True & Window=120: 42
+19-04-19 10:10:42 [1] Correct for Norm=True & Window=118: 42
+19-04-19 10:10:42 [1] Correct for Norm=True & Window=116: 42
+19-04-19 10:10:42 [1] Correct for Norm=True & Window=114: 42
+19-04-19 10:10:44 [1] Correct for Norm=True & Window=115: 42
+19-04-19 10:10:46 [1] Correct for Norm=True & Window=119: 42
+19-04-19 10:10:46 [1] Correct for Norm=True & Window=113: 42
+19-04-19 10:10:46 [1] Correct for Norm=True & Window=112: 42
+19-04-19 10:10:49 [1] Correct for Norm=True & Window=117: 42
+19-04-19 10:10:49 [1] Correct for Norm=True & Window=109: 43
+19-04-19 10:10:49 [1] Correct for Norm=True & Window=110: 43
+19-04-19 10:10:49 [1] Correct for Norm=True & Window=111: 43
+19-04-19 10:10:51 [1] Correct for Norm=True & Window=108: 43
+19-04-19 10:10:53 [1] Correct for Norm=True & Window=105: 43
+19-04-19 10:10:55 [1] Correct for Norm=True & Window=104: 43
+19-04-19 10:10:55 [1] Correct for Norm=True & Window=106: 43
+19-04-19 10:10:56 [1] Correct for Norm=True & Window=102: 45
+19-04-19 10:10:57 [1] Correct for Norm=True & Window=107: 43
+19-04-19 10:10:57 [1] Correct for Norm=True & Window=100: 45
+19-04-19 10:10:57 [1] Correct for Norm=True & Window=101: 45
+19-04-19 10:11:01 [1] Correct for Norm=True & Window=98: 46
+19-04-19 10:11:01 [1] Correct for Norm=True & Window=99: 45
+19-04-19 10:11:03 [1] Correct for Norm=True & Window=103: 44
+19-04-19 10:11:03 [1] Correct for Norm=True & Window=94: 45
+19-04-19 10:11:03 [1] Correct for Norm=True & Window=96: 46
+19-04-19 10:11:04 [1] Correct for Norm=True & Window=97: 47
+19-04-19 10:11:05 [1] Correct for Norm=True & Window=95: 45
+19-04-19 10:11:05 [1] Correct for Norm=True & Window=93: 46
+19-04-19 10:11:07 [1] Correct for Norm=True & Window=91: 45
+19-04-19 10:11:07 [1] Correct for Norm=True & Window=92: 44
+19-04-19 10:11:09 [1] Correct for Norm=True & Window=88: 45
+19-04-19 10:11:09 [1] Correct for Norm=True & Window=89: 46
+19-04-19 10:11:10 [1] Correct for Norm=True & Window=87: 45
+19-04-19 10:11:11 [1] Correct for Norm=True & Window=85: 47
+19-04-19 10:11:11 [1] Correct for Norm=True & Window=83: 47
+19-04-19 10:11:12 [1] Correct for Norm=True & Window=84: 47
+19-04-19 10:11:12 [1] Correct for Norm=True & Window=86: 46
+19-04-19 10:11:13 [1] Correct for Norm=True & Window=90: 46
+19-04-19 10:11:14 [1] Correct for Norm=True & Window=81: 49
+19-04-19 10:11:14 [1] Correct for Norm=True & Window=82: 49
+19-04-19 10:11:16 [1] Correct for Norm=True & Window=80: 49
+19-04-19 10:11:16 [1] Correct for Norm=True & Window=78: 49
+19-04-19 10:11:16 [1] Correct for Norm=True & Window=79: 49
+19-04-19 10:11:17 [1] Correct for Norm=True & Window=77: 49
+19-04-19 10:11:19 [1] Correct for Norm=True & Window=76: 49
+19-04-19 10:11:26 [1] Correct for Norm=True & Window=73: 48
+19-04-19 10:11:27 [1] Correct for Norm=True & Window=74: 47
+19-04-19 10:11:29 [1] Correct for Norm=True & Window=72: 49
+19-04-19 10:11:29 [1] Correct for Norm=True & Window=71: 49
+19-04-19 10:11:30 [1] Correct for Norm=True & Window=69: 50
+19-04-19 10:11:31 [1] Correct for Norm=True & Window=70: 49
+19-04-19 10:11:35 [1] Correct for Norm=True & Window=68: 50
+19-04-19 10:11:38 [1] Correct for Norm=True & Window=75: 47
+19-04-19 10:11:39 [1] Correct for Norm=True & Window=67: 50
+19-04-19 10:11:41 [1] Correct for Norm=True & Window=66: 50
+19-04-19 10:11:43 [1] Correct for Norm=True & Window=64: 50
+19-04-19 10:11:44 [1] Correct for Norm=True & Window=63: 49
+19-04-19 10:11:44 [1] Correct for Norm=True & Window=65: 50
+19-04-19 10:11:47 [1] Correct for Norm=True & Window=62: 49
+19-04-19 10:11:54 [1] Correct for Norm=True & Window=59: 48
+19-04-19 10:11:54 [1] Correct for Norm=True & Window=58: 48
+19-04-19 10:11:57 [1] Correct for Norm=True & Window=57: 48
+19-04-19 10:11:57 [1] Correct for Norm=True & Window=56: 47
+19-04-19 10:12:02 [1] Correct for Norm=True & Window=55: 44
+19-04-19 10:12:03 [1] Correct for Norm=True & Window=61: 49
+19-04-19 10:12:07 [1] Correct for Norm=True & Window=54: 46
+19-04-19 10:12:07 [1] Correct for Norm=True & Window=60: 48
+19-04-19 10:12:11 [1] Correct for Norm=True & Window=53: 45
+19-04-19 10:12:12 [1] Correct for Norm=True & Window=52: 46
+19-04-19 10:12:14 [1] Correct for Norm=True & Window=51: 47
+19-04-19 10:12:23 [1] Correct for Norm=True & Window=50: 46
+19-04-19 10:12:29 [1] Correct for Norm=True & Window=43: 41
+19-04-19 10:12:30 [1] Correct for Norm=True & Window=44: 45
+19-04-19 10:12:31 [1] Correct for Norm=True & Window=49: 44
+19-04-19 10:12:32 [1] Correct for Norm=True & Window=45: 45
+19-04-19 10:12:33 [1] Correct for Norm=True & Window=47: 45
+19-04-19 10:12:40 [1] Correct for Norm=True & Window=42: 42
+19-04-19 10:12:46 [1] Correct for Norm=True & Window=41: 42
+19-04-19 10:12:46 [1] Correct for Norm=True & Window=40: 33
+19-04-19 10:12:49 [1] Correct for Norm=True & Window=38: 34
+19-04-19 10:12:51 [1] Correct for Norm=True & Window=39: 36
+19-04-19 10:12:55 [1] Correct for Norm=True & Window=48: 44
+19-04-19 10:12:56 [1] Correct for Norm=True & Window=46: 46
+19-04-19 10:13:07 [1] Correct for Norm=True & Window=37: 37
+19-04-19 10:13:08 [1] Correct for Norm=True & Window=36: 41
+19-04-19 10:13:13 [1] Correct for Norm=True & Window=35: 43
+19-04-19 10:13:13 [1] Correct for Norm=True & Window=34: 43
+19-04-19 10:13:16 [1] Correct for Norm=True & Window=33: 39
+19-04-19 10:13:22 [1] Correct for Norm=True & Window=32: 40
+19-04-19 10:13:38 [1] Correct for Norm=True & Window=28: 45
+19-04-19 10:13:41 [1] Correct for Norm=True & Window=31: 41
+19-04-19 10:13:41 [1] Correct for Norm=True & Window=27: 39
+19-04-19 10:13:42 [1] Correct for Norm=True & Window=29: 36
+19-04-19 10:13:44 [1] Correct for Norm=True & Window=26: 42
+19-04-19 10:13:59 [1] Correct for Norm=True & Window=25: 41
+19-04-19 10:14:04 [1] Correct for Norm=True & Window=24: 43
+19-04-19 10:14:09 [1] Correct for Norm=True & Window=30: 39
+19-04-19 10:14:16 [1] Correct for Norm=True & Window=23: 41
+19-04-19 10:14:25 [1] Correct for Norm=True & Window=21: 33
+19-04-19 10:14:30 [1] Correct for Norm=True & Window=22: 37
+19-04-19 10:14:33 [1] Correct for Norm=True & Window=20: 32
+19-04-19 10:14:46 [1] Correct for Norm=True & Window=18: 35
+19-04-19 10:14:54 [1] Correct for Norm=True & Window=17: 32
+19-04-19 10:14:56 [1] Correct for Norm=True & Window=19: 37
+19-04-19 10:14:57 [1] Correct for Norm=True & Window=15: 28
+19-04-19 10:15:03 [1] Correct for Norm=True & Window=14: 36
+19-04-19 10:15:32 [1] Correct for Norm=True & Window=12: 36
+19-04-19 10:15:46 [1] Correct for Norm=True & Window=11: 33
+19-04-19 10:15:49 [1] Correct for Norm=True & Window=8: 29
+19-04-19 10:15:56 [1] Correct for Norm=True & Window=7: 25
+19-04-19 10:15:57 [1] Correct for Norm=True & Window=16: 31
+19-04-19 10:16:00 [1] Correct for Norm=True & Window=10: 33
+19-04-19 10:16:05 [1] Correct for Norm=True & Window=13: 35
+19-04-19 10:16:18 [1] Correct for Norm=True & Window=9: 32
+19-04-19 10:16:20 [1] Correct for Norm=True & Window=6: 26
+19-04-19 10:16:22 [1] Correct for Norm=True & Window=5: 28
+19-04-19 10:17:31 [1] Windows: [150, 149, 148, 147, 146, 145, 144, 143, 142, 141, 140, 139, 138, 137, 136, 135, 134, 133, 132, 131, 130, 129, 128, 127, 126, 125, 124, 123, 122, 121, 120, 119, 118, 117, 116, 115, 114, 113, 112, 111, 110, 109, 108, 107, 106, 105, 104, 103, 102, 101, 100, 99, 98, 97, 96, 95, 94, 93, 92, 91, 90, 89, 88, 87, 86, 85, 84, 83, 82, 81, 80, 79, 78, 77, 76, 75, 74, 73, 72, 71, 70, 69, 68, 67, 66, 65, 64, 63, 62, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5]
+19-04-19 10:17:31 [1] Gun_Point  Fitting for a norm of False
+19-04-19 10:17:32 [1] Correct for Norm=False & Window=150: 48
+19-04-19 10:17:32 [1] Correct for Norm=False & Window=149: 48
+19-04-19 10:17:33 [1] Correct for Norm=False & Window=148: 48
+19-04-19 10:17:33 [1] Correct for Norm=False & Window=147: 48
+19-04-19 10:17:33 [1] Correct for Norm=False & Window=146: 48
+19-04-19 10:17:35 [1] Correct for Norm=False & Window=144: 49
+19-04-19 10:17:36 [1] Correct for Norm=False & Window=142: 49
+19-04-19 10:17:37 [1] Correct for Norm=False & Window=141: 49
+19-04-19 10:17:38 [1] Correct for Norm=False & Window=140: 49
+19-04-19 10:17:38 [1] Correct for Norm=False & Window=139: 49
+19-04-19 10:17:38 [1] Correct for Norm=False & Window=143: 49
+19-04-19 10:17:38 [1] Correct for Norm=False & Window=138: 49
+19-04-19 10:17:39 [1] Correct for Norm=False & Window=145: 49
+19-04-19 10:17:42 [1] Correct for Norm=False & Window=136: 49
+19-04-19 10:17:42 [1] Correct for Norm=False & Window=137: 49
+19-04-19 10:17:44 [1] Correct for Norm=False & Window=135: 49
+19-04-19 10:17:46 [1] Correct for Norm=False & Window=134: 46
+19-04-19 10:17:47 [1] Correct for Norm=False & Window=133: 46
+19-04-19 10:17:47 [1] Correct for Norm=False & Window=131: 46
+19-04-19 10:17:48 [1] Correct for Norm=False & Window=132: 46
+19-04-19 10:17:51 [1] Correct for Norm=False & Window=129: 46
+19-04-19 10:17:51 [1] Correct for Norm=False & Window=128: 45
+19-04-19 10:17:52 [1] Correct for Norm=False & Window=127: 45
+19-04-19 10:17:53 [1] Correct for Norm=False & Window=126: 45
+19-04-19 10:17:55 [1] Correct for Norm=False & Window=124: 45
+19-04-19 10:17:57 [1] Correct for Norm=False & Window=125: 45
+19-04-19 10:17:57 [1] Correct for Norm=False & Window=130: 46
+19-04-19 10:17:59 [1] Correct for Norm=False & Window=122: 44
+19-04-19 10:18:01 [1] Correct for Norm=False & Window=120: 44
+19-04-19 10:18:02 [1] Correct for Norm=False & Window=119: 44
+19-04-19 10:18:02 [1] Correct for Norm=False & Window=121: 44
+19-04-19 10:18:04 [1] Correct for Norm=False & Window=123: 45
+19-04-19 10:18:05 [1] Correct for Norm=False & Window=118: 45
+19-04-19 10:18:07 [1] Correct for Norm=False & Window=117: 45
+19-04-19 10:18:09 [1] Correct for Norm=False & Window=115: 45
+19-04-19 10:18:11 [1] Correct for Norm=False & Window=114: 45
+19-04-19 10:18:11 [1] Correct for Norm=False & Window=113: 45
+19-04-19 10:18:14 [1] Correct for Norm=False & Window=110: 45
+19-04-19 10:18:14 [1] Correct for Norm=False & Window=112: 45
+19-04-19 10:18:17 [1] Correct for Norm=False & Window=116: 45
+19-04-19 10:18:18 [1] Correct for Norm=False & Window=109: 45
+19-04-19 10:18:18 [1] Correct for Norm=False & Window=108: 45
+19-04-19 10:18:19 [1] Correct for Norm=False & Window=107: 45
+19-04-19 10:18:20 [1] Correct for Norm=False & Window=106: 45
+19-04-19 10:18:21 [1] Correct for Norm=False & Window=111: 44
+19-04-19 10:18:23 [1] Correct for Norm=False & Window=105: 45
+19-04-19 10:18:25 [1] Correct for Norm=False & Window=104: 45
+19-04-19 10:18:28 [1] Correct for Norm=False & Window=101: 47
+19-04-19 10:18:29 [1] Correct for Norm=False & Window=100: 47
+19-04-19 10:18:30 [1] Correct for Norm=False & Window=99: 47
+19-04-19 10:18:30 [1] Correct for Norm=False & Window=102: 47
+19-04-19 10:18:34 [1] Correct for Norm=False & Window=97: 47
+19-04-19 10:18:36 [1] Correct for Norm=False & Window=98: 46
+19-04-19 10:18:37 [1] Correct for Norm=False & Window=103: 46
+19-04-19 10:18:38 [1] Correct for Norm=False & Window=96: 46
+19-04-19 10:18:38 [1] Correct for Norm=False & Window=94: 46
+19-04-19 10:18:39 [1] Correct for Norm=False & Window=95: 46
+19-04-19 10:18:39 [1] Correct for Norm=False & Window=93: 46
+19-04-19 10:18:40 [1] Correct for Norm=False & Window=92: 46
+19-04-19 10:18:45 [1] Correct for Norm=False & Window=87: 47
+19-04-19 10:18:46 [1] Correct for Norm=False & Window=85: 48
+19-04-19 10:18:46 [1] Correct for Norm=False & Window=86: 47
+19-04-19 10:18:46 [1] Correct for Norm=False & Window=88: 47
+19-04-19 10:18:47 [1] Correct for Norm=False & Window=91: 45
+19-04-19 10:18:49 [1] Correct for Norm=False & Window=84: 48
+19-04-19 10:18:51 [1] Correct for Norm=False & Window=90: 47
+19-04-19 10:18:52 [1] Correct for Norm=False & Window=83: 48
+19-04-19 10:18:54 [1] Correct for Norm=False & Window=81: 47
+19-04-19 10:18:54 [1] Correct for Norm=False & Window=82: 47
+19-04-19 10:18:54 [1] Correct for Norm=False & Window=89: 47
+19-04-19 10:18:57 [1] Correct for Norm=False & Window=79: 47
+19-04-19 10:18:57 [1] Correct for Norm=False & Window=80: 47
+19-04-19 10:18:59 [1] Correct for Norm=False & Window=78: 48
+19-04-19 10:19:01 [1] Correct for Norm=False & Window=76: 48
+19-04-19 10:19:03 [1] Correct for Norm=False & Window=77: 48
+19-04-19 10:19:14 [1] Correct for Norm=False & Window=74: 49
+19-04-19 10:19:17 [1] Correct for Norm=False & Window=75: 49
+19-04-19 10:19:17 [1] Correct for Norm=False & Window=72: 50
+19-04-19 10:19:19 [1] Correct for Norm=False & Window=69: 49
+19-04-19 10:19:22 [1] Correct for Norm=False & Window=71: 49
+19-04-19 10:19:23 [1] Correct for Norm=False & Window=70: 49
+19-04-19 10:19:32 [1] Correct for Norm=False & Window=67: 49
+19-04-19 10:19:35 [1] Correct for Norm=False & Window=65: 49
+19-04-19 10:19:36 [1] Correct for Norm=False & Window=66: 49
+19-04-19 10:19:37 [1] Correct for Norm=False & Window=64: 49
+19-04-19 10:19:38 [1] Correct for Norm=False & Window=73: 49
+19-04-19 10:19:45 [1] Correct for Norm=False & Window=63: 49
+19-04-19 10:19:45 [1] Correct for Norm=False & Window=62: 46
+19-04-19 10:19:47 [1] Correct for Norm=False & Window=68: 49
+19-04-19 10:19:49 [1] Correct for Norm=False & Window=61: 47
+19-04-19 10:19:52 [1] Correct for Norm=False & Window=58: 45
+19-04-19 10:19:53 [1] Correct for Norm=False & Window=60: 48
+19-04-19 10:19:54 [1] Correct for Norm=False & Window=59: 45
+19-04-19 10:20:06 [1] Correct for Norm=False & Window=56: 45
+19-04-19 10:20:06 [1] Correct for Norm=False & Window=53: 44
+19-04-19 10:20:07 [1] Correct for Norm=False & Window=55: 47
+19-04-19 10:20:10 [1] Correct for Norm=False & Window=52: 41
+19-04-19 10:20:12 [1] Correct for Norm=False & Window=51: 41
+19-04-19 10:20:20 [1] Correct for Norm=False & Window=57: 45
+19-04-19 10:20:22 [1] Correct for Norm=False & Window=50: 45
+19-04-19 10:20:27 [1] Correct for Norm=False & Window=48: 43
+19-04-19 10:20:30 [1] Correct for Norm=False & Window=54: 43
+19-04-19 10:20:30 [1] Correct for Norm=False & Window=46: 46
+19-04-19 10:20:33 [1] Correct for Norm=False & Window=45: 43
+19-04-19 10:20:36 [1] Correct for Norm=False & Window=49: 45
+19-04-19 10:20:36 [1] Correct for Norm=False & Window=47: 45
+19-04-19 10:20:42 [1] Correct for Norm=False & Window=43: 45
+19-04-19 10:20:46 [1] Correct for Norm=False & Window=42: 42
+19-04-19 10:20:49 [1] Correct for Norm=False & Window=40: 40
+19-04-19 10:20:50 [1] Correct for Norm=False & Window=39: 41
+19-04-19 10:20:57 [1] Correct for Norm=False & Window=38: 39
+19-04-19 10:21:04 [1] Correct for Norm=False & Window=37: 45
+19-04-19 10:21:04 [1] Correct for Norm=False & Window=36: 43
+19-04-19 10:21:05 [1] Correct for Norm=False & Window=35: 40
+19-04-19 10:21:08 [1] Correct for Norm=False & Window=34: 39
+19-04-19 10:21:09 [1] Correct for Norm=False & Window=33: 31
+19-04-19 10:21:11 [1] Correct for Norm=False & Window=44: 46
+19-04-19 10:21:11 [1] Correct for Norm=False & Window=41: 38
+19-04-19 10:21:24 [1] Correct for Norm=False & Window=32: 35
+19-04-19 10:21:27 [1] Correct for Norm=False & Window=31: 34
+19-04-19 10:21:28 [1] Correct for Norm=False & Window=29: 31
+19-04-19 10:21:30 [1] Correct for Norm=False & Window=28: 29
+19-04-19 10:21:31 [1] Correct for Norm=False & Window=30: 38
+19-04-19 10:21:32 [1] Correct for Norm=False & Window=27: 39
+19-04-19 10:21:45 [1] Correct for Norm=False & Window=22: 33
+19-04-19 10:21:50 [1] Correct for Norm=False & Window=24: 44
+19-04-19 10:21:50 [1] Correct for Norm=False & Window=21: 32
+19-04-19 10:21:50 [1] Correct for Norm=False & Window=19: 40
+19-04-19 10:21:51 [1] Correct for Norm=False & Window=23: 42
+19-04-19 10:21:51 [1] Correct for Norm=False & Window=20: 36
+19-04-19 10:21:54 [1] Correct for Norm=False & Window=26: 36
+19-04-19 10:21:59 [1] Correct for Norm=False & Window=25: 41
+19-04-19 10:22:03 [1] Correct for Norm=False & Window=18: 34
+19-04-19 10:22:06 [1] Correct for Norm=False & Window=16: 32
+19-04-19 10:22:09 [1] Correct for Norm=False & Window=17: 26
+19-04-19 10:22:10 [1] Correct for Norm=False & Window=15: 35
+19-04-19 10:22:12 [1] Correct for Norm=False & Window=13: 32
+19-04-19 10:22:12 [1] Correct for Norm=False & Window=14: 29
+19-04-19 10:22:26 [1] Correct for Norm=False & Window=10: 30
+19-04-19 10:22:30 [1] Correct for Norm=False & Window=9: 33
+19-04-19 10:22:37 [1] Correct for Norm=False & Window=7: 28
+19-04-19 10:22:37 [1] Correct for Norm=False & Window=12: 34
+19-04-19 10:22:37 [1] Correct for Norm=False & Window=11: 31
+19-04-19 10:22:38 [1] Correct for Norm=False & Window=8: 30
+19-04-19 10:22:40 [1] Correct for Norm=False & Window=6: 31
+19-04-19 10:22:41 [1] Correct for Norm=False & Window=5: 33
+19-04-19 10:24:20 [1] Final Ensembled Models...
+19-04-19 10:24:20 [1] Norm:True  WindowLength:150  TrainScore:48
+19-04-19 10:24:20 [1] Norm:True  WindowLength:149  TrainScore:48
+19-04-19 10:24:20 [1] Norm:True  WindowLength:148  TrainScore:48
+19-04-19 10:24:20 [1] Norm:True  WindowLength:147  TrainScore:48
+19-04-19 10:24:20 [1] Norm:True  WindowLength:146  TrainScore:48
+19-04-19 10:24:20 [1] Norm:True  WindowLength:145  TrainScore:49
+19-04-19 10:24:20 [1] Norm:True  WindowLength:142  TrainScore:49
+19-04-19 10:24:20 [1] Norm:True  WindowLength:140  TrainScore:49
+19-04-19 10:24:20 [1] Norm:True  WindowLength:141  TrainScore:49
+19-04-19 10:24:20 [1] Norm:True  WindowLength:139  TrainScore:49
+19-04-19 10:24:20 [1] Norm:True  WindowLength:144  TrainScore:49
+19-04-19 10:24:20 [1] Norm:True  WindowLength:143  TrainScore:49
+19-04-19 10:24:20 [1] Norm:True  WindowLength:137  TrainScore:49
+19-04-19 10:24:20 [1] Norm:True  WindowLength:138  TrainScore:49
+19-04-19 10:24:20 [1] Norm:True  WindowLength:136  TrainScore:48
+19-04-19 10:24:20 [1] Norm:True  WindowLength:135  TrainScore:48
+19-04-19 10:24:20 [1] Norm:True  WindowLength:133  TrainScore:46
+19-04-19 10:24:20 [1] Norm:True  WindowLength:134  TrainScore:46
+19-04-19 10:24:20 [1] Norm:True  WindowLength:130  TrainScore:46
+19-04-19 10:24:20 [1] Norm:True  WindowLength:132  TrainScore:46
+19-04-19 10:24:20 [1] Norm:True  WindowLength:131  TrainScore:46
+19-04-19 10:24:20 [1] Norm:True  WindowLength:98  TrainScore:46
+19-04-19 10:24:20 [1] Norm:True  WindowLength:96  TrainScore:46
+19-04-19 10:24:20 [1] Norm:True  WindowLength:97  TrainScore:47
+19-04-19 10:24:20 [1] Norm:True  WindowLength:93  TrainScore:46
+19-04-19 10:24:20 [1] Norm:True  WindowLength:89  TrainScore:46
+19-04-19 10:24:20 [1] Norm:True  WindowLength:85  TrainScore:47
+19-04-19 10:24:20 [1] Norm:True  WindowLength:83  TrainScore:47
+19-04-19 10:24:20 [1] Norm:True  WindowLength:84  TrainScore:47
+19-04-19 10:24:20 [1] Norm:True  WindowLength:86  TrainScore:46
+19-04-19 10:24:20 [1] Norm:True  WindowLength:90  TrainScore:46
+19-04-19 10:24:20 [1] Norm:True  WindowLength:81  TrainScore:49
+19-04-19 10:24:20 [1] Norm:True  WindowLength:82  TrainScore:49
+19-04-19 10:24:20 [1] Norm:True  WindowLength:80  TrainScore:49
+19-04-19 10:24:20 [1] Norm:True  WindowLength:78  TrainScore:49
+19-04-19 10:24:20 [1] Norm:True  WindowLength:79  TrainScore:49
+19-04-19 10:24:20 [1] Norm:True  WindowLength:77  TrainScore:49
+19-04-19 10:24:20 [1] Norm:True  WindowLength:76  TrainScore:49
+19-04-19 10:24:20 [1] Norm:True  WindowLength:73  TrainScore:48
+19-04-19 10:24:20 [1] Norm:True  WindowLength:74  TrainScore:47
+19-04-19 10:24:20 [1] Norm:True  WindowLength:72  TrainScore:49
+19-04-19 10:24:20 [1] Norm:True  WindowLength:71  TrainScore:49
+19-04-19 10:24:20 [1] Norm:True  WindowLength:69  TrainScore:50
+19-04-19 10:24:20 [1] Norm:True  WindowLength:70  TrainScore:49
+19-04-19 10:24:20 [1] Norm:True  WindowLength:68  TrainScore:50
+19-04-19 10:24:20 [1] Norm:True  WindowLength:75  TrainScore:47
+19-04-19 10:24:20 [1] Norm:True  WindowLength:67  TrainScore:50
+19-04-19 10:24:20 [1] Norm:True  WindowLength:66  TrainScore:50
+19-04-19 10:24:20 [1] Norm:True  WindowLength:64  TrainScore:50
+19-04-19 10:24:20 [1] Norm:True  WindowLength:63  TrainScore:49
+19-04-19 10:24:20 [1] Norm:True  WindowLength:65  TrainScore:50
+19-04-19 10:24:20 [1] Norm:True  WindowLength:62  TrainScore:49
+19-04-19 10:24:20 [1] Norm:True  WindowLength:59  TrainScore:48
+19-04-19 10:24:20 [1] Norm:True  WindowLength:58  TrainScore:48
+19-04-19 10:24:20 [1] Norm:True  WindowLength:57  TrainScore:48
+19-04-19 10:24:20 [1] Norm:True  WindowLength:56  TrainScore:47
+19-04-19 10:24:20 [1] Norm:True  WindowLength:61  TrainScore:49
+19-04-19 10:24:20 [1] Norm:True  WindowLength:54  TrainScore:46
+19-04-19 10:24:20 [1] Norm:True  WindowLength:60  TrainScore:48
+19-04-19 10:24:20 [1] Norm:True  WindowLength:52  TrainScore:46
+19-04-19 10:24:20 [1] Norm:True  WindowLength:51  TrainScore:47
+19-04-19 10:24:20 [1] Norm:True  WindowLength:50  TrainScore:46
+19-04-19 10:24:20 [1] Norm:True  WindowLength:46  TrainScore:46
+19-04-19 10:27:41 [1] Gun_Point: Shotgun Ensemble; 0.98; 0.94

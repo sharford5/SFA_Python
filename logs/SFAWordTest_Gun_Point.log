@@ -1,0 +1,54 @@
+19-03-22 12:20:40 [1] FIXED_PARAMETERS
+ {'data_path': './datasets/', 'log_path': './logs/', 'test': 'SFAWordTest', 'dataset': 'Gun_Point', 'train_bool': 1, 'histogram_type': 'INFORMATION_GAIN', 'symbols': 4, 'wordLength': 4, 'windowLength': 8, 'normMean': 1, 'MAX_WINDOW_LENGTH': 350}
+19-03-22 12:20:40 [1] Loading from: C:\Users\Sam.officepc\Google Drive\SFA_Python\datasets\univariate\Gun_Point
+19-03-22 12:20:40 [1] Done reading Gun_Point Training Data...  Samples: 50  Length: 150
+19-03-22 12:20:40 [1] Done reading Gun_Point Testing Data...  Samples: 150  Length: 150
+19-03-22 12:20:40 [1] Classes: [1 2]
+19-03-22 12:20:40 [1] Test: SFAWordTest
+19-03-22 12:20:40 [0] {'initialized': False, 'HistogramType': 'INFORMATION_GAIN', 'lowerBounding': True}
+19-03-22 12:20:40 [1] {'initialized': True, 'HistogramType': 'INFORMATION_GAIN', 'lowerBounding': True, 'logger': <src.utils.logger.Logger object at 0x0000000002B75DD8>, 'wordLength': 4, 'maxWordLength': 4, 'symbols': 4, 'normMean': 1, 'alphabetSize': 4, 'transformation': <src.transformation.MFT.MFT object at 0x0000000013F3CA20>, 'orderLine': [], 'bins':      0     1     2         3
+0 -inf -7.97 -6.99 -6.820000
+1 -inf  0.57  4.21       inf
+2 -inf  0.46  4.32       inf
+3 -inf -1.69  0.22  0.230000, 'splitPoints': [4, 34, 35], 'cOut': {1: 0.0, 2: 1.0}, 'cIn': {1: 3.0, 2: 12.0}}
+19-03-22 12:20:40 [1] 0-th transformed time series SFA word 	 abab 
+19-03-22 12:20:40 [1] 1-th transformed time series SFA word 	 dacb 
+19-03-22 12:20:40 [1] 2-th transformed time series SFA word 	 daaa 
+19-03-22 12:20:40 [1] 3-th transformed time series SFA word 	 aabd 
+19-03-22 12:20:40 [1] 4-th transformed time series SFA word 	 bbbb 
+19-03-22 12:21:50 [1] FIXED_PARAMETERS
+ {'data_path': './datasets/', 'log_path': './logs/', 'test': 'SFAWordTest', 'dataset': 'Gun_Point', 'train_bool': 1, 'histogram_type': 'EQUI_FREQUENCY', 'symbols': 4, 'wordLength': 4, 'windowLength': 8, 'normMean': 1, 'MAX_WINDOW_LENGTH': 350}
+19-03-22 12:21:50 [1] Loading from: C:\Users\Sam.officepc\Google Drive\SFA_Python\datasets\univariate\Gun_Point
+19-03-22 12:21:50 [1] Done reading Gun_Point Training Data...  Samples: 50  Length: 150
+19-03-22 12:21:50 [1] Done reading Gun_Point Testing Data...  Samples: 150  Length: 150
+19-03-22 12:21:50 [1] Classes: [1 2]
+19-03-22 12:21:50 [1] Test: SFAWordTest
+19-03-22 12:21:50 [0] {'initialized': False, 'HistogramType': 'EQUI_FREQUENCY', 'lowerBounding': True}
+19-03-22 12:21:50 [1] {'initialized': True, 'HistogramType': 'EQUI_FREQUENCY', 'lowerBounding': True, 'logger': <src.utils.logger.Logger object at 0x0000000002B75E10>, 'wordLength': 4, 'maxWordLength': 4, 'symbols': 4, 'normMean': 1, 'alphabetSize': 4, 'transformation': <src.transformation.MFT.MFT object at 0x0000000013EEBDA0>, 'orderLine': [], 'bins':      0       1      2       3
+0 -inf -7.6925 -6.955 -6.2175
+1 -inf -1.3825  1.005  3.3925
+2 -inf -1.4325  0.645  2.7225
+3 -inf -2.6650 -1.020  0.6250}
+19-03-22 12:21:50 [1] 0-th transformed time series SFA word 	 abbc 
+19-03-22 12:21:50 [1] 1-th transformed time series SFA word 	 cbdc 
+19-03-22 12:21:50 [1] 2-th transformed time series SFA word 	 daaa 
+19-03-22 12:21:50 [1] 3-th transformed time series SFA word 	 abcc 
+19-03-22 12:21:50 [1] 4-th transformed time series SFA word 	 bbdb 
+19-03-22 12:22:20 [1] FIXED_PARAMETERS
+ {'data_path': './datasets/', 'log_path': './logs/', 'test': 'SFAWordTest', 'dataset': 'Gun_Point', 'train_bool': 1, 'histogram_type': 'EQUI_DEPTH', 'symbols': 4, 'wordLength': 4, 'windowLength': 8, 'normMean': 1, 'MAX_WINDOW_LENGTH': 350}
+19-03-22 12:22:20 [1] Loading from: C:\Users\Sam.officepc\Google Drive\SFA_Python\datasets\univariate\Gun_Point
+19-03-22 12:22:20 [1] Done reading Gun_Point Training Data...  Samples: 50  Length: 150
+19-03-22 12:22:20 [1] Done reading Gun_Point Testing Data...  Samples: 150  Length: 150
+19-03-22 12:22:20 [1] Classes: [1 2]
+19-03-22 12:22:20 [1] Test: SFAWordTest
+19-03-22 12:22:20 [0] {'initialized': False, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': True}
+19-03-22 12:22:21 [1] {'initialized': True, 'HistogramType': 'EQUI_DEPTH', 'lowerBounding': True, 'logger': <src.utils.logger.Logger object at 0x0000000002B45E10>, 'wordLength': 4, 'maxWordLength': 4, 'symbols': 4, 'normMean': 1, 'alphabetSize': 4, 'transformation': <src.transformation.MFT.MFT object at 0x0000000013EEBB00>, 'orderLine': [], 'bins':      0     1     2     3
+0 -inf -7.97 -7.36 -6.82
+1 -inf -0.30  0.57  1.52
+2 -inf -0.18  1.25  4.14
+3 -inf -0.91 -0.21  0.27}
+19-03-22 12:22:21 [1] 0-th transformed time series SFA word 	 acbb 
+19-03-22 12:22:21 [1] 1-th transformed time series SFA word 	 dbdb 
+19-03-22 12:22:21 [1] 2-th transformed time series SFA word 	 daaa 
+19-03-22 12:22:21 [1] 3-th transformed time series SFA word 	 abcd 
+19-03-22 12:22:21 [1] 4-th transformed time series SFA word 	 ccca 
