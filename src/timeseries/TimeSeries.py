@@ -7,7 +7,7 @@ def getDisjointSequences(series, windowSize, normMean):
     subseqences = []
 
     for i in range(amount):
-        subseqences_data = TimeSeries(series.data[(i*windowSize):((i+1)*windowSize)], series.label, series.NORM_CHECK)
+        subseqences_data = TimeSeries(series.data[(i*windowSize):((i+1)*windowSize)], series.label, series.NORM_CHECK, APPLY_Z_NORM=series.APPLY_Z_NORM)
         subseqences_data.NORM(normMean)
         subseqences.append(subseqences_data)
 
@@ -94,22 +94,21 @@ def compareTo(score, bestScore):
 
 
 class TimeSeries():
-    def __init__(self, data, label, NORM_CHECK = True):
+    def __init__(self, data, label, NORM_CHECK = True, APPLY_Z_NORM= True):
         self.data = data
         self.label = label
         self.normed = False
         self.mean = 0.
         self.std = 1.
 
+        self.APPLY_Z_NORM = APPLY_Z_NORM
         self.NORM_CHECK = NORM_CHECK
 
-    def NORM(self, normMean):
+    def NORM(self, normMean=True):
         self.mean = np.mean(self.data)
         self.calculate_std()
 
-        thisNorm = not self.normed
-
-        if (self.NORM_CHECK) & (thisNorm):
+        if not self.normed:
             self.NORM_WORK(normMean)
 
 
@@ -125,16 +124,19 @@ class TimeSeries():
 
 
     def NORM_WORK(self, normMean):
-        ISTD = 1. if self.std == 0 else 1. / self.std
+        if self.APPLY_Z_NORM and (not self.normed):
+            ISTD = 1. if self.std == 0 else 1. / self.std
 
-        if normMean:
-            self.data = [(self.data[i] - self.mean) * ISTD for i in range(len(self.data))]
-            self.mean = 0.0
-        elif np.any(ISTD != 1.):
-            self.data = [self.data[i] * ISTD for i in range(len(self.data))]
+            if normMean:
+                self.data = [(self.data[i] - self.mean) * ISTD for i in range(len(self.data))]
+                self.mean = 0.0
+            elif np.any(ISTD != 1.):
+                self.data = [self.data[i] * ISTD for i in range(len(self.data))]
 
-        self.normed = True
-
-
+            self.normed = True
 
 
+    def getSubsequence(self, offset, windowSize):
+        subseqences_data = TimeSeries(self.data[offset:(offset+windowSize)], self.label, self.NORM_CHECK, self.APPLY_Z_NORM)
+        subseqences_data.NORM()
+        return subseqences_data

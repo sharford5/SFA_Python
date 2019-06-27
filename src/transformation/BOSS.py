@@ -3,19 +3,21 @@ from  src.transformation.SFA import *
 
 class BOSS():
 
-    def __init__(self, maxF, maxS, windowLength, normMean):
+    def __init__(self, maxF, maxS, windowLength, normMean, logger = None):
         self.maxF = maxF
         self.symbols = maxS
         self.windowLength = windowLength
         self.normMean = normMean
         self.signature = None
+        logger.Log(self.__dict__, level = 0)
+        self.logger = logger
 
 
     def createWords(self, samples):
         if self.signature == None:
-            self.signature = SFA("EQUI_DEPTH")
+            self.signature = SFA("EQUI_DEPTH", logger = self.logger)
             self.signature.fitWindowing(samples, self.windowLength, self.maxF, self.symbols, self.normMean, True)
-            # self.signature.printBins()
+            self.signature.printBins(self.logger)
 
         words = []
         for i in range(samples["Samples"]):
@@ -51,7 +53,8 @@ class BOSS():
 
 
     def createBagOfPattern(self, words, samples, f):
-        bagOfPatterns = []
+        bagOfPatterns = [BagOfBigrams(samples[j].label) for j in range(samples["Samples"])]
+        # bagOfPatterns = []
         usedBits = int2byte(self.symbols)
         mask = (1 << (usedBits * f)) - 1
 
@@ -66,7 +69,7 @@ class BOSS():
                     else:
                         BOP[word] = 1
                 lastWord = word
-            bagOfPatterns.append(BOP)
+            bagOfPatterns[j].bob = BOP
         return bagOfPatterns
 
 
@@ -98,3 +101,9 @@ class BOSS():
                     new_dict[element] = 1
             bag_dict.append(new_dict)
         return bag_dict
+
+
+class BagOfBigrams():
+    def __init__(self, label):
+        self.bob = {}
+        self.label = int(label)

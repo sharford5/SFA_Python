@@ -1,6 +1,6 @@
 from  src.transformation.BOSS import *
-import progressbar
 from joblib import Parallel, delayed
+import pickle
 
 '''
 The Bag-of-SFA-Symbols Ensemble Classifier as published in
@@ -10,119 +10,130 @@ The Bag-of-SFA-Symbols Ensemble Classifier as published in
 
 class BOSSEnsembleClassifier():
 
-    def __init__(self, d):
-        self.NAME = d
-        self.factor = 0.96
+    def __init__(self, FIXED_PARAMETERS, logger):
+        self.NAME = FIXED_PARAMETERS['dataset']
+        self.train_bool = FIXED_PARAMETERS['train_bool']
+        self.score_path = './stored_models/BOSSEnsemble_%s_score.p' % (self.NAME)
+        self.model_path = './stored_models/BOSSEnsemble_%s_model.p' % (self.NAME)
+
+        self.factor = 0.92
         self.maxF = 16
         self.minF = 6
         self.maxS = 4
-        self.MAX_WINDOW_LENGTH = 250
+        self.MAX_WINDOW_LENGTH = FIXED_PARAMETERS['MAX_WINDOW_LENGTH']
+        self.NORMALIZATION = [True, False]
+        self.ENSEMBLE_WEIGHTS = True
+        logger.Log(self.__dict__, level = 0)
+        self.logger = logger
 
 
     def eval(self, train, test):
-        scores = self.fit(train)
+        if self.train_bool:
+            scores = self.fit(train)
+            pickle.dump(scores, open(self.score_path, 'wb'))
+            pickle.dump(self.model, open(self.model_path, 'wb'))
+        else:
+            scores = pickle.load(open(self.score_path, 'rb'))
+            self.model = pickle.load(open(self.model_path, 'rb'))
 
-        labels, correctTesting = self.predict(self.model, test)
-        test_acc = correctTesting/test["Samples"]
+        self.logger.Log("Final Ensembled Models...")
+        for m in self.model:
+            self.logger.Log("Norm:%s  WindowLength:%s  Features:%s  TrainScore:%s" % (m.norm, m.windowLength, m.features, m.score))
 
-        return "BOSS Ensemble; "+str(round(scores,3))+"; "+str(round(test_acc,3)), labels
+        p = self.predict(self.model, test, testing=True)
+        test_acc = p.correct/test["Samples"]
+        return "BOSS Ensemble; "+str(round(scores/train['Samples'],3))+"; "+str(round(test_acc,3)), p.labels
 
 
     def fit(self, train):
         self.minWindowLength = 10
-        maxWindowLength = self.MAX_WINDOW_LENGTH
-        for i in range(train["Samples"]):
-            maxWindowLength = min([len(train[i].data), maxWindowLength])
+        maxWindowLength = getMax(train, self.MAX_WINDOW_LENGTH)
+        self.windows = self.getWindowsBetween(self.minWindowLength, maxWindowLength)
+        self.logger.Log("Windows: %s" % self.windows)
 
-        self.windows = range(maxWindowLength, self.minWindowLength, -1)
-
-        NORMALIZATION = [True, False]
         bestCorrectTraining = 0.
         bestScore = None
 
-        for norm in NORMALIZATION:
+        for norm in self.NORMALIZATION:
             models, correctTraining = self.fitEnsemble(norm, train)
-            labels, correctTesting = self.predict(models, train)
-
-            if bestCorrectTraining < correctTesting:
-                bestCorrectTraining = correctTesting
-                bestScore = correctTesting/train["Samples"]
+            p = self.predict(models, train, testing=True)
+            if bestCorrectTraining < p.correct:
+                bestCorrectTraining = p.correct
+                bestScore = p.correct
+                currentMax = max([i.score for i in models])
+                if currentMax < bestScore:
+                    for i in range(len(models)):
+                        if models[i].score == currentMax:
+                            models[i].score = bestScore
+                            break
                 self.model = models
 
         return bestScore
 
-    def fitIndividual(self, NormMean, samples, i, bar):
-        model = self.BOSSModel(NormMean, self.windows[i])
 
-        boss = BOSS(self.maxF, self.maxS, self.windows[i], NormMean)
+    def fitIndividual(self, NormMean, samples, i):
+        model = BOSSModel(NormMean, self.windows[i])
+        boss = BOSS(self.maxF, self.maxS, self.windows[i], NormMean, logger = self.logger)
         train_words = boss.createWords(samples)
 
         f = self.minF
         keep_going = True
         while (f <= self.maxF) & (keep_going == True):
             bag = boss.createBagOfPattern(train_words, samples, f)
-            s = self.prediction(bag, bag, samples["Labels"], samples["Labels"], False)
-            if s[0] > model[1]:
-                model[1] = s[0]
-                model[2] = f
-                model[3] = boss
-                model[5] = bag
-                model[6] = samples["Labels"]
-            if s[0] == samples["Samples"]:
+            s = self.prediction(bag, bag)
+            if s.correct > model.score:
+                model.score = s.correct
+                model.features = f
+                model.boss = boss
+                model.bag = bag
+            if s.correct == samples["Samples"]:
                 keep_going = False
             f += 2
 
+        self.logger.Log("Correct for Norm=%s & Window=%s: %s @ f=%s" % (NormMean, self.windows[i], model.score, model.features))
         self.results.append(model)
-        bar.update(i)
+
 
     def fitEnsemble(self, NormMean, samples):
         correctTraining = 0
         self.results = []
+        self.logger.Log("%s  Fitting for a norm of %s" % (self.NAME, str(NormMean)))
 
-        print(self.NAME + "  Fitting for a norm of " + str(NormMean))
-        with progressbar.ProgressBar(max_value=len(self.windows)) as bar:
-            Parallel(n_jobs=3, backend="threading")(delayed(self.fitIndividual, check_pickle=False)(NormMean, samples, i, bar) for i in range(len(self.windows)))
-        print()
+        Parallel(n_jobs=1, backend="threading")(delayed(self.fitIndividual, check_pickle=False)(NormMean, samples, i) for i in range(len(self.windows)))
 
         #Find best correctTraining
         for i in range(len(self.results)):
-            if self.results[i][1] > correctTraining:
-                correctTraining = self.results[i][1]
+            if self.results[i].score > correctTraining:
+                correctTraining = self.results[i].score
 
+        self.logger.Log("CorrectTrain for a norm of %s" % (correctTraining))
         # Remove Results that are no longer satisfactory
         new_results = []
+        self.logger.Log("Stored Models for Norm=%s" % NormMean)
         for i in range(len(self.results)):
-            if self.results[i][1] >= (correctTraining * self.factor):
+            if self.results[i].score >= (correctTraining * self.factor):
+                self.logger.Log("WindowLength:%s  Features:%s  TrainScore:%s" % (self.results[i].windowLength, self.results[i].features, self.results[i].score))
                 new_results.append(self.results[i])
 
         return new_results, correctTraining
 
 
-    def BossScore(self, normed, windowLength):
-        return ["BOSS Ensemble", 0, 0, normed, windowLength, pd.DataFrame(), 0]
-
-
-    def BOSSModel(self, normed, windowLength):
-        return self.BossScore(normed, windowLength)
-
-
-    def prediction(self, bag_test, bag_train, label_test, label_train, training_check):
-        p_labels = [0 for i in range(len(label_test))]
+    def prediction(self, bag_test, bag_train, testing = False):
+        p_labels = [None for i in range(len(bag_test))]
         p_correct = 0
 
         for i in range(len(bag_test)):
-            minDistance = 2147483647
-            p_labels[i] = 'Nan'
+            minDistance = 0x7fffffff
 
             noMatchDistance = 0
-            for key in bag_test[i].keys():
-                noMatchDistance += bag_test[i][key] ** 2
+            for key in bag_test[i].bob.keys():
+                noMatchDistance += bag_test[i].bob[key] ** 2
 
             for j in range(len(bag_train)):
-                if (bag_train[j] != bag_test[i]) | (training_check):
+                if (j != i) or testing:  #Second condition is to avoid direct match of train vs train (itself)
                     distance = 0
-                    for key in bag_test[i].keys():
-                        buf = bag_test[i][key] - bag_train[j][key] if key in bag_train[j].keys() else bag_test[i][key]
+                    for key in bag_test[i].bob.keys():
+                        buf = bag_test[i].bob[key] - bag_train[j].bob[key] if key in bag_train[j].bob.keys() else bag_test[i].bob[key]
                         distance += buf ** 2
 
                         if distance >= minDistance:
@@ -130,46 +141,87 @@ class BOSSEnsembleClassifier():
 
                     if (distance != noMatchDistance) & (distance < minDistance):
                         minDistance = distance
-                        p_labels[i] = label_train[j]
+                        p_labels[i] = bag_train[j].label
 
-
-            if label_test[i] == p_labels[i]:
+            if bag_test[i].label == p_labels[i]:
                 p_correct += 1
+        print(p_correct)
 
-        return p_correct, p_labels
+        return Predictions(p_correct, p_labels)
 
 
-    def predict(self, models, samples):
-        Label_Matrix = pd.DataFrame(np.zeros((samples["Samples"], len(models))))
-        Label_Vector = pd.DataFrame(np.zeros((samples["Samples"])))
+    def predictIndividual(self, models, samples, testing, i):
+        score = models[i]
+        model = score.boss
+        wordsTest = model.createWords(samples)
+        test_bag = model.createBagOfPattern(wordsTest, samples, score.features)
+        p = self.prediction(test_bag, score.bag, testing)
+        for j in range(len(p.labels)):
+            self.Label_Matrix[j][i] = {p.labels[j] : score.score}
 
-        for i, model in enumerate(models):
-            wordsTest = model[3].createWords(samples)
+        self.logger.Log("Predicting for WindowLength:%s" % (model.windowLength))
 
-            test_bag = model[3].createBagOfPattern(wordsTest, samples, model[2])
-            p_correct, p_labels = self.prediction(test_bag, model[5], samples["Labels"], model[6], True)
 
-            for j in range(len(p_labels)):
-                Label_Matrix.loc[j, i] = p_labels[j]
 
-        unique_labels = np.unique(samples["Labels"])
+    def predict(self, models, samples, testing=False):
+        uniqueLabels = np.unique(samples["Labels"])
+        self.Label_Matrix = [[None for _ in range(len(models))] for _ in range(samples['Samples'])]
+        predictedLabels = [None for _ in range(samples['Samples'])]
 
-        for i in range(len(Label_Vector)):
-            maximum = 0
-            best = 0
-            d = Label_Matrix.iloc[i, :].tolist()
-            for key in unique_labels:
-                if d.count(key) > maximum:
-                    maximum = d.count(key)
-                    best = key
-            Label_Vector.iloc[i] = best
+        Parallel(n_jobs=1, backend="threading")(delayed(self.predictIndividual, check_pickle=False)(models, samples, testing, i) for i in range(len(models)))
+
+        maxCounts = [None for _ in range(samples['Samples'])]
+        for i in range(len(self.Label_Matrix)):
+            counts = {l:0 for l in uniqueLabels}
+            for k in self.Label_Matrix[i]:
+                if (k != None) and (list(k.keys())[0] != None):
+                    label = list(k.keys())[0]
+                    count = counts[label] if label in counts.keys() else 0
+                    increment = list(k.values())[0] if self.ENSEMBLE_WEIGHTS else 1
+                    count = increment if (count == None) else count + increment
+                    counts[label] = count
+
+            maxCount = -1
+            for e in uniqueLabels: # counts.keys():
+                if (predictedLabels[i] == None) or (maxCount < counts[e]) or (maxCount == counts[e]) and (predictedLabels[i] <= e):
+                    maxCount = counts[e]
+                    predictedLabels[i] = e
 
         correctTesting = 0
-        for i in range(len(Label_Vector)):
-            if int(Label_Vector.iloc[i]) == int(samples["Labels"][i]):
-                correctTesting += 1
+        for i in range(samples["Samples"]):
+            correctTesting += 1 if samples[i].label == predictedLabels[i] else 0
 
-        return Label_Vector, correctTesting
-
+        return Predictions(correctTesting, predictedLabels)
 
 
+    def getWindowsBetween(self, minWindowLength, maxWindowLength):
+        windows = []
+        for windowLength in range(maxWindowLength, minWindowLength-1, -1):
+            windows.append(windowLength);
+        return windows
+
+
+
+def getMax(samples, maxWindowSize):
+    m = 0
+    for i in range(samples['Samples']):
+        m = max(len(samples[i].data), m)
+
+    return min(maxWindowSize, m)
+
+
+
+class BOSSModel():
+    def __init__(self, normed, windowLength):
+        self.NAME = "BOSS Ensemble"
+        self.score = 0
+        self.features = 0
+        self.norm = normed
+        self.windowLength = windowLength
+        self.boss = None
+        self.bag = None
+
+class Predictions():
+    def __init__(self, correct, labels):
+        self.correct = correct
+        self.labels = labels

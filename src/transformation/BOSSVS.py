@@ -5,18 +5,21 @@ import math
 
 class BOSSVS():
 
-    def __init__(self, maxF, maxS, windowLength, normMean):
+    def __init__(self, maxF, maxS, windowLength, normMean, logger = None):
         self.maxF = maxF
         self.symbols = maxS
         self.windowLength = windowLength
         self.normMean = normMean
         self.signature = None
+        logger.Log(self.__dict__, level = 0)
+        self.logger = logger
 
 
     def createWords(self, samples):
         if self.signature == None:
-            self.signature = SFA("EQUI_DEPTH")
+            self.signature = SFA("EQUI_DEPTH", logger = self.logger)
             self.signature.fitWindowing(samples, self.windowLength, self.maxF, self.symbols, self.normMean,True)
+            self.signature.printBins(self.logger)
 
         words = []
         for i in range(samples["Samples"]):
@@ -57,15 +60,15 @@ class BOSSVS():
         mask = (1 << (usedBits * f)) - 1
 
         for j in range(len(words)):
-            BOP = {}
+            BOP = BagOfBigrams(samples[j].label)# {}
             lastWord = -9223372036854775808
             for offset in range(len(words[j])):
                 word = words[j][offset] & mask
                 if word != lastWord:
-                    if word in BOP.keys():
-                        BOP[word] += 1
+                    if word in BOP.bob.keys():
+                        BOP.bob[word] += 1
                     else:
-                        BOP[word] = 1
+                        BOP.bob[word] = 1
                 lastWord = word
             bagOfPatterns.append(BOP)
         return bagOfPatterns
@@ -78,7 +81,7 @@ class BOSSVS():
 
         for j in sampleIndices:
             label = labels[j]
-            for key, value in bagOfPatterns[j].items():
+            for key, value in bagOfPatterns[j].bob.items():
                 matrix[label][key] = matrix[label][key] + value if key in matrix[label].keys() else value
 
         wordInClassFreq = {}
@@ -115,9 +118,7 @@ class BOSSVS():
         return classStatistics
 
 
-
-
-
-
-
-
+class BagOfBigrams():
+    def __init__(self, label):
+        self.bob = {}
+        self.label = int(label)

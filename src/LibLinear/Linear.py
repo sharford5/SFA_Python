@@ -1,14 +1,15 @@
-from src.LibLinear.Model import *
 import numpy as np
-from src.LibLinear.Problem import *
-from src.LibLinear.Tron import *
 import random
 import math
+from src.LibLinear.Model import *
+from src.LibLinear.Problem import *
+from src.LibLinear.Tron import *
+from src.LibLinear.L2R_LrFunction import *
+
 
 class Linear():
 
     def train(self, prob, param):
-
         var2 = prob.x
         n = len(var2)
 
@@ -40,7 +41,7 @@ class Linear():
             model.w = [None for _ in range(w_size)]
             model.nr_class = 2
             model.label = None
-            return "Not Set for Regression"
+            return "Regression not Currently Supported"
             # checkProblemSize(n, model.nr_class);
             # train_one(prob, param, model.w, 0.0D, 0.0D);
         else:
@@ -56,7 +57,6 @@ class Linear():
             weighted_C = [param.c for _ in range(nr_class)]
 
             #Removed part with param weights
-
             x = [prob.x[perm[j]] for j in range(len(perm))]
 
             sub_prob = Problem()
@@ -86,7 +86,6 @@ class Linear():
                 while i < sub_prob.l:
                     sub_prob.y[i] = -1.0
                     i += 1
-
 
                 w = self.train_one(sub_prob, param, model.w, weighted_C[0], weighted_C[1])
             else:
@@ -131,7 +130,7 @@ class Linear():
         C = 0.0
         i = 0.0
         prob_col = Problem()
-        tron_obj = Tron()
+        # tron_obj = Tron()
 
         if param.solverType.solvertype == 'L2R_LR':
             C = [0. for _ in range(prob.l)]
@@ -142,10 +141,10 @@ class Linear():
                 else:
                     C[i] = Cn
 
-            # fun_obj = L2R_LrFunction(prob, C)
-            # tron_obj = new Tron(fun_obj, primal_solver_tol);
-            # tron_obj.tron(w);
-            # break;
+            fun_obj = L2R_LrFunction(prob, C)
+            tron_obj = Tron(fun_obj, primal_solver_tol, param.iter, eps)
+            tron_obj.tron(w)
+            w2 = w
         # elif param.solverType.solvertype == 'L2R_L2LOSS_SVC':
             # C = [0. for _ in range(prob.l)]
             #
@@ -434,15 +433,48 @@ class Linear():
             return model.label[dec_max_idx]
 
 
+    def predictProbability(self, model, x, prob_estimates):
+        # if (!model.isProbabilityModel()) {
+        #     StringBuilder sb = new StringBuilder("probability output is only supported for logistic regression");
+        #     sb.append(". This is currently only supported by the following solvers: ");
+        #     int i = 0;
+        #     for (SolverType solverType : SolverType.values()) {
+        #         if (solverType.isLogisticRegressionSolver()) {
+        #             if (i++ > 0) {
+        #                 sb.append(", ");
+        #             }
+        #             sb.append(solverType.name());
+        #         }
+        #     }
+        #     throw new IllegalArgumentException(sb.toString());
+        # }
+        nr_class = model.nr_class
+        if nr_class == 2:
+            nr_w = 1
+        else:
+            nr_w = nr_class
+
+        label = self.predictValues(model, x, prob_estimates)
+        for i in range(nr_w):
+            prob_estimates[i] = 1 / (1 + np.exp(-prob_estimates[i]))
+
+        if nr_class == 2:
+            prob_estimates[1] = 1. - prob_estimates[0]
+        else:
+            sum = 0
+            for i in range(nr_class):
+                sum += prob_estimates[i]
+
+            for i in range(nr_class):
+                prob_estimates[i] = prob_estimates[i] / sum
+
+        return label
+
+
+
 class GroupClassesReturn():
     def __init__(self, nr_class, label, start, count):
         self.nr_class = nr_class
         self.label = label
         self.start = start
         self.count = count
-
-
-
-
-
-

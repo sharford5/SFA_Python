@@ -1,5 +1,5 @@
 from  src.transformation.SFA import *
-import progressbar
+from  src.transformation.SFASupervised import *
 from joblib import Parallel, delayed
 
 global MAX_WINDOW_LENGTH
@@ -7,40 +7,36 @@ MAX_WINDOW_LENGTH = 250
 
 class WEASEL():
 
-    def __init__(self, maxF, maxS, windowLength, normMean):
+    def __init__(self, maxF, maxS, windowLength, normMean, lowerBounding=False, logger = None):
         self.maxF = maxF
         self.symbols = maxS
         self.windowLengths = windowLength
-
+        self.lowerBounding = lowerBounding
         self.normMean = normMean
         self.signature = [None for w in range(len(self.windowLengths))]
         self.dict = Dictionary()
+        logger.Log(self.__dict__, level = 0)
+        self.logger = logger
 
 
-    def createWORDS(self, samples):
+    def createWORDS(self, samples, data = 'Train'):
         self.words = [None for _ in range(len(self.windowLengths))]
-
-        print("Fitting ")
-        with progressbar.ProgressBar(max_value=len(self.windowLengths)) as bar:
-            Parallel(n_jobs=4, backend="threading")(delayed(self.createWords, check_pickle=False)(samples, w, bar) for w in range(len(self.windowLengths)))
-        print()
-
+        Parallel(n_jobs=1, backend="threading")(delayed(self.createWords, check_pickle=False)(samples, w, data) for w in range(len(self.windowLengths)))
         return self.words
 
 
-    def createWords(self, samples, index, bar = None):
+    def createWords(self, samples, index, data):
         if self.signature[index] == None:
-            self.signature[index] = SFA("INFORMATION_GAIN", True, False)
-            self.signature[index].fitWindowing(samples, self.windowLengths[index], self.maxF, self.symbols, self.normMean, False)
-            # self.signature[index].printBins()
+            self.signature[index] = SFASupervised("INFORMATION_GAIN", lowerBounding = self.lowerBounding, logger = self.logger)
+            self.signature[index].fitWindowing(samples, self.windowLengths[index], self.maxF, self.symbols, self.normMean, self.lowerBounding)
+            self.signature[index].sfa.printBins(self.logger)
 
         words = []
         for i in range(samples["Samples"]):
-            words.append(self.signature[index].transformWindowingInt(samples[i], self.maxF))
+            words.append(self.signature[index].sfa.transformWindowingInt(samples[i], self.maxF))
 
+        self.logger.Log("Generating %s Words for Norm=%s and Window=%s" % (data, self.normMean, self.windowLengths[index]))
         self.words[index] = words
-        if bar != None:
-            bar.update(index)
 
 
     def createWord(self, numbers, maxF, bits):
@@ -98,7 +94,6 @@ class WEASEL():
                         prevWord = self.dict.getWord((words[w][j][offset - self.windowLengths[w]] & mask) << highestBit | w)
                         newWord = self.dict.getWord((prevWord << 32 | word ) << highestBit)
                         bagOfPatterns[j].bob[newWord] = bagOfPatterns[j].bob[newWord] + 1 if newWord in bagOfPatterns[j].bob.keys() else 1
-
         return bagOfPatterns
 
 
@@ -157,7 +152,6 @@ class BagOfBigrams():
 
 
 class Dictionary():
-
     def __init__(self):
         self.dict = {}
         self.dictChi = {}
@@ -199,6 +193,8 @@ class Dictionary():
         for j in range(len(bagOfPatterns)):
             oldMap = bagOfPatterns[j].bob
             bagOfPatterns[j].bob = {}
+            keys = list(oldMap.keys())
+            keys.sort()
             for word_key, word_value in oldMap.items():
                 if word_value > 0:
                     bagOfPatterns[j].bob[self.getWordChi(word_key)] = word_value

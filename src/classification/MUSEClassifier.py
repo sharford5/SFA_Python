@@ -2,6 +2,7 @@ from  src.transformation.MUSE import *
 import pandas as pd
 import numpy as np
 import random
+import pickle
 
 from src.LibLinear.Feature import *
 from src.LibLinear.FeatureNode import *
@@ -20,24 +21,34 @@ The WEASEL+MUSE classifier as published in
 
 class MUSEClassifier():
 
-    def __init__(self, d):
-        self.NAME = d
+    def __init__(self, FIXED_PARAMETERS, logger):
+        self.NAME = FIXED_PARAMETERS['dataset']
+        self.train_bool = FIXED_PARAMETERS['train_bool']
+        self.score_path = './stored_models/MUSE_%s_score.p' % (self.NAME)
+        self.model_path = './stored_models/MUSE_%s_model.p' % (self.NAME)
+        self.linearmodel_path = './stored_models/MUSE_%s_linearmodel.p' % (self.NAME)
+        self.wordmodel_path = './stored_models/MUSE_%s_wordmodel.p' % (self.NAME)
+
         self.maxF = 6
-        self.minF = 4
+        self.minF = 2
         self.maxS = 4
         self.histTypes = ["EQUI_DEPTH", "EQUI_FREQUENCY"]
+        self.lowerBounding = False
 
         self.chi = 2
         self.bias = 1
         self.p = 0.1
         self.iter = 5000
         self.c = 1
+
+        self.MIN_WINDOW_SIZE = 2
         self.MAX_WINDOW_SIZE = 450
         self.solverType = SolverType('L2R_LR_DUAL')
         self.word_model = None
         self.linear_model = None
         self.TIMESERIES_NORM = False
-
+        logger.Log(self.__dict__, level = 0)
+        self.logger = logger
 
     def eval(self, train, test):
         if not self.TIMESERIES_NORM:
@@ -48,7 +59,18 @@ class MUSEClassifier():
                 for j in range(test["Dimensions"]):
                     test[i][j].NORM_CHECK = self.TIMESERIES_NORM
 
-        scores = self.fit(train)
+        if self.train_bool:
+            scores = self.fit(train)
+            pickle.dump(scores, open(self.score_path, 'wb'))
+            pickle.dump(self.model, open(self.model_path, 'wb'))
+            pickle.dump(self.linear_model, open(self.linearmodel_path, 'wb'))
+            pickle.dump(self.word_model, open(self.wordmodel_path, 'wb'))
+        else:
+            scores = pickle.load(open(self.score_path, 'rb'))
+            self.model = pickle.load(open(self.model_path, 'rb'))
+            self.linear_model = pickle.load(open(self.linearmodel_path, 'rb'))
+            self.word_model = pickle.load(open(self.wordmodel_path, 'rb'))
+
         acc, labels = self.predict(scores, test)
 
         return "WEASEL+MUSE; "+str(round(scores.train_correct/train["Samples"],3))+"; "+str(round(acc,3)), labels
@@ -60,6 +82,7 @@ class MUSEClassifier():
 
 
     def predict(self, scores, test):
+        self.logger.Log("Test Word Creation")
         words = self.word_model.createWORDS(test)
         bag = self.word_model.createBagOfPatterns(words, test, test["Dimensions"], scores.f)
         bag = self.word_model.dict.Remap(bag)
@@ -82,14 +105,12 @@ class MUSEClassifier():
         bestNorm = False
         bestHistType = None
 
-        min = 4
-        Max = self.GetMax(samples, self.MAX_WINDOW_SIZE)
-        self.windowLengths = [a for a in range(min, Max + 1)]
-
         breaker = False
         for histType in self.histTypes:
             for normMean in [True, False]:
-                model = MUSE(self.maxF, self.maxS, histType, self.windowLengths, normMean, True)
+                self.windowLengths = self.getWindowLengths(samples, normMean)
+                self.logger.Log("Fitting for Norm=%s and histType=%s" % (normMean, histType))
+                model = MUSE(self.maxF, self.maxS, histogramType=histType, windowLengths=self.windowLengths, normMean=normMean, lowerBounding=self.lowerBounding, logger = self.logger)
                 words = model.createWORDS(samples)
 
                 f = self.minF
@@ -101,6 +122,7 @@ class MUSEClassifier():
                     correct = self.trainLibLinear(problem, 10)
 
                     if correct > maxCorrect:
+                        self.logger.Log("New Best Correct at Norm=%s and histType=%s and F=%s of: %s" % (normMean, histType, f, correct))
                         maxCorrect = correct
                         bestF = f
                         bestNorm = normMean
@@ -116,7 +138,8 @@ class MUSEClassifier():
             if breaker:
                 break
 
-        self.word_model = MUSE(bestF, self.maxS, bestHistType, self.windowLengths, bestNorm, True)
+        self.logger.Log("Final Fitting")
+        self.word_model = MUSE(bestF, self.maxS, bestHistType, self.windowLengths, bestNorm, True, logger = self.logger)
         words = self.word_model.createWORDS(samples)
         bag = self.word_model.createBagOfPatterns(words, samples, dimensionality, bestF)
         bag = self.word_model.filterChiSquared(bag, self.chi)
@@ -136,6 +159,15 @@ class MUSEClassifier():
             for j in range(len(samples[i].keys())):
                 m = max(m, len(samples[i][j].data))
         return min(m, number)
+
+
+    def getWindowLengths(self, samples, norm):
+        min = max(3, self.MIN_WINDOW_SIZE) if (norm) and (self.MIN_WINDOW_SIZE <= 2) else self.MIN_WINDOW_SIZE
+        ma = self.GetMax(samples, self.MAX_WINDOW_SIZE)
+        windowLengths = []
+        for w in range(min, ma+1):
+            windowLengths.append(w)
+        return windowLengths
 
 
     def initLibLinearProblem(self, bob, dict, bias):
@@ -171,7 +203,6 @@ class MUSEClassifier():
 
             featuresTrain[j] = new_feature
         return featuresTrain
-
 
 
     def trainLibLinear(self, prob, n_folds = 10):

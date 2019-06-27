@@ -1,18 +1,20 @@
 import pandas as pd
 from src.timeseries.TimeSeries import TimeSeries
 import os
+import numpy as np
 
-uv_dir = os.getcwd()[:-5] + "\\datasets\\univariate\\"
-mv_dir = os.getcwd()[:-5] + "\\datasets\\multivariate\\"
+uv_dir = os.getcwd() + "\\datasets\\univariate\\"
+mv_dir = os.getcwd() + "\\datasets\\multivariate\\"
 
 
-def uv_load(dataset_name):
+def uv_load(dataset_name, APPLY_Z_NORM = True, logger = None):
     try:
         train = {}
         test = {}
 
-        train_raw = pd.read_csv((uv_dir + dataset_name + "\\" + dataset_name + "_TRAIN"), sep=" ", header=None)
-        test_raw = pd.read_csv((uv_dir + dataset_name + "\\" + dataset_name + "_TEST"), sep=" ", header=None)
+        logger.Log("Loading from: %s%s" % (uv_dir, dataset_name))
+        train_raw = pd.read_csv((uv_dir + dataset_name + "\\" + dataset_name + "_TRAIN"), sep=",", header=None)
+        test_raw = pd.read_csv((uv_dir + dataset_name + "\\" + dataset_name + "_TEST"), sep=",", header=None)
 
         train["Type"] = "UV"
         train["Samples"] = train_raw.shape[0]
@@ -28,35 +30,37 @@ def uv_load(dataset_name):
             label = int(train_raw.iloc[i, 0])
             train["Labels"].append(label)
             series = train_raw.iloc[i,1:].tolist()
-            train[i] = TimeSeries(series, label)
-            train[i].NORM(True)
+            train[i] = TimeSeries(series, label, APPLY_Z_NORM=APPLY_Z_NORM)
+            if APPLY_Z_NORM:
+                train[i].NORM(True)
 
         for i in range(test["Samples"]):
             label = int(test_raw.iloc[i, 0])
             test["Labels"].append(label)
             series = test_raw.iloc[i, 1:].tolist()
-            test[i] = TimeSeries(series, label)
-            test[i].NORM(True)
+            test[i] = TimeSeries(series, label, APPLY_Z_NORM=APPLY_Z_NORM)
+            if APPLY_Z_NORM:
+                test[i].NORM(True)
 
-
-        print("Done reading " + dataset_name + " Training Data...  Samples: " + str(train["Samples"]) + "   Length: " + str(train["Size"]))
-        print("Done reading " + dataset_name + " Testing Data...  Samples: " + str(test["Samples"]) + "   Length: " + str(test["Size"]))
-        print()
+        logger.Log("Done reading %s Training Data...  Samples: %s  Length: %s"   % (dataset_name, str(train["Samples"]), str(train["Size"])))
+        logger.Log("Done reading %s Testing Data...  Samples: %s  Length: %s"   % (dataset_name, str(test["Samples"]), str(test["Size"])))
+        logger.Log("Classes: %s" % str(np.unique(train['Labels'])))
 
         return train, test
 
     except:
-        print("Data not loaded Try changing the data path in the TimeSeriesLoader file")
+        logger.Log("Data not loaded. Checking the Multivariate Data Path...")
 
 
 
-def mv_load(dataset_name, useDerivatives):
+def mv_load(dataset_name, useDerivatives,  APPLY_Z_NORM = False, logger = None):
     try:
         train = {}
         test = {}
 
-        train_raw = pd.read_csv((mv_dir + dataset_name + "\\" + dataset_name + "_TRAIN3"), sep = " ", header=None)
-        test_raw = pd.read_csv((mv_dir + dataset_name + "\\" + dataset_name + "_TEST3"), sep = " ", header=None)
+        logger.Log("Loading from: %s%s" % (mv_dir, dataset_name))
+        train_raw = pd.read_csv((mv_dir + dataset_name + "\\" + dataset_name + "_TRAIN3"), sep=" ", header=None)
+        test_raw = pd.read_csv((mv_dir + dataset_name + "\\" + dataset_name + "_TEST3"), sep=" ", header=None)
 
         train["Type"] = "MV"
         train["Samples"] = int(train_raw.iloc[-1,0])
@@ -76,14 +80,16 @@ def mv_load(dataset_name, useDerivatives):
             train[i] = {}
             for j in range(3, row_info.shape[1]):
                 series = row_info.iloc[:,j].tolist()
-                train[i][channel] = TimeSeries(series, label)
+                train[i][channel] = TimeSeries(series, label, APPLY_Z_NORM=APPLY_Z_NORM)
                 channel += 1
-                if useDerivatives:
-                    series2= [0. for _ in range(len(series)-1)]
+
+            if useDerivatives:
+                for j in range(channel):
+                    series = train[i][j].data
+                    series2 = [0. for _ in range(len(series))]
                     for u in range(1,len(series)):
-                        series2[u-1] = series[u] - series[u-1]
-                    train[i][channel] = TimeSeries(series2, label)
-                    channel += 1
+                        series2[u-1] = abs(series[u] - series[u-1])
+                    train[i][channel+j] = TimeSeries(series2, label, APPLY_Z_NORM=APPLY_Z_NORM)
 
         for i in range(int(test_raw.iloc[-1,0])):
             row_info = test_raw[test_raw[0] == i+1]
@@ -93,22 +99,22 @@ def mv_load(dataset_name, useDerivatives):
             test[i] = {}
             for j in range(3, row_info.shape[1]):
                 series = row_info.iloc[:,j].tolist()
-                test[i][channel] = TimeSeries(series, label)
+                test[i][channel] = TimeSeries(series, label, APPLY_Z_NORM=APPLY_Z_NORM)
                 channel += 1
-                if useDerivatives:
-                    series2= [0. for _ in range(len(series)-1)]
+
+            if useDerivatives:
+                for j in range(channel):
+                    series = test[i][j].data
+                    series2 = [0. for _ in range(len(series))]
                     for u in range(1,len(series)):
-                        series2[u-1] = series[u] - series[u-1]
-                    test[i][channel] = TimeSeries(series2, label)
-                    channel += 1
+                        series2[u-1] = abs(series[u] - series[u-1])
+                    test[i][channel+j] = TimeSeries(series2, label, APPLY_Z_NORM=APPLY_Z_NORM)
 
 
-        print("Done reading "+dataset_name+" Training Data...  Samples: " + str(train["Samples"])+ "   Dimensions: "+str(train["Dimensions"]))
-        print("Done reading "+dataset_name+" Testing Data...  Samples: " + str(test["Samples"])+ "   Dimensions: "+str(test["Dimensions"]))
-        print()
+        logger.Log("Done reading %s Training Data...  Samples: %s  Dimensions: %s"   % (dataset_name, str(train["Samples"]), str(train["Dimensions"])))
+        logger.Log("Done reading %s Testing Data...  Samples: %s  Dimensions: %s"   % (dataset_name, str(test["Samples"]), str(test["Dimensions"])))
+        logger.Log("Classes: %s" % str(np.unique(train['Labels'])))
 
         return train, test
     except:
-        print("Data not loaded Try changing the data path in the TimeSeriesLoader file")
-
-
+        logger.Log("Data not loaded. Check Data name and path")

@@ -103,4 +103,3 @@ class MFT:
             copy.data[i] *= sign * normalisingFactor
             sign *= -1
         return copy.data
-

@@ -3,6 +3,7 @@ from src.timeseries.TimeSeries import *
 from src.timeseries.TimeSeries import TimeSeries
 import math
 import pandas as pd
+import numpy as np
 
 '''
  Symbolic Fourier Approximation as published in
@@ -13,13 +14,14 @@ import pandas as pd
 
 class SFA():
 
-    def __init__(self, histogram_type, SUP = False, LB = True, MB = False):
+    def __init__(self, histogram_type, LB = True, logger = None, mftUseMaxOrMin = False):
         self.initialized = False
         self.HistogramType = histogram_type
-        self.SUP = SUP
         self.lowerBounding = LB
-        self.MUSE_Bool = MB
+        self.mftUseMaxOrMin = mftUseMaxOrMin
 
+        logger.Log(self.__dict__, level = 0)
+        self.logger = logger
 
     def initialize(self, wordLength, symbols, normMean):
         self.initialized = True
@@ -35,27 +37,28 @@ class SFA():
         self.bins.iloc[:, 0] = -math.inf
 
 
-    def printBins(self):
-        print(self.bins)
+    def printBins(self, logger = None):
+        if logger != None:
+            logger.Log(str(self.bins), level = 0)
+        else:
+            print(self.bins)
 
 
-    def mv_fitWindowing(self, samples, windowSize, wordLength, symbols, normMean, lowerBounding):
+    def mv_fitWindowing(self, samples, windowSize, wordLength, symbols, normMean, lowerBounding, dim):
         sa = {}
         index = 0
         for i in range(samples["Samples"]):
-            for k in range(len(samples[i].keys())):
-                new_list = getDisjointSequences(samples[i][k], windowSize, normMean)
-                for j in range(len(new_list)):
-                    sa[index] = new_list[j]
-                    index += 1
+            new_list = getDisjointSequences(samples[i][dim], windowSize, normMean)
+            for j in range(len(new_list)):
+                sa[index] = new_list[j]
+                index += 1
 
         sa["Samples"] = index
         self.fitWindowing(sa, windowSize, wordLength, symbols, normMean, lowerBounding)
 
 
     def fitWindowing(self, samples, windowSize, wordLength, symbols, normMean, lowerBounding):
-        self.transformation = MFT(windowSize, normMean, lowerBounding, self.MUSE_Bool)
-
+        self.transformation = MFT(windowSize, normMean, lowerBounding)
         sa = {}
         index = 0
 
@@ -66,11 +69,7 @@ class SFA():
                 index += 1
 
         sa["Samples"] = index
-
-        if self.SUP:
-            self.fitTransformSupervised(sa, wordLength, symbols, normMean)
-        else:
-            self.fitTransform(sa, wordLength, symbols, normMean)
+        self.fitTransform(sa, wordLength, symbols, normMean)
 
 
     def fitTransform(self, samples, wordLength, symbols, normMean):
@@ -81,31 +80,30 @@ class SFA():
         transformed = []
         for i in range(samples["Samples"]):
             transformed.append(self.transform2(samples[i].data, approximate[i]))
-
         return transformed
 
 
-    def transform2(self, series, one_approx):
+    def transform2(self, series, one_approx, str_return = False):
         if one_approx == "null":
             one_approx = self.transformation.transform(series, self.maxWordLength)
 
-        if self.SUP:
-            return self.quantizationSupervised(one_approx)
+        if str_return:
+            return sfaToWord(self.quantization(one_approx))
         else:
             return self.quantization(one_approx)
 
 
-    def transformWindowing(self, series):
+    def transformWindowing(self, series, str_return = False):
         mft = self.transformation.transformWindowing(series, self.maxWordLength)
 
         words = []
         for i in range(len(mft)):
-            if self.SUP:
-                words.append(self.quantizationSupervised(mft[i]))
-            else:
-                words.append(self.quantization(mft[i]))
+            words.append(self.quantization(mft[i]))
 
-        return words
+        if str_return:
+            return sfaToWordList(words)
+        else:
+            return words
 
 
     def transformWindowingInt(self, series, wordLength):
@@ -119,9 +117,8 @@ class SFA():
     def fitTransformDouble(self, samples, wordLength, symbols, normMean):
         if self.initialized == False:
             self.initialize(wordLength, symbols, normMean)
-
             if self.transformation == None:
-                self.transformation = MFT(len(samples[0].data), normMean, self.lowerBounding, self.MUSE_Bool)
+                self.transformation = MFT(len(samples[0].data), normMean, self.lowerBounding)
 
         transformedSamples = self.fillOrderline(samples, wordLength)
 
@@ -131,6 +128,8 @@ class SFA():
             self.divideEquiWidthHistogram()
         elif self.HistogramType == "INFORMATION_GAIN":
             self.divideHistogramInformationGain()
+
+        self.orderLine = []
 
         return transformedSamples
 
@@ -214,7 +213,7 @@ class SFA():
                 intervalWidth = (last - first) / self.alphabetSize
 
                 for c in range(self.alphabetSize-1):
-                    self.bins.iloc[i,c] = intervalWidth * (c + 1) + first
+                    self.bins.iloc[i,c+1] = intervalWidth * (c + 1) + first
             i += 1
 
         self.bins.iloc[:, 0] = -math.inf
@@ -242,7 +241,6 @@ class SFA():
             self.cOut[label] = self.cOut[label] + 1. if label in self.cOut.keys() else 1.
 
         class_entropy = self.entropy(self.cOut, total)
-
         i = start
         lastLabel = element[i][1]
         i += self.moveElement(lastLabel)
@@ -330,133 +328,21 @@ class SFA():
             log += 2
         return log + (number >> 1)
 
-    ## Supervised
-    def fitTransformSupervised(self, samples, wordLength, symbols, normMean):
-        length = len(samples[0].data)
-        transformedSignal = self.fitTransformDouble(samples, length, symbols, normMean)
-
-        best = self.calcBestCoefficients(samples, transformedSignal)
-
-        self.bestValues = [0 for i in range(min(len(best), wordLength))]
-        self.maxWordLength = 0
-
-        for i in range(len(self.bestValues)):
-            self.bestValues[i] = best[i][0]
-            self.maxWordLength = max(best[i][0] + 1, self.maxWordLength)
-
-        self.maxWordLength += self.maxWordLength % 2
-
-        return self.transform(samples, transformedSignal)
-
-
-    def calcBestCoefficients(self, samples, transformedSignal):
-        classes = {}
-        for i in range(samples["Samples"]):
-            if samples[i].label in classes.keys():
-                classes[samples[i].label].append(transformedSignal[i])
-            else:
-                classes[samples[i].label] = [transformedSignal[i]]
-
-        nSamples = len(transformedSignal)
-        nClasses = len(classes.keys())
-        length = len(transformedSignal[1])
-
-        f = self.getFoneway(length, classes, nSamples, nClasses)
-        f_sorted = sorted(f, reverse = True)
-        best = []
-        inf_index = 0
-
-        for value in f_sorted:
-            if value == math.inf:
-                index = f.index(value) + inf_index
-                inf_index += 1
-            else:
-                index = f.index(value)
-            best.append([index, value])
-
-        return best
-
-
-    def getFoneway(self, length, classes, nSamples, nClasses):
-        ss_alldata = [0. for i in range(length)]
-        sums_args = {}
-        keys_class = list(classes.keys())
-
-        for key in keys_class:
-            allTs = classes[key]
-            sums = [0. for i in range(len(ss_alldata))]
-            sums_args[key] = sums
-            for ts in allTs:
-                for i in range(len(ts)):
-                    ss_alldata[i] += ts[i] * ts[i]
-                    sums[i] += ts[i]
-
-        square_of_sums_alldata = [0. for i in range(len(ss_alldata))]
-        square_of_sums_args = {}
-        for key in keys_class:
-            # square_of_sums_alldata2 = [0. for i in range(len(ss_alldata))]
-            sums = sums_args[key]
-            for i in range(len(sums)):
-                square_of_sums_alldata[i] += sums[i]
-            # square_of_sums_alldata += square_of_sums_alldata2
-
-            squares = [0. for i in range(len(sums))]
-            square_of_sums_args[key] = squares
-            for i in range(len(sums)):
-                squares[i] += sums[i]*sums[i]
-
-        for i in range(len(square_of_sums_alldata)):
-            square_of_sums_alldata[i] *= square_of_sums_alldata[i]
-
-        sstot = [0. for i in range(len(ss_alldata))]
-        for i in range(len(sstot)):
-            sstot[i] = ss_alldata[i] - square_of_sums_alldata[i]/nSamples
-
-        ssbn = [0. for i in range(len(ss_alldata))]    ## sum of squares between
-        sswn = [0. for i in range(len(ss_alldata))]    ## sum of squares within
-
-        for key in keys_class:
-            sums = square_of_sums_args[key]
-            n_samples_per_class = len(classes[key])
-            for i in range(len(sums)):
-                ssbn[i] += sums[i]/n_samples_per_class
-
-        for i in range(len(square_of_sums_alldata)):
-            ssbn[i] += -square_of_sums_alldata[i]/nSamples
-
-        dfbn = nClasses-1                          ## degrees of freedom between
-        dfwn = nSamples - nClasses                 ## degrees of freedom within
-        msb = [0. for i in range(len(ss_alldata))]   ## variance (mean square) between classes
-        msw = [0. for i in range(len(ss_alldata))]   ## variance (mean square) within samples
-        f = [0. for i in range(len(ss_alldata))]     ## f-ratio
-
-
-        for i in range(len(sswn)):
-            sswn[i] = sstot[i]-ssbn[i]
-            msb[i] = ssbn[i]/dfbn
-            msw[i] = sswn[i]/dfwn
-            f[i] = msb[i]/msw[i] if msw[i] != 0. else math.inf
-
-        return f
-
-
-    def quantizationSupervised(self, one_approx):
-        signal = [0 for _ in range(min(len(one_approx), len(self.bestValues)))]
-
-        for a in range(len(signal)):
-            i = self.bestValues[a]
-            b = 0
-            for beta in range(self.bins.shape[1]):
-                if one_approx[i] < self.bins.iloc[i,beta]:
-                    break
-                else:
-                    b += 1
-            signal[a] = b-1
-
-        return signal
 
 
 
 
 
+def sfaToWord(word):
+    word_string = ""
+    alphabet = "abcdefghijklmnopqrstuv"
+    for w in word:
+        word_string += alphabet[w]
+    return word_string
 
+def sfaToWordList(wordList):
+    list_string = ""
+    for word in wordList:
+        list_string += sfaToWord(word)
+        list_string += "; "
+    return list_string

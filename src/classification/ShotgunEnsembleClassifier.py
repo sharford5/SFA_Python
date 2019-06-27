@@ -1,4 +1,4 @@
-from  src.classification.ShotgunClassifier import *
+from src.classification.ShotgunClassifier import *
 import random
 from statistics import mode
 from joblib import Parallel, delayed
@@ -12,15 +12,21 @@ The Shotgun Ensemble Classifier as published in:
 '''
 
 class ShotgunEnsembleClassifier():
-    def __init__(self, d):
-        self.NAME = d
+    def __init__(self, FIXED_PARAMETERS, logger):
+        self.NAME = FIXED_PARAMETERS['dataset']
         self.factor = 0.92
         self.MAX_WINDOW_LENGTH = 250
+        logger.Log(self.__dict__, level = 0)
+        self.logger = logger
 
 
     def eval(self, train, test):
         correctTraining = self.fit(train)
         train_acc = correctTraining / train["Samples"]
+
+        self.logger.Log("Final Ensembled Models...")
+        for m in self.model:
+            self.logger.Log("Norm:%s  WindowLength:%s  TrainScore:%s" % (m.norm, m.window, m.correct))
 
         correctTesting, labels = self.predictEnsemble(self.model, test)
         test_acc = correctTesting / test["Samples"]
@@ -30,36 +36,35 @@ class ShotgunEnsembleClassifier():
 
     def fit(self, train):
         bestCorrectTraining = 0
-
         for normMean in [True, False]:
-            model, correct = self.fitEnsemble(normMean, train, self.factor)
+            model, __doc__ = self.fitEnsemble(normMean, train, self.factor)
+            correct, labels = self.predictEnsemble(model, train)
 
-            if correct > bestCorrectTraining:
+            if bestCorrectTraining < correct:
                 bestCorrectTraining = correct
                 self.model = model
         return bestCorrectTraining
 
 
-    def fitIndividual(self, NormMean, samples, windows, i, bar):
+    def fitIndividual(self, NormMean, samples, windows, i):
         model = ShotgunModel(NormMean, windows[i], samples, samples["Labels"])
         correct, pred_labels = self.predict(model, samples)
         model.correct = correct
-        bar.update(i)
+        self.logger.Log("Correct for Norm=%s & Window=%s: %s" % (NormMean, windows[i], model.correct))
         self.results.append(model)
 
 
     def fitEnsemble(self, normMean, samples, factor):
         minWindowLength = 5
-        maxWindowLength = min(self.MAX_WINDOW_LENGTH, samples["Size"])
-        windows = [i for i in range(minWindowLength, maxWindowLength + 1)]
+        maxWindowLength = getMax(samples, self.MAX_WINDOW_LENGTH)
+        windows = self.getWindowsBetween(minWindowLength, maxWindowLength)
+        self.logger.Log("Windows: %s" % windows)
 
         correctTraining = 0
         self.results = []
 
-        print(self.NAME+"  Fitting for a norm of "+str(normMean))
-        with progressbar.ProgressBar(max_value=len(windows)) as bar:
-            Parallel(n_jobs=3, backend="threading")(delayed(self.fitIndividual, check_pickle=False)(normMean, samples, windows, i, bar) for i in range(len(windows)))
-        print()
+        self.logger.Log("%s  Fitting for a norm of %s" % (self.NAME, str(normMean)))
+        Parallel(n_jobs=-1, backend="threading")(delayed(self.fitIndividual, check_pickle=False)(normMean, samples, windows, i) for i in range(len(windows)))
 
         # Find best correctTraining
         for i in range(len(self.results)):
@@ -94,11 +99,12 @@ class ShotgunEnsembleClassifier():
         return final_correct, final_labels
 
 
-    def predict(self, model, test_samples):
+    def predict(self, model, test_samples, testing = False):
         p = [None for _ in range(test_samples["Samples"])]
         means = [None for _ in range(len(model.labels))]
         stds = [None for _ in range(len(model.labels))]
         means, stds = self.calcMeansStds(model.window, model.samples, means, stds, model.norm)
+
 
         for i in range(test_samples["Samples"]):
             query = test_samples[i]
@@ -109,12 +115,12 @@ class ShotgunEnsembleClassifier():
 
             for j in range(len(model.labels)):
                 ts = model.samples[j].data
-                if ts != query.data:
+                if (ts != query.data) or testing:
                     totalDistance = 0.
 
                     for q in disjointWindows:
                         resultDistance = distanceTo1NN
-                        for w in range(len(ts) - model.window):
+                        for w in range(len(ts) - model.window+1):
                             distance = self.getEuclideanDistance(ts, q.data, means[j][w], stds[j][w], resultDistance, w)
                             resultDistance = min(distance, resultDistance)
                         totalDistance += resultDistance
@@ -122,7 +128,7 @@ class ShotgunEnsembleClassifier():
                             break
 
                     if totalDistance < distanceTo1NN:
-                        p[i] = model.samples[j].label
+                        p[i] = model.labels[j]
                         distanceTo1NN = totalDistance
 
         correct = sum([p[i] == test_samples[i].label for i in range(test_samples["Samples"])])
@@ -131,7 +137,7 @@ class ShotgunEnsembleClassifier():
 
     def getEuclideanDistance(self, ts, q, meanTs, stdTs, minValue, w):
         distance = 0.0
-        for ww in range(len(q)-1):
+        for ww in range(len(q)):
             value1 = (ts[w + ww] - meanTs) * stdTs
             value = q[ww] - value1
             distance += value * value
@@ -177,6 +183,19 @@ class ShotgunEnsembleClassifier():
         return MEANS, STDS
 
 
+    def getWindowsBetween(self, minWindowLength, maxWindowLength):
+        windows = []
+        for windowLength in range(maxWindowLength, minWindowLength-1, -1):
+            windows.append(windowLength);
+        return windows
+
+
+def getMax(samples, maxWindowSize):
+    m = 0
+    for i in range(samples['Samples']):
+        m = max(len(samples[i].data), m)
+
+    return min(maxWindowSize, m)
 
 
 class ShotgunModel():
