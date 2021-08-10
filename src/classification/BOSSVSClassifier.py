@@ -171,7 +171,7 @@ class BOSSVSClassifier():
         self.results = []
 
         self.logger.Log("%s  Fitting for a norm of %s" % (self.NAME, str(normMean)))
-        Parallel(n_jobs=1, backend="threading")(delayed(self.fitIndividual, check_pickle=False)(normMean, samples, windows, i) for i in range(len(windows)))
+        Parallel(n_jobs=1, backend="threading")(delayed(self.fitIndividual)(normMean, samples, windows, i) for i in range(len(windows)))
 
         # Find best correctTraining
         for i in range(len(self.results)):

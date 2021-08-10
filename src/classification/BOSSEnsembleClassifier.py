@@ -99,7 +99,7 @@ class BOSSEnsembleClassifier():
         self.results = []
         self.logger.Log("%s  Fitting for a norm of %s" % (self.NAME, str(NormMean)))
 
-        Parallel(n_jobs=1, backend="threading")(delayed(self.fitIndividual, check_pickle=False)(NormMean, samples, i) for i in range(len(self.windows)))
+        Parallel(n_jobs=1, backend="threading")(delayed(self.fitIndividual)(NormMean, samples, i) for i in range(len(self.windows)))
 
         #Find best correctTraining
         for i in range(len(self.results)):
@@ -168,7 +168,7 @@ class BOSSEnsembleClassifier():
         self.Label_Matrix = [[None for _ in range(len(models))] for _ in range(samples['Samples'])]
         predictedLabels = [None for _ in range(samples['Samples'])]
 
-        Parallel(n_jobs=1, backend="threading")(delayed(self.predictIndividual, check_pickle=False)(models, samples, testing, i) for i in range(len(models)))
+        Parallel(n_jobs=1, backend="threading")(delayed(self.predictIndividual)(models, samples, testing, i) for i in range(len(models)))
 
         maxCounts = [None for _ in range(samples['Samples'])]
         for i in range(len(self.Label_Matrix)):

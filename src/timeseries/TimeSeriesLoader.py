@@ -2,9 +2,10 @@ import pandas as pd
 from src.timeseries.TimeSeries import TimeSeries
 import os
 import numpy as np
+from pathlib import Path
 
-uv_dir = os.getcwd() + "\\datasets\\univariate\\"
-mv_dir = os.getcwd() + "\\datasets\\multivariate\\"
+uv_dir = Path(os.getcwd(),"datasets","univariate")
+mv_dir = Path(os.getcwd(),"datasets","multivariate")
 
 
 def uv_load(dataset_name, APPLY_Z_NORM = True, logger = None):
@@ -12,9 +13,9 @@ def uv_load(dataset_name, APPLY_Z_NORM = True, logger = None):
         train = {}
         test = {}
 
-        logger.Log("Loading from: %s%s" % (uv_dir, dataset_name))
-        train_raw = pd.read_csv((uv_dir + dataset_name + "\\" + dataset_name + "_TRAIN"), sep=",", header=None)
-        test_raw = pd.read_csv((uv_dir + dataset_name + "\\" + dataset_name + "_TEST"), sep=",", header=None)
+        logger.Log("Loading from: %s" % Path(uv_dir, dataset_name))
+        train_raw = pd.read_csv(Path(uv_dir, dataset_name, dataset_name + "_TRAIN"), sep=",", header=None)
+        test_raw = pd.read_csv(Path(uv_dir, dataset_name, dataset_name + "_TEST"), sep=",", header=None)
 
         train["Type"] = "UV"
         train["Samples"] = train_raw.shape[0]
@@ -58,9 +59,9 @@ def mv_load(dataset_name, useDerivatives,  APPLY_Z_NORM = False, logger = None):
         train = {}
         test = {}
 
-        logger.Log("Loading from: %s%s" % (mv_dir, dataset_name))
-        train_raw = pd.read_csv((mv_dir + dataset_name + "\\" + dataset_name + "_TRAIN3"), sep=" ", header=None)
-        test_raw = pd.read_csv((mv_dir + dataset_name + "\\" + dataset_name + "_TEST3"), sep=" ", header=None)
+        logger.Log("Loading from: %s" % Path(mv_dir, dataset_name))
+        train_raw = pd.read_csv(Path(mv_dir, dataset_name, dataset_name + "_TRAIN3"), sep=" ", header=None)
+        test_raw = pd.read_csv(Path(mv_dir, dataset_name, dataset_name + "_TEST3"), sep=" ", header=None)
 
         train["Type"] = "MV"
         train["Samples"] = int(train_raw.iloc[-1,0])
@@ -116,5 +117,5 @@ def mv_load(dataset_name, useDerivatives,  APPLY_Z_NORM = False, logger = None):
         logger.Log("Classes: %s" % str(np.unique(train['Labels'])))
 
         return train, test
-    except:
-        logger.Log("Data not loaded. Check Data name and path")
+    except Exception as ex:
+        logger.Log(f"Data not loaded. Check Data name and path. Exception was: {ex}")
