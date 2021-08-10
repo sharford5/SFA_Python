@@ -60,8 +60,8 @@ def mv_load(dataset_name, useDerivatives,  APPLY_Z_NORM = False, logger = None):
         test = {}
 
         logger.Log("Loading from: %s" % Path(mv_dir, dataset_name))
-        train_raw = pd.read_csv(Path(mv_dir, dataset_name, dataset_name + "_TRAIN3"), sep=",", header=None)
-        test_raw = pd.read_csv(Path(mv_dir, dataset_name, dataset_name + "_TEST3"), sep=",", header=None)
+        train_raw = pd.read_csv(Path(mv_dir, dataset_name, dataset_name + "_TRAIN3"), sep=" ", header=None)
+        test_raw = pd.read_csv(Path(mv_dir, dataset_name, dataset_name + "_TEST3"), sep=" ", header=None)
 
         train["Type"] = "MV"
         train["Samples"] = int(train_raw.iloc[-1,0])
@@ -117,5 +117,5 @@ def mv_load(dataset_name, useDerivatives,  APPLY_Z_NORM = False, logger = None):
         logger.Log("Classes: %s" % str(np.unique(train['Labels'])))
 
         return train, test
-    except:
-        logger.Log("Data not loaded. Check Data name and path")
+    except Exception as ex:
+        logger.Log(f"Data not loaded. Check Data name and path. Exception was: {ex}")
