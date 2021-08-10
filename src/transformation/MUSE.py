@@ -188,7 +188,7 @@ class Dictionary():
 
 
     def equals(self, v1, v2):
-        return (v1 == v2) or ((v1 != None) and
+        return (v1 == v2) #or ((v1 != None) and
 
 
 
