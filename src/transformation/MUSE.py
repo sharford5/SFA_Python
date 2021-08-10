@@ -18,7 +18,7 @@ class MUSE():
 
     def createWORDS(self, samples, data = 'Train'):
         self.words = [None for _ in range(len(self.windowLengths))]
-        Parallel(n_jobs=1, backend="threading")(delayed(self.createWords, check_pickle=False)(samples, w, data) for w in range(len(self.windowLengths)))
+        Parallel(n_jobs=1, backend="threading")(delayed(self.createWords)(samples, w, data) for w in range(len(self.windowLengths)))
         return self.words
 
 
